@@ -1,0 +1,346 @@
+{
+   "index_searched" : "title",
+   "result_count" : 102881,
+   "page_count" : 10289,
+   "data" : [
+      {
+         "title" : "Science",
+         "awards_text" : "",
+         "urls_text" : "",
+         "title_long" : "",
+         "book_id" : "science_a32",
+         "publisher_id" : "sra",
+         "isbn13" : "9780022774370",
+         "lcc_number" : "",
+         "dewey_normal" : "0",
+         "publisher_text" : "Sra",
+         "language" : "",
+         "marc_enc_level" : "~",
+         "subject_ids" : [
+            "amazon_com_childrens_books_science_nature_how_it_works_gener",
+            "amazon_com_childrens_books_ages_9_12_general"
+         ],
+         "title_latin" : "Science",
+         "edition_info" : "Hardcover; 2000-01-01",
+         "author_data" : [
+            {
+               "id" : "not_available",
+               "name" : "Not Available"
+            }
+         ],
+         "physical_description_text" : "8.5\"x1.2\"x11.0\"; 3.9 lb",
+         "dewey_decimal" : "",
+         "isbn10" : "0022774378",
+         "publisher_name" : "Sra",
+         "notes" : "",
+         "summary" : "An exciting and original thematic encyclopedia ideal for home, school, or library use, Science vividly explains over 2,000 key words in physics, chemistry, and technology. Thematic arrangement allows readers to access information by subject and explore related topics. Specially commissioned full-color illustrations reveal the structure and function of living things. Full explanations make understanding science easier than ever. Fully indexed and cross-referenced, Science was prepared in consultation with leading educational experts."
+      },
+      {
+         "lcc_number" : "",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "dewey_normal" : "0",
+         "language" : "eng",
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "marc_enc_level" : "i",
+         "edition_info" : "(grade 5, student ed.)",
+         "title_latin" : "Science",
+         "author_data" : [
+            {
+               "id" : "frank_marjorie_slavick",
+               "name" : "Frank, Marjorie Slavick"
+            }
+         ],
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "dewey_decimal" : "",
+         "isbn10" : "0153112085",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "publisher_name" : "Harcourt School Publishers",
+         "summary" : "",
+         "awards_text" : "",
+         "title" : "Science",
+         "urls_text" : "",
+         "title_long" : "",
+         "book_id" : "science_a11",
+         "publisher_id" : "harcourt_school_publishers",
+         "isbn13" : "9780153112089"
+      },
+      {
+         "title_long" : "",
+         "title" : "Science",
+         "awards_text" : "",
+         "urls_text" : "",
+         "book_id" : "science_a12",
+         "isbn13" : "9780153157257",
+         "publisher_id" : "harcourt_school_publishers",
+         "language" : "eng",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "dewey_normal" : "0",
+         "lcc_number" : "",
+         "author_data" : [
+            {
+               "name" : "Frank, Marjorie Slavick",
+               "id" : "frank_marjorie_slavick"
+            }
+         ],
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "marc_enc_level" : "i",
+         "title_latin" : "Science",
+         "edition_info" : "(grade 3, Texas Teacher's ed., units A and B)",
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "dewey_decimal" : "",
+         "publisher_name" : "Harcourt School Publishers",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "summary" : "",
+         "isbn10" : "0153157259"
+      },
+      {
+         "isbn10" : "0153112077",
+         "publisher_name" : "Harcourt School Publishers",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "summary" : "",
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "dewey_decimal" : "",
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "marc_enc_level" : "i",
+         "title_latin" : "Science",
+         "edition_info" : "(grade 4, student ed.)",
+         "author_data" : [
+            {
+               "name" : "Frank, Marjorie Slavick",
+               "id" : "frank_marjorie_slavick"
+            }
+         ],
+         "dewey_normal" : "0",
+         "lcc_number" : "",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "language" : "eng",
+         "publisher_id" : "harcourt_school_publishers",
+         "isbn13" : "9780153112072",
+         "book_id" : "science_a13",
+         "awards_text" : "",
+         "title" : "Science",
+         "urls_text" : "",
+         "title_long" : ""
+      },
+      {
+         "book_id" : "science_a14",
+         "publisher_id" : "harcourt_school_publishers",
+         "isbn13" : "9780153157387",
+         "awards_text" : "",
+         "title" : "Science",
+         "urls_text" : "",
+         "title_long" : "",
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "dewey_decimal" : "",
+         "isbn10" : "0153157380",
+         "publisher_name" : "Harcourt School Publishers",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "summary" : "",
+         "lcc_number" : "",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "dewey_normal" : "0",
+         "language" : "eng",
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "marc_enc_level" : "i",
+         "edition_info" : "(grade 5, Texas Teacher's ed., units C and D)",
+         "title_latin" : "Science",
+         "author_data" : [
+            {
+               "name" : "Frank, Marjorie Slavick",
+               "id" : "frank_marjorie_slavick"
+            }
+         ]
+      },
+      {
+         "lcc_number" : "",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "dewey_normal" : "0",
+         "language" : "eng",
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "marc_enc_level" : "i",
+         "edition_info" : "(grade 2, student ed.)",
+         "title_latin" : "Science",
+         "author_data" : [
+            {
+               "id" : "frank_marjorie_slavick",
+               "name" : "Frank, Marjorie Slavick"
+            }
+         ],
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "dewey_decimal" : "",
+         "isbn10" : "0153112050",
+         "publisher_name" : "Harcourt School Publishers",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "summary" : "",
+         "title" : "Science",
+         "awards_text" : "",
+         "urls_text" : "",
+         "title_long" : "",
+         "book_id" : "science_a15",
+         "publisher_id" : "harcourt_school_publishers",
+         "isbn13" : "9780153112058"
+      },
+      {
+         "isbn10" : "0153157313",
+         "summary" : "",
+         "publisher_name" : "Harcourt School Publishers",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "dewey_decimal" : "",
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "edition_info" : "(grade 4, Texas Teacher's ed., units A and B)",
+         "title_latin" : "Science",
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "marc_enc_level" : "i",
+         "author_data" : [
+            {
+               "id" : "frank_marjorie_slavick",
+               "name" : "Frank, Marjorie Slavick"
+            }
+         ],
+         "dewey_normal" : "0",
+         "lcc_number" : "",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "language" : "eng",
+         "publisher_id" : "harcourt_school_publishers",
+         "isbn13" : "9780153157318",
+         "book_id" : "science_a16",
+         "urls_text" : "",
+         "awards_text" : "",
+         "title" : "Science",
+         "title_long" : ""
+      },
+      {
+         "title_long" : "",
+         "urls_text" : "",
+         "title" : "Science",
+         "awards_text" : "",
+         "book_id" : "science_a17",
+         "isbn13" : "9780153112065",
+         "publisher_id" : "harcourt_school_publishers",
+         "language" : "eng",
+         "lcc_number" : "",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "dewey_normal" : "0",
+         "author_data" : [
+            {
+               "name" : "Frank, Marjorie Slavick",
+               "id" : "frank_marjorie_slavick"
+            }
+         ],
+         "title_latin" : "Science",
+         "edition_info" : "(grade 3, student ed.)",
+         "marc_enc_level" : "i",
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "dewey_decimal" : "",
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "summary" : "",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "publisher_name" : "Harcourt School Publishers",
+         "isbn10" : "0153112069"
+      },
+      {
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "marc_enc_level" : "i",
+         "title_latin" : "Science",
+         "edition_info" : "(grade 1, Texas Teacher's ed. units A-F)",
+         "author_data" : [
+            {
+               "id" : "frank_marjorie_slavick",
+               "name" : "Frank, Marjorie Slavick"
+            }
+         ],
+         "dewey_normal" : "0",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "lcc_number" : "",
+         "language" : "eng",
+         "isbn10" : "0153151676",
+         "publisher_name" : "Harcourt School Publishers",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "summary" : "",
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)",
+         "dewey_decimal" : "",
+         "title" : "Science",
+         "awards_text" : "",
+         "urls_text" : "",
+         "title_long" : "",
+         "publisher_id" : "harcourt_school_publishers",
+         "isbn13" : "9780153151675",
+         "book_id" : "science_a18"
+      },
+      {
+         "urls_text" : "",
+         "awards_text" : "",
+         "title" : "Science",
+         "title_long" : "",
+         "publisher_id" : "harcourt_school_publishers",
+         "isbn13" : "9780153157370",
+         "book_id" : "science_a19",
+         "title_latin" : "Science",
+         "edition_info" : "(grade 5, Texas Teacher's ed., units A and B)",
+         "marc_enc_level" : "i",
+         "subject_ids" : [
+            "science",
+            "earth_sciences",
+            "life_sciences",
+            "physical_sciences"
+         ],
+         "author_data" : [
+            {
+               "name" : "Frank, Marjorie Slavick",
+               "id" : "frank_marjorie_slavick"
+            }
+         ],
+         "lcc_number" : "",
+         "publisher_text" : "Orlando, FL / Harcourt School Publishers, c2000.",
+         "dewey_normal" : "0",
+         "language" : "eng",
+         "isbn10" : "0153157372",
+         "summary" : "",
+         "notes" : "Accompanied by: Workbook, TE, Assessment guide, Teaching resources, & Texas essential knowledge & skills.\n\nState adopted textbooks.\n\nConforming.\n\nTitles of Texas teacher's ed., Gr. 1 & 2: Life, Earth, and Physical science, units A-F. Gr. 3, 4, & 5 in 3 vols.: Life science, units A and B; Earth science, units C and D; Physical science, units E and F.\n\nGrades 1-5.",
+         "publisher_name" : "Harcourt School Publishers",
+         "dewey_decimal" : "",
+         "physical_description_text" : "v. : col. ill. ; 29 cm. + Texas teacher's ed. (v. : col. ill. ; 31 cm.)"
+      }
+   ],
+   "current_page" : 1
+}
