@@ -14,19 +14,37 @@ var extractProperties = function(html) {
     var pagesCountGroups = pagesText.match(/([\d]+)/);
     var pages = parseInt(pagesCountGroups[0]);
     var isbnText = $('.content li:contains("ISBN-10:")').text();
-    var isbn10 = isbnText.replace('ISBN-10:', '').trim();
+    var isbn10 = isbnText.replace('ISBN-10:', '').replace('-', '').trim();
     //todo: validate isbn
     var isbn13Text = $('.content li:contains("ISBN-13")').text();
-    var isbn13 = isbn13Text.replace('ISBN-13:', '').trim();
-
-    return {
+    var isbn13 = isbn13Text.replace('ISBN-13:', '').replace('-', '').trim();
+    var binding;
+    if ($('.content li > b:contains("Hardcover")')) {
+        binding = 'Hardcover';
+    } else if ($('.content li > b:contains("Paperback")')) {
+        binding = 'Paperback';
+    }
+    // "Publisher: RosettaBooks (July 1, 2010)"
+    // Dell (November 3, 1991)
+    // Knopf; First Edition edition (August 12, 2014)
+    var publisherLine = $('li:contains("Publisher:")').text();
+    var publisherName = publisherLine.match(/Publisher: (.+) \(/)[1];
+    var publicationDate = publisherLine.match(/\(([^)]+)\)/)[1];
+    var properties = {
         title: title,
         author: author,
         description: description,
         pages: pages,
         isbn10: isbn10,
-        isbn13 : isbn13
+        isbn13 : isbn13,
+        publisher: publisherName,
+        publicationDate: publicationDate
     };
+
+    if (binding) {
+        properties.binding = binding;
+    }
+    return properties;
 };
 
 module.exports = {
