@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= properties.title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= properties.title %></h1>
+<table class="table">
+<% for (var propertyName in properties) { %>
+    <tr><td><%= propertyName %></td><td><%= properties[propertyName] %></td></tr>
+<% } %>
+</table>
+</body>
+</html>
