@@ -3,7 +3,7 @@ var fs = require('fs');
 var amazonScraper = require('../scrapers/amazon');
 
 
-test('test amazon html extraction', function (t) {
+test('test amazon html extraction - tsukuru', function (t) {
     var amazonHtml = fs.readFileSync(__dirname + '/tsukuru_amazon.html');
     var bookProperties = amazonScraper.extractProperties(amazonHtml);
     var expectedProperties = {
@@ -16,6 +16,25 @@ test('test amazon html extraction', function (t) {
         binding: 'Hardcover',
         publisher: 'Knopf',
         publicationDate: 'August 12, 2014'
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+test('test amazon html extraction - cryptonomicon', function (t) {
+    var amazonHtml = fs.readFileSync(__dirname + '/cryptonomicon_amazon.html');
+    var bookProperties = amazonScraper.extractProperties(amazonHtml);
+    var expectedProperties = {
+        title: 'Cryptonomicon',
+        isbn10: '0060512806',
+        isbn13: '9780060512804',
+        pages: 1168,
+        author: 'Neal Stephenson',
+        description: fs.readFileSync(__dirname + '/cryptonomicon_description.txt', 'utf-8'),
+        binding: 'Paperback',
+        publisher: 'Avon',
+        publicationDate: 'November 5, 2002'
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
