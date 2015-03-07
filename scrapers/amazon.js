@@ -28,7 +28,7 @@ var extractProperties = function(html) {
     // Dell (November 3, 1991)
     // Knopf; First Edition edition (August 12, 2014)
     var publisherLine = $('li:contains("Publisher:")').text();
-    var publisherName = publisherLine.match(/Publisher: (.+) \(/)[1];
+    var publisherName = publisherLine.match(/Publisher: (.+?)(;|\()/)[1];
     var publicationDate = publisherLine.match(/\(([^)]+)\)/)[1];
     var properties = {
         title: title,
