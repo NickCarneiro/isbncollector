@@ -15,7 +15,7 @@ test('amazon book page html extraction - tsukuru', function (t) {
         description: fs.readFileSync(__dirname + '/fixtures/tsukuru_description.txt', 'utf-8'),
         binding: 'Hardcover',
         publisher: 'Knopf',
-        publicationDate: 'August 12, 2014'
+        publicationDate: new Date('Tue Aug 12 2014 00:00:00 GMT-0700 (PDT)')
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
@@ -34,7 +34,7 @@ test('amazon book page html extraction - cryptonomicon', function (t) {
         description: fs.readFileSync(__dirname + '/fixtures/cryptonomicon_description.txt', 'utf-8'),
         binding: 'Paperback',
         publisher: 'Avon',
-        publicationDate: 'November 5, 2002'
+        publicationDate: new Date('Tue Nov 05 2002 00:00:00 GMT-0800 (PST)')
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
@@ -53,7 +53,7 @@ test('amazon book page html extraction - cryptonomicon alternate', function (t) 
         description: fs.readFileSync(__dirname + '/fixtures/cryptonomicon_description_alternate.txt', 'utf-8'),
         binding: 'Paperback',
         publisher: 'Avon',
-        publicationDate: 'November 5, 2002'
+        publicationDate: new Date('Tue Nov 05 2002 00:00:00 GMT-0800 (PST)')
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
