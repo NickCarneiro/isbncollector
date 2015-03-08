@@ -121,7 +121,14 @@ var searchForBook = function(isbn, callback) {
 
 
 var getBook = function(bookPageUrl, callback) {
-    request(bookPageUrl, function (error, response, body) {
+    var options = {
+        url: bookPageUrl,
+        headers: {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36'
+        }
+    };
+    request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var bookProperties = extractBookProperties(body);
             callback(bookProperties);

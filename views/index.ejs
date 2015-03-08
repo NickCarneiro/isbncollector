@@ -5,7 +5,13 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Total books: <%= totalBookCount %></p>
+
+  <h2>ISBN lookup</h2>
+  <form method="get" action="/book">
+    <label for="isbn-input">ISBN or keyword:</label>
+    <input id="isbn-input" name="isbn" />
+    <input type="submit" value="Submit" />
+  </form>
   </body>
 </html>
