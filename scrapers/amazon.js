@@ -15,13 +15,16 @@ var extractBookProperties = function(html) {
             .text()
             .trim();
     }
+
+
     var author = $('.contributorNameID').text();
     if (!author) {
         author = $('span:contains("(Author)") > a').text();
     }
     var description = $($('noscript')[1]).html().trim();
 
-    if (!description || description.indexOf('<style') !== -1) {
+    if (!description || description.indexOf('<style') !== -1 ||
+        description.indexOf('<img') !== -1) {
         description = $('#postBodyPS').html().trim();
     }
 
@@ -50,6 +53,16 @@ var extractBookProperties = function(html) {
         publisherName = publisherName.trim();
     }
     var publicationDate = publisherLine.match(/\(([^)]+)\)/)[1];
+
+    // some titles contain the series title
+    // 'A People's History Of The Vietnam War (New Press People's History)'
+    var seriesText = $('.content li:contains("Series")').text();
+    var seriesName;
+    if (seriesText) {
+        seriesName = seriesText.replace('Series:', '').trim();
+        var seriesNameParens = '(' + seriesName +')';
+        title = title.replace(seriesNameParens, '').trim();
+    }
     var properties = {
         title: title,
         author: author,
@@ -63,6 +76,9 @@ var extractBookProperties = function(html) {
 
     if (binding) {
         properties.binding = binding;
+    }
+    if (seriesName) {
+        properties.seriesName = seriesName;
     }
     return properties;
 };
