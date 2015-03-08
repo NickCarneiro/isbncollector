@@ -23,10 +23,18 @@ var extractBookProperties = function(html) {
     if (!author) {
         author = $('span:contains("(Author)") > a').text();
     }
-    var description = $($('noscript')[1]).html().trim();
+    var description;
+    $('noscript').each(function(i, noScriptElement) {
+        var noScriptElementHtml = $(noScriptElement).html().trim();
+        if (noScriptElementHtml.indexOf('<style') === -1 &&
+            noScriptElementHtml.indexOf('<img') === -1
+        ) {
+            description = noScriptElementHtml;
+            return false;
+        }
+    });
 
-    if (!description || description.indexOf('<style') !== -1 ||
-        description.indexOf('<img') !== -1) {
+    if (!description) {
         description = $('#postBodyPS').html().trim();
     }
 
