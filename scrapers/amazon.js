@@ -1,5 +1,7 @@
 var cheerio = require('cheerio');
 var request = require('request');
+var moment = require('moment');
+
 /**
  *
  * @param {string} html extract
@@ -52,7 +54,9 @@ var extractBookProperties = function(html) {
     if (publisherName) {
         publisherName = publisherName.trim();
     }
-    var publicationDate = publisherLine.match(/\(([^)]+)\)/)[1];
+    var publicationDateText = publisherLine.match(/\(([^)]+)\)/)[1];
+    var publicationDateIsoString = moment(publicationDateText, 'MMM D, YYYY').toISOString();
+    var publicationDate = new Date(publicationDateIsoString);
 
     // some titles contain the series title
     // 'A People's History Of The Vietnam War (New Press People's History)'
