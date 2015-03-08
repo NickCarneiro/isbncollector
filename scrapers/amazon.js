@@ -17,12 +17,45 @@ var extractBookProperties = function(html) {
             .text()
             .trim();
     }
-
-
-    var author = $('.contributorNameID').text();
-    if (!author) {
-        author = $('span:contains("(Author)") > a').text();
+    if (!title) {
+        console.log('Could not get a title');
+        return null;
     }
+
+    var byline = $('#byline').text();
+    byline = byline.replace(/\s+/gi, ' ');
+    byline = byline.replace(/{"isAjax.+Author Central/, '');
+    byline = byline.replace(' by ', '');
+    byline = byline.trim();
+    var contributors = byline.split(',');
+    var authors = [];
+    var translators = [];
+    contributors.forEach(function(contributor) {
+        if (contributor.indexOf('(Author)') !== -1) {
+            var author = contributor.replace('(Author)', '').trim();
+            if (author) {
+                authors.push(author);
+            }
+        } else if (contributor.indexOf('(Translator)') !== -1) {
+            var translator = contributor.replace('(Translator)', '').trim();
+            if (translator) {
+                translators.push(translator);
+            }
+        }
+    });
+    if (authors.length === 0) {
+        var author = $('.contributorNameID').text();
+        if (author) {
+            authors.push(author);
+        }
+    }
+    if (authors.length === 0) {
+        var author = $('span:contains("(Author)") > a').text();
+        if (author) {
+            authors.push(author);
+        }
+    }
+
     var description;
     $('noscript').each(function(i, noScriptElement) {
         var noScriptElementHtml = $(noScriptElement).html().trim();
@@ -77,7 +110,7 @@ var extractBookProperties = function(html) {
     }
     var properties = {
         title: title,
-        author: author,
+        authors: authors,
         description: description,
         pages: pages,
         isbn10: isbn10,
@@ -86,6 +119,9 @@ var extractBookProperties = function(html) {
         publicationDate: publicationDate
     };
 
+    if (translators.length > 0) {
+        properties.translators = translators;
+    }
     if (binding) {
         properties.binding = binding;
     }
@@ -139,7 +175,11 @@ var getBook = function(bookPageUrl, callback) {
     request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var bookProperties = extractBookProperties(body);
-            callback(bookProperties);
+            if (bookProperties) {
+                callback(bookProperties);
+            } else {
+                callback('Could not parse book properties.', true);
+            }
         } else {
             var requestFailed = true;
             callback(error, requestFailed);

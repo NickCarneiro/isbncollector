@@ -11,7 +11,8 @@ test('amazon book page html extraction - tsukuru', function (t) {
         isbn10: '0385352107',
         isbn13: '9780385352109',
         pages: 400,
-        author: 'Haruki Murakami',
+        authors: ['Haruki Murakami'],
+        translators: ['Philip Gabriel'],
         description: fs.readFileSync(__dirname + '/fixtures/tsukuru_description.txt', 'utf-8'),
         binding: 'Hardcover',
         publisher: 'Knopf',
@@ -30,7 +31,7 @@ test('amazon book page html extraction - cryptonomicon', function (t) {
         isbn10: '0060512806',
         isbn13: '9780060512804',
         pages: 1168,
-        author: 'Neal Stephenson',
+        authors: ['Neal Stephenson'],
         description: fs.readFileSync(__dirname + '/fixtures/cryptonomicon_description.txt', 'utf-8'),
         binding: 'Paperback',
         publisher: 'Avon',
@@ -49,11 +50,29 @@ test('amazon book page html extraction - cryptonomicon alternate', function (t) 
         isbn10: '0060512806',
         isbn13: '9780060512804',
         pages: 1168,
-        author: 'Neal Stephenson',
+        authors: ['Neal Stephenson'],
         description: fs.readFileSync(__dirname + '/fixtures/cryptonomicon_description_alternate.txt', 'utf-8'),
         binding: 'Paperback',
         publisher: 'Avon',
         publicationDate: new Date('Tue Nov 05 2002 00:00:00 GMT-0800 (PST)')
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+test('amazon book page html extraction, multiple authors - zero to one', function (t) {
+    var amazonHtml = fs.readFileSync(__dirname + '/fixtures/zero_to_one_amazon.html');
+    var bookProperties = amazonScraper.extractBookProperties(amazonHtml);
+    var expectedProperties = {
+        title: 'Zero to One: Notes on Startups, or How to Build the Future',
+        isbn10: '0804139296',
+        isbn13: '9780804139298',
+        pages: 224,
+        authors: ['Peter Thiel', 'Blake Masters'],
+        description: fs.readFileSync(__dirname + '/fixtures/zero_to_one_description.txt', 'utf-8'),
+        binding: 'Hardcover',
+        publisher: 'Crown Business',
+        publicationDate: new Date('Tue Sep 16 2014 00:00:00 GMT-0700 (PDT)')
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
