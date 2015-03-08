@@ -79,6 +79,10 @@ var extractBookProperties = function(html) {
     //todo: validate isbn
     var isbn13Text = $('.content li:contains("ISBN-13")').text();
     var isbn13 = isbn13Text.replace('ISBN-13:', '').replace('-', '').trim();
+    if (!isbn10 && !isbn13) {
+        console.log('book had no isbn');
+        return null;
+    }
     var binding;
     var isHardCover = $('.content li > b:contains("Hardcover")').length;
     var isPaperback = $('.content li > b:contains("Paperback")').length;
