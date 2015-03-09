@@ -148,6 +148,24 @@ var extractSearchResultUrls = function(searchPageHtml) {
 };
 
 
+var extractCategorySearchResults = function(searchPageHtml) {
+    var $ = cheerio.load(searchPageHtml);
+    var resultLinks = $('#mainResults a.title');
+    var resultUrls = [];
+    $(resultLinks).each(function(i, resultLink) {
+        var href = $(resultLink).attr('href');
+        resultUrls.push(href);
+    });
+    return resultUrls;
+};
+
+var extractCategorySearchNextPageUrl = function(searchPageHtml) {
+    var $ = cheerio.load(searchPageHtml);
+    var nextPageLink = $('#pagnNextLink');
+    var nextPageUrl = $(nextPageLink).attr('href');
+    return nextPageUrl;
+};
+
 var searchForBook = function(isbn, callback) {
     var baseSearchUrl = 'http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks&field-keywords=$isbn';
     var searchUrl = baseSearchUrl.replace('$isbn', isbn);
@@ -164,7 +182,7 @@ var searchForBook = function(isbn, callback) {
             var requestFailed = true;
             callback(error, requestFailed);
         }
-    })
+    });
 };
 
 
@@ -195,5 +213,8 @@ var getBook = function(bookPageUrl, callback) {
 module.exports = {
     extractBookProperties: extractBookProperties,
     searchForBook: searchForBook,
-    extractSearchResultUrls: extractSearchResultUrls
+    extractSearchResultUrls: extractSearchResultUrls,
+    getBook: getBook,
+    extractCategorySearchResults: extractCategorySearchResults,
+    extractCategorySearchNextPageUrl: extractCategorySearchNextPageUrl
 };
