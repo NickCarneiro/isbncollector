@@ -10,3 +10,7 @@ a {
 td {
   border: 1px solid black;
 }
+
+.book {
+  margin-bottom: 15px;
+}

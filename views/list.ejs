@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>isbncollector</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<p>page: <%= page %></p>
+<% if (previousPage) { %>
+<a href="/list?page=<%= previousPage %>">Previous</a>
+<% } %>
+<a href="/list?page=<%= nextPage %>">Next</a>
+<% for (var i = 0; i < books.length; i++) { %>
+<div class="book">
+    <table>
+        <% for (var propertyName in books[i]) { %>
+        <tr><td><%= propertyName %></td><td><%= books[i][propertyName] %></td></tr>
+        <% } %>
+    </table>
+</div>
+<% } %>
+</body>
+</html>

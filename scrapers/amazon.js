@@ -73,7 +73,10 @@ var extractBookProperties = function(html) {
 
     var pagesText = $('.content li:contains("pages")').text();
     var pagesCountGroups = pagesText.match(/([\d]+)/);
-    var pages = parseInt(pagesCountGroups[0]);
+    var pages;
+    if (pagesCountGroups !== null) {
+        pages = parseInt(pagesCountGroups[0]);
+    }
     var isbnText = $('.content li:contains("ISBN-10:")').text();
     var isbn10 = isbnText.replace('ISBN-10:', '').replace('-', '').trim();
     //todo: validate isbn
@@ -116,12 +119,14 @@ var extractBookProperties = function(html) {
         title: title,
         authors: authors,
         description: description,
-        pages: pages,
         isbn10: isbn10,
         isbn13 : isbn13,
         publisher: publisherName,
         publicationDate: publicationDate
     };
+    if (pages) {
+        properties.pages = pages;
+    }
 
     if (translators.length > 0) {
         properties.translators = translators;
