@@ -1,6 +1,7 @@
 var cheerio = require('cheerio');
 var request = require('request');
 var moment = require('moment');
+var Agent = require('socks5-http-client/lib/Agent');
 
 /**
  *
@@ -174,7 +175,15 @@ var extractCategorySearchNextPageUrl = function(searchPageHtml) {
 var searchForBook = function(isbn, callback) {
     var baseSearchUrl = 'http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks&field-keywords=$isbn';
     var searchUrl = baseSearchUrl.replace('$isbn', isbn);
-    request(searchUrl, function (error, response, body) {
+    var requestOptions = {
+        url: searchUrl,
+        agentClass: Agent,
+        agentOptions: {
+            socksHost: 'localhost',
+            socksPort: 9050
+        }
+    };
+    request(requestOptions, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             // got the search results, extract the first link
             var searchResultUrls = extractSearchResultUrls(body);
@@ -197,6 +206,11 @@ var getBook = function(bookPageUrl, callback) {
         headers: {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36'
+        },
+        agentClass: Agent,
+        agentOptions: {
+            socksHost: 'localhost',
+            socksPort: 9050
         }
     };
     request(options, function (error, response, body) {

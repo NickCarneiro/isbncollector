@@ -8,6 +8,8 @@ var SLEEP_TIME_MILLIS = 3000;
 var BASE_URL = 'http://amazon.com';
 var MONGO_URL = 'mongodb://localhost:27017/isbncollector';
 
+var Agent = require('socks5-http-client/lib/Agent');
+
 var extractCategories = function(html) {
     //http://www.amazon.com/s/ref=lp_173507_ex_n_1?rh=n%3A283155&bbn=283155&ie=UTF8&qid=1425853230
     var $ = cheerio.load(html);
@@ -59,7 +61,15 @@ var scrapeCategory = function(resultPageUrl) {
     if (!resultPageUrl) {
         resultPageUrl = BASE_URL + categories[0];
     }
-    request(resultPageUrl, function (error, response, body) {
+    var requestOptions = {
+        url: resultPageUrl,
+        agentClass: Agent,
+        agentOptions: {
+            socksHost: 'localhost',
+            socksPort: 9050
+        }
+    };
+    request(requestOptions, function (error, response, body) {
         console.log('requesting page: ' + currentPage);
         var booksCrawledForThisPage = 0;
         if (!error && response.statusCode == 200) {
