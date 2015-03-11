@@ -1,0 +1,1433 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en"  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+        LINKcat Catalog &rsaquo; Details for: Cryptonomicon /
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Koha 4.0900033" /> <!-- leave this for stats -->
+    <link rel="shortcut icon" href="/opac-tmpl/prog/en/includes/favicon.ico" type="image/x-icon" />
+
+
+    <link rel="stylesheet" type="text/css" href="/opac-tmpl/prog/en/css/opac.css" />
+
+
+
+    <link rel="stylesheet" type="text/css" media="print" href="/opac-tmpl/prog/en/css/print.css" />
+
+
+    <style type="text/css">@import url("https://assets.linkcat.info/css/opacusercss.css");</style>
+    <!-- yui js -->
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/utilities/utilities.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/container/container-min.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/menu/menu-min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/opac-tmpl/prog/en/lib/jquery/css/smoothness/jquery-ui.css" />
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/lib/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/lib/jquery/jquery-ui-1.8.21.min.js"></script>
+
+
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.hoverIntent.minified.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.dropshadow-min.js"></script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/script.js"></script>
+
+
+    <script type="text/javascript" language="javascript">//<![CDATA[
+    var NO_AMAZON_IMAGE = _("No cover image available");
+    //]]>
+    </script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/amazonimages.js"></script>
+
+    <script type="text/javascript" language="javascript"
+            src="/opac-tmpl/prog/en/js/basket.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        //<![CDATA[
+        var MSG_BASKET_EMPTY = _("Your Cart is currently empty");
+        var BASKET_NAME = "Cart";
+        var MSG_RECORD_IN_BASKET = _("This item is already in your Cart");
+        var MSG_RECORD_ADDED = _("This item has been added to your Cart");
+        var MSG_NRECORDS_ADDED = _(" item(s) added to your Cart");
+        var MSG_NRECORDS_IN_BASKET = _("already in your Cart");
+        var MSG_NO_RECORD_SELECTED = _("No item was selected");
+        var MSG_NO_RECORD_ADDED = _("No item was added to your Cart");
+        var MSG_CONFIRM_DEL_BASKET = _("Are you sure you want to empty your Cart?");
+        var MSG_CONFIRM_DEL_RECORDS = _("Are you sure you want to remove the selected items?");
+        $("#cartDetails").ready(function(){ $("#cmspan").html("<a href=\"#\" id=\"cartmenulink\" class=\"\"><i><\/i><span><i><\/i><span><\/span><img src=\"/opac-tmpl/prog/images/cart.gif\" width=\"14\" height=\"14\" alt=\"\" border=\"0\" /> "+_("Cart")+"<span id=\"basketcount\"><\/span><\/span><\/a>"); });
+
+        $(window).load(function() {
+            verify_images();
+        });
+        $(document).ready(function(){
+            $("#advsearch #advsearch-shelvingloc").remove();
+
+// Add dropshadow to opacheader
+            $("#opacheaderprofile").dropShadow({left:3, top:0, blur:3, opacity: 0.2});
+
+// Remove Site Administrator link and change maintenance message
+//$('#doc a:contains("Site Administrator")').remove();
+//$('#doc').html($('#doc').html().replace(/System Maintenance \.\.\. we'll be back soon\! If you have any questions, please contact the/, '<h1>System Maintenance</h1><p>LINKcat is currently unavailable.</p><p>We are sorry for the inconvenience.</p>'));
+
+// Hide New This Week content
+// If the breadcrumb mentions catdate
+//if ($("#breadcrumbs li:contains('catdate:[NOW-')").length > 0) {
+// Hide the contents of the result count in the breadcrumbs
+//$("#breadcrumbs p").text("");
+// Place a message in the main column instead of the regular New This Week content
+//$("#yui-main").replaceWith("<div id=\"yui-main\"><h1>System Maintenance</h1><p>The New This Week list is currently unavailable while we migrate Portage County Public Library to LINKcat.</p><p>New This Week will return on May 28.</p><p>We apologize for any inconvenience.</p></div>");
+// Hide the sidebar content
+//$(".yui-b").replaceWith("<div class=\"yui-b\"></div>");
+//}
+
+// Change cart and list button images
+
+            $("#listsmenulink > span > img").attr('src','https://assets.linkcat.info/images/koha-overrides/list.gif');
+
+            $("#cartmenulink img").attr('src','https://assets.linkcat.info/images/koha-overrides/cart.gif');
+
+// Place cursor in contextually appropriate starting input
+// If the opac auth container element exists
+            if ($("#opac-auth").length) {
+// Add autofocus to the login username input
+                $("#userid").focus();
+
+// Change the password help to something useful
+                $("#auth h5:contains('Don\'t have a password yet?')").text("Don\'t remember your password?");
+                $("#auth p:contains('If you don\'t have a password yet,')").text("Bring your ID to the library, and we\'ll help you access your account.");
+            }
+            else if ($("#Oldkey").length) {
+// Add autofocus to the old password input
+                $("#Oldkey").focus();
+            }
+            else if ($("#addshelf").length) {
+// Add autofocus to the new list input
+                $("input#addshelf").focus();
+            }
+            else {
+// Add autofocus to the search text input
+                $("#transl1").focus();
+            }
+
+// If the checkouts or overdues table exists hide the Fines column
+            if ($("#checkoutst").length) {
+                checkoutsCols = $("#checkoutst").find('tr')[0].cells.length;
+                $("#checkoutst td:nth-child(" + checkoutsCols + "),#checkoutst th:nth-child(" + checkoutsCols + ")").hide();
+            }
+            if ($("#overduest").length) {
+                overduesCols = $("#overduest").find('tr')[0].cells.length;
+                $("#overduest td:nth-child(" + overduesCols + "),#overduest th:nth-child(" + overduesCols + ")").hide();
+            }
+
+// If the change password form exists change the text of the password hint
+            if ($("#mainform").length) {
+                $('.hint').replaceWith("\<div class=\"hint\"\>Your password must be at least 4 characters long. Use only numbers to avoid problems using self-checkout or reserving computers at the library.\<\/div\>");
+            }
+
+// Pre-selects Title instead of keyword for masthead search
+//$("#masthead_search option").eq(1).attr("selected","selected");
+
+//Changes label of Login/password boxes
+            $("label[for='userid']").html("Login/Barcode:");
+            $("label[for='password']").html("PIN/Password:");
+
+//Changes "Browse Shelf" link to "Browse the shelf"
+            $("a:contains('Browse Shelf')").text("Browse the shelf");
+
+//Hide My Fines tab
+            $("#menu a:contains('my fines')").hide();
+
+//Remove all resolved fees from patron's account screen
+            $("#opac-account .fines_detail tr").each(function(i, tr){ if($(tr).children('td').eq(3).html()=='0.00') $(tr).remove(); });
+
+            /* * * Begin Fines Production Test * * */
+            if (window.location.host == "mad.linkcat.info") {
+
+// Set the Pay Now link language and href
+                var payNowLink = "<a href=\"https://fees.linkcat.info\">Pay Now</a>";
+// Set the message about the online payment threshold
+                var dontPayNow = "\<em\>Online payment is available for fines and charges of $10.00 or more. Contact your local library for assistance.\<\/em\>";
+
+//if you are on the my summary page and click the vertical my fines tab, make the horizontal Fines tab the selected tab
+//and set the Pay Now link or payment message on the my summary page
+
+// Check to see if you are on the my summary page
+                if(window.location.pathname == "/cgi-bin/koha/opac-user.pl"){
+
+// Set a payment message with default saying online payment is not available
+                    var paymentMessage = dontPayNow;
+
+// Meet the condition of having 10.00 fines or more to show the Pay Now link
+                    if (parseFloat($("#opac-user-fines a[href$='/cgi-bin/koha/opac-account.pl']").html())>=10.00){
+                        paymentMessage = payNowLink;
+                    }
+
+// Display the appropriate payment message on Fines sub-tab
+                    $("#opac-user-fines").append(paymentMessage);
+                }
+
+// Add a link to Pay Fines on Fines and Charges page
+                if(window.location.pathname == "/cgi-bin/koha/opac-account.pl"){
+
+// Set a payment message with default saying online payment is not available
+                    var paymentMessage = dontPayNow;
+// Meet the condition of having 10.00 fines or more to show the Pay Now link
+                    if (parseFloat($(".sum:contains('Total due')").parent().children('td.sum').html())>=10.00){
+                        paymentMessage = payNowLink;
+                    }
+
+// Display the appropriate payment message
+                    $(".fines_summary").eq(0).append(paymentMessage);
+
+// Also make the vertical my fines tab selected white
+                    $("#finestab").parent().parent().attr('class', 'active');
+                }
+            }
+            /* * * End Fines Production Test * * */
+
+//Message on Confirm Holds screen
+            $('#HoldsConfirmMsg').replaceWith("\<div id=\"HoldsConfirmMsg\" class=\"dialog alert\" \>Please click the Submit button only once.\<\/div\>");
+
+            $("ul li span:contains('Supplements:')").replaceWith("Serials Summary holdings:");
+
+        });
+
+        // LibraryAnywhere mobile prompt
+        (function () {
+            var e = document.createElement('script');
+            e.src = 'https://www.libanywhere.com/check.js?from=www.linkcat.info';
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }());
+        //]]>
+    </script><script type="text/javascript" language="javascript"
+                     src="/opac-tmpl/prog/en/js/basket.js"></script>
+
+
+    <link rel="unapi-server" type="application/xml" title="unAPI" href="www.linkcat.info/cgi-bin/koha/unapi" />
+
+
+
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/screensaver.js"></script>
+    <script type="text/javascript">
+        window.onload=function (){
+            var ss = new ScreenSaver( 900 * 1000);
+
+            ss.onstart = function () {
+                document.location = '/cgi-bin/koha/opac-main.pl?logout.x=1';
+                updateBasket(0,null);
+                delCookie("bib_list");
+            };
+        }
+    </script>
+
+
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.tablesorter.min.js"></script>
+    <script type="text/JavaScript" language="JavaScript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $("#tagform").hide();
+            $("#addtagl").show();
+            $('#bibliodescriptions').tabs();
+            $("#addtagl a").click(function(){
+                $("#addtagl").hide();
+                $("#tagform, #tagform a").show();
+                return false;
+            });
+
+            $("#tagform a").click(function(){
+                $("#addtagl").show();
+                $("#tagform").hide();
+                return false;
+            });
+
+            $("#holdingst").tablesorter({
+                widgets : ['zebra']
+            });
+
+
+            $("a.print").parent().after("<li><a class=\"addtocart\" href=\"#\" onclick=\"addRecord('"+$("input[name=bib]").val()+"'); return false;\">"+_("Add to Your Cart")+"<\/a><\/li>");
+        });
+
+        YAHOO.util.Event.onContentReady("furtherm", function () {
+            $("#furtherm").css("display","block").css("visibility","hidden");
+            $("#furthersearches").parent().show();
+            var furthersearchesMenu = new YAHOO.widget.Menu("furtherm");
+            furthersearchesMenu.render();
+            furthersearchesMenu.cfg.setProperty("context", ["furthersearches", "tr", "br"]);
+            furthersearchesMenu.subscribe("beforeShow",positionfurthersearchesMenu);
+            furthersearchesMenu.subscribe("show", furthersearchesMenu.focus);
+            function positionfurthersearchesMenu() {
+                furthersearchesMenu.align("tr", "br");
+            }
+            YAHOO.util.Event.addListener("furthersearches", "click", furthersearchesMenu.show, null, furthersearchesMenu);
+            YAHOO.widget.Overlay.windowResizeEvent.subscribe(positionfurthersearchesMenu);
+        });
+
+        //]]>
+    </script>
+    <style type="text/css">
+        #addtagl { display: none; }
+    </style>
+    <script type="text/javascript">
+        var GB_ROOT_DIR = "/opac-tmpl/prog/en/lib/greybox/";
+    </script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/greybox/AJS.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/greybox/AJS_fx.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/greybox/gb_scripts.js"></script>
+    <link href="/opac-tmpl/prog/en/lib/greybox/gb_styles.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id="doc3" class="yui-t7">
+    <div id="bd">
+
+        <div id="header-wrapper"><div id="members">
+
+            <ul><li><a href="/cgi-bin/koha/opac-user.pl">Log in to Your Account</a></li>
+            </ul>
+
+        </div>
+
+            <div id="opacheaderprofile">
+                <div class="acl">
+                    <h2><a href="http://www.scls.lib.wi.us/acl/">Adams County Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/acl/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="alm">
+                    <h2><a href="http://library.uwsp.edu/pcl/almond.htm">Portage County Public Library - Almond Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/almond.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="arp">
+                    <h2><a href="http://www.arpinpl.org/">Lester Public Library of Arpin</a></h2>
+                    <p><a href="http://www.arpinpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="bar">
+                    <h2><a href="http://www.baraboopubliclibrary.org/">Baraboo Public Library</a></h2>
+                    <p><a href="http://www.baraboopubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ber">
+                    <h2><a href="http://www.bepubliclibrary.org/">Black Earth Public Library</a></h2>
+                    <p><a href="http://www.bepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="blv">
+                    <h2><a href="http://www.scls.lib.wi.us/blv/">Belleville Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/blv/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="brd">
+                    <h2><a href="http://www.brodheadlibrary.org/">Brodhead Memorial Public Library</a></h2>
+                    <p><a href="http://www.brodheadlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="cbr">
+                    <h2><a href="http://www.cambridgelib.org/">Cambridge Community Library</a></h2>
+                    <p><a href="http://www.cambridgelib.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="cia">
+                    <h2><a href="http://www.jmml.org/">Jane Morgan Memorial Library</a></h2>
+                    <p><a href="http://www.jmml.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="col">
+                    <h2><a href="http://www.columbuspubliclibrary.info/">Columbus Public Library</a></h2>
+                    <p><a href="http://www.columbuspubliclibrary.info/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="csp">
+                    <h2><a href="http://www.rgpl.org/">Rosemary Garfoot Public Library</a></h2>
+                    <p><a href="http://www.rgpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dcl">
+                    <h2><a href="http://www.dcls.info/">Dane County Library Service</a></h2>
+                    <p><a href="http://www.dcls.info/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dee">
+                    <h2><a href="http://www.deerfieldpubliclibrary.org/">Deerfield Public Library</a></h2>
+                    <p><a href="http://www.deerfieldpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dft">
+                    <h2><a href="http://www.deforest.lib.wi.us/">DeForest Public Library</a></h2>
+                    <p><a href="http://www.deforest.lib.wi.us/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="fch">
+                    <h2><a href="http://www.fitchburglibrary.org/">Fitchburg Public Library</a></h2>
+                    <p><a href="http://www.fitchburglibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="haw">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Hawthorne Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="hpb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Alicia Ashman Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="lak">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Lakeview Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="lav">
+                    <h2><a href="http://www.scls.lib.wi.us/lav/">LaValle Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/lav/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ldi">
+                    <h2><a href="http://www.lodipubliclibrary.org/">Lodi Woman's Club Public Library</a></h2>
+                    <p><a href="http://www.lodipubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mad">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mar">
+                    <h2><a href="http://www.marlib.org/">Marshall Community Library</a></h2>
+                    <p><a href="http://www.marlib.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="maz">
+                    <h2><a href="http://www.scls.lib.wi.us/mazomanie/">Mazomanie Free Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/mazomanie/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mcf">
+                    <h2><a href="http://www.mcfarlandlibrary.org/">E.D. Locke Public Library</a></h2>
+                    <p><a href="http://www.mcfarlandlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mcm">
+                    <h2><a href="http://www.mcmillanlibrary.org/">McMillan Memorial Library</a></h2>
+                    <p><a href="http://www.mcmillanlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mea">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Meadowridge Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mid">
+                    <h2><a href="http://www.midlibrary.org/">Middleton Public Library</a></h2>
+                    <p><a href="http://www.midlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="moo">
+                    <h2><a href="http://www.mononalibrary.org/">Monona Public Library</a></h2>
+                    <p><a href="http://www.mononalibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mro">
+                    <h2><a href="http://www.monroepubliclibrary.org/">Monroe Public Library</a></h2>
+                    <p><a href="http://www.monroepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="msb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Monroe Street Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mth">
+                    <h2><a href="http://www.mhpl.org/">Mount Horeb Public Library</a></h2>
+                    <p><a href="http://www.mhpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ngl">
+                    <h2><a href="http://www.newglaruspubliclibrary.org/">New Glarus Public Library</a></h2>
+                    <p><a href="http://www.newglaruspubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="nof">
+                    <h2><a href="http://www.northfreedomlibrary.com/">North Freedom Public Library</a></h2>
+                    <p><a href="http://www.northfreedomlibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ore">
+                    <h2><a href="http://www.oregonpubliclibrary.org/">Oregon Public Library</a></h2>
+                    <p><a href="http://www.oregonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="par">
+                    <h2><a href="http://www.pardeevillelibrary.com/">Angie W. Cox Public Library</a></h2>
+                    <p><a href="http://www.pardeevillelibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pds">
+                    <h2><a href="http://www.pdslibrary.org/">Ruth Culver Community Library</a></h2>
+                    <p><a href="http://www.pdslibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pin">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Pinney Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pla">
+                    <h2><a href="http://www.kraemerlibrary.org/">Kraemer Library &amp; Community Center</a></h2>
+                    <p><a href="http://www.kraemerlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="plo">
+                    <h2><a href="http://library.uwsp.edu/pcl/plover.htm">Portage County Public Library - Plover Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/plover.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="por">
+                    <h2><a href="http://www.portagelibrary.us/">Portage Public Library</a></h2>
+                    <p><a href="http://www.portagelibrary.us/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="poy">
+                    <h2><a href="http://www.poynettelibrary.com/">Poynette Public Library</a></h2>
+                    <p><a href="http://www.poynettelibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ree">
+                    <h2><a href="http://www.reedsburglibrary.org/">Reedsburg Public Library</a></h2>
+                    <p><a href="http://www.reedsburglibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="rks">
+                    <h2><a href="http://www.rockspringslibrary.com/">Rock Springs Public Library</a></h2>
+                    <p><a href="http://www.rockspringslibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ros">
+                    <h2><a href="http://library.uwsp.edu/pcl/rosholt.htm">Portage County Public Library - Rosholt Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/rosholt.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sca">
+                    <h2><a href="http://www.scls.info/">SCLS Headquarters</a></h2>
+                    <p><a href="http://www.scls.info/">Visit the SCLS Home Page</a></p>
+                </div>
+                <div class="scl">
+                    <h2><a href="http://www.linkcat.info">SCLS Test Catalog</a></h2>
+                    <p><a href="http://www.linkcat.info">LINKcat Home</a></p>
+                </div>
+                <div class="scls">
+                    <h2><a href="http://help.linkcat.info/ask/index.html">Get help from a LINKcat library</a></h2>
+                </div>
+                <div class="seq">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Sequoya Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sgr">
+                    <h2><a href="http://www.springgreenlibrary.org/">Spring Green Community Library</a></h2>
+                    <p><a href="http://www.springgreenlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="skc">
+                    <h2><a href="http://www.saukcitylibrary.org/">Sauk City Public Library</a></h2>
+                    <p><a href="http://www.saukcitylibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="smb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Goodman South Madison Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sto">
+                    <h2><a href="http://www.stoughtonpubliclibrary.org/">Stoughton Public Library</a></h2>
+                    <p><a href="http://www.stoughtonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="stp">
+                    <h2><a href="http://library.uwsp.edu/pcl/">Portage County Public Library - Stevens Point Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sun">
+                    <h2><a href="http://www.sunprairiepubliclibrary.org/">Sun Prairie Public Library</a></h2>
+                    <p><a href="http://www.sunprairiepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ver">
+                    <h2><a href="http://www.veronapubliclibrary.org/">Verona Public Library</a></h2>
+                    <p><a href="http://www.veronapubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wau">
+                    <h2><a href="http://www.waunakeepubliclibrary.org/">Waunakee Public Library</a></h2>
+                    <p><a href="http://www.waunakeepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wid">
+                    <h2><a href="http://www.dellslibrary.org/">Kilbourn Public Library</a></h2>
+                    <p><a href="http://www.dellslibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wyo">
+                    <h2><a href="http://www.wyocenalibrary.org/">Wyocena Public Library</a></h2>
+                    <p><a href="http://www.wyocenalibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+            </div>
+            <div id="opacheader">
+                <ul><li><a href="http://m.linkcat.info/">Mobile</a></li><li><a href="http://help.linkcat.info/">Help</a></li><li><a href="http://www.scls.info/resources/name.html">Databases</a></li><li><a href="http://lists.linkcat.info/">Don't&nbsp;Miss&nbsp;Lists</a></li><li><a title="Show all titles added to the catalog in the last 7 days" href="http://launcher.linkcat.info/go.cgi?q=&limit=catdate:[NOW-7DAYS+TO+*]&limit=&sort=catdate+desc">New&nbsp;This&nbsp;Week</a></li><li><a href="http://sclsp.kohalibrary.com/" title="Indexes of local newspapers and Wisconsin magazines">Newspapers</a></li><li><a href="http://dbooks.wplc.info/">OverDrive</a></li>
+                </ul>
+                <!--[if lte IE 8 ]><div class="lte-ie8 clearfix"><div class="dialog alert"><h2><img src="http://assets.linkcat.info/images/warning_16.png" alt="Warning" style="float:left; margin: 0 10px 0 0;">Your browser is out of date. It has security flaws and may not display all features of LINKcat. <a href="http://browsehappy.com/">Please update your browser.</a></h2></div></div><![endif]-->
+            </div>
+
+            <div id="opac-main-search" class="yui-g">
+
+                <h1 id="libraryname" style="background-image: url('https://assets.linkcat.info/images/koha-overrides/linkcatlogo.png');">
+                    <a href="/cgi-bin/koha/opac-main.pl">LINKcat</a></h1>
+
+                <div id="fluid">
+                    <div id="fluid-offset">
+                        <form name="searchform" method="get" action="/cgi-bin/koha/opac-search.pl" id="searchform">
+                            <label for="masthead_search" class="left"> Search </label>
+                            <select name="idx" id="masthead_search" class="left" style="max-width:10em;width:10em;">
+                                <option value="">Library Catalog</option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                                <option value="subject">Subject</option>
+                                <option value="isbn">ISBN</option>
+                                <option value="series-title">Series</option>
+                                <option value="callnumber">Call Number</option>
+                            </select>
+
+                            <select name="limit" class="left">
+
+
+                                <option value="">Any format</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Book&quot;">Book</option>
+
+
+
+                                <option value="format:&quot;Large print book&quot;">Large print book</option>
+
+
+
+                                <option value="format:&quot;Braille book&quot;">Braille book</option>
+
+
+
+                                <option value="format:&quot;Graphic novel&quot;">Graphic novel</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Videocassette&quot;">Videocassette</option>
+
+
+
+                                <option value="format:&quot;DVD&quot;">DVD</option>
+
+
+
+                                <option value="format:&quot;Blu-ray DVD&quot;">Blu-ray DVD</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Cassette&quot;">Cassette</option>
+
+
+
+                                <option value="format:&quot;Digital audio player&quot;">Digital audio player</option>
+
+
+
+                                <option value="format:&quot;Compact disc&quot;">Compact disc</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Software&quot;">Software</option>
+
+
+
+                                <option value="format:&quot;Website or downloadable&quot;">Website or downloadable</option>
+
+
+
+                                <option value="format:&quot;Video game&quot;">Video game</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Music&quot;">Music</option>
+
+
+
+                                <option value="format:&quot;Printed Music&quot;">Printed Music</option>
+
+
+
+                                <option value="format:&quot;Audiobook&quot;">Audiobook</option>
+
+
+                            </select>
+
+
+                            <!-- NAME="searchdomainoptions" -->
+
+
+                            <input type="text" id = "transl1" name="q" class="left" style="width: 35%; font-size: 111%;"/><div id="translControl"></div>
+
+
+
+
+
+                            <input type="submit" value="Go" id="searchsubmit" class="left" />
+                            <span id="cmspan"></span>
+
+                            <a href="/cgi-bin/koha/opac-shelves.pl" id="listsmenulink" class=""><i></i><span><i></i><span></span>Lists </span></a>
+                        </form>
+
+
+                        <div id="moresearches">
+                            <a href="/cgi-bin/koha/opac-search.pl">Advanced Search</a>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cartDetails">Your Cart is empty.</div>
+
+
+                <div id="listsmenu" class="yuimenu" style="display: none">
+                    <div class="bd">
+                        <h4>Public Lists</h4>
+
+                        <ul class="first-of-type">
+
+                            <li class="yuimenuitem"><a href="/cgi-bin/koha/opac-shelves.pl?viewshelf=85268&amp;sortfield=title">Public Lists created on LINKcat will be deleted</a></li>
+
+                        </ul>
+
+
+
+                        <ul class="first-of-type"><li><a href="/cgi-bin/koha/opac-user.pl">Log in to Create Your Own Lists</a></li></ul>
+
+
+                    </div>
+                </div><!-- /listmenu /virtualshelves -->
+
+                <div id="listsDetails"></div>
+            </div>
+        </div>
+        <div id="breadcrumbs" class="yui-g">
+
+
+            <!-- <p>You did not specify any search criteria. </p> -->
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div id="yui-main">
+        <div class="yui-b"><div id="opac-detail" class="yui-ge">
+            <div class="yui-u first">
+                <div class="container">
+                    <div id="catalogue_detail_biblio">
+
+                        <div id="bookcover">
+
+                            <img src="https://secure.syndetics.com/index.aspx?isbn=0380973464/MC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+
+                        </div>
+
+
+
+
+                        <h1>
+                            <span class="displaytitle">Cryptonomicon / </span>
+                        </h1><h5><span class="displayauthorlabel label">by </span><a href="/cgi-bin/koha/opac-search.pl?q=linked_rcn:%22(DLC)541556%22">Stephenson, Neal </a>.</h5><div id="views">
+  <span class="view">
+    <span id="Normalview">Normal View</span>
+  </span>
+  <span class="view">
+    <a id="MARCviewPop" href="/cgi-bin/koha/opac-showmarc.pl?id=781301" title="MARC" rel="gb_page_center[600,500]">MARC View</a>
+  </span>
+  <span class="view">
+    <a id="MARCview" href="/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=781301" title="MARC">Expanded MARC View</a>
+  </span>
+  <span class="view">
+    <a id="ISBDview" href="/cgi-bin/koha/opac-ISBDdetail.pl?biblionumber=781301">Card View (ISBD)</a>
+  </span>
+                    </div><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/BK.png" alt=""/>Book</span><span class="results_summary">
+  <span class="displaypublabel label">Publisher: </span>
+  <span class="displaypub">New York : Avon Press, c1999    .</span>
+</span><span class="results_summary">
+  <span class="displayeditionlabel label">Edition: </span>
+  <span class="displayedition">1st ed  .</span>
+</span><span class="results_summary">
+  <span class="displaydesclabel label">Description: </span>
+  <span class="displaydesc">918 p  .</span>
+</span><abbr class="unapi-id" title="koha:biblionumber:781301"/><span class="results_summary">
+  <span class="displayISBNlabel label">ISBN: </span>
+  <span class="displayISBN">0380973464 (hardcover) :; 9781439501795; 0380788624; 0060512806.</span>
+</span>
+
+
+
+
+
+
+                        <!-- This puts the LTFL reviews in, and if TabbedView is not set, puts the remaining content above the Tabs instead of in them -->
+
+
+	<span class="results_summary">
+        <span class="label">Reviews from LibraryThing.com:</span>
+        <span style="display: block;" class="ltfl_reviews"></span>
+    </span>
+
+
+
+
+                        <!--This grabs all of the lists a bib record appears in -->
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+                    <div id="bibliodescriptions" class="toptabs">
+
+                        <ul>
+                            <li> <a href="#holdings">Holdings ( 15 )</a> </li>
+                            <li> <a href="#descriptions">Title Notes</a></li>
+
+
+
+                            <li> <a href="#excerpt">Excerpt</a></li>
+
+
+                            <li> <a href="#reviews">Reviews</a></li>
+                            <li> <script src="https://www.librarything.com/forlibraries/widget.js?id=1590-1664015029" type="text/javascript"></script><noscript>This page contains enriched content visible when JavaScript is enabled or by clicking <a href="https://www.librarything.com/forlibraries/noscript.php?id=99-274208589&amp;accessibility=1">here</a>.</noscript></li>
+
+
+                            <li> <a href="#anotes">About the Author</a></li>
+
+
+
+
+                            <li> <a href="#LFTLSimilarItems">Similar Items</a></li>
+                            <li> <a href="#LTFLTagBrowse">Tag Browser</a></li>
+
+
+
+
+
+
+
+
+
+
+                        </ul>
+
+                        <div id="holdings">
+
+
+
+
+                            <table id="holdingst">
+                                <thead><tr>
+
+                                    <th>Library</th>
+                                    <th>Location</th>
+                                    <th>Collection</th>
+                                    <th>Call Number</th>
+
+
+
+
+                                    <th>Status</th>
+
+                                    <th>Date Due</th>
+                                </tr></thead>
+                                <tbody>
+                                <tr>
+
+
+                                    <td>Adams County Library</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> FIC Ste (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860524#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Brodhead Memorial Public Library</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> FIC STE (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860523#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>DeForest Library</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> FIC STE (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860521#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/18/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Deerfield Library</td>
+                                    <td>Adult</td>
+                                    <td>Paperback Fiction</td>
+                                    <td> PB STE (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=3345320#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Madison PL-Central</td>
+                                    <td>1st Floor</td>
+                                    <td>Fiction</td>
+                                    <td> Stephenson (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=3481542#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Madison PL-Lakeview</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> Stephenson (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860520#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Madison PL-Sequoya</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> Stephenson (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=3481546#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/31/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>PCPL-Stevens Point branch</td>
+                                    <td>1st Floor</td>
+                                    <td>Fiction</td>
+                                    <td> Fic Stephenson, Neal (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=4246760#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>02/24/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Portage Library</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> F Ste (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860514#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Stoughton Library</td>
+                                    <td>Adult, 2nd Floor</td>
+                                    <td>Fiction</td>
+                                    <td> FIC STEPHENSON (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860512#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/16/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Verona Public Library</td>
+                                    <td>Adult</td>
+                                    <td>Paperback Fiction</td>
+                                    <td> Paper Ste (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=4646807#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+                                        On Order
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Verona Public Library</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> Fic Stephenson N (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860510#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+
+                                        Lost
+
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Waunakee Library</td>
+                                    <td>Adult</td>
+                                    <td>Paperback Fiction</td>
+                                    <td> FIC   STE (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860509#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>02/28/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Wis. Rapids - McMillan Library</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> STE (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860517#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Wyocena Library</td>
+                                    <td>Adult</td>
+                                    <td>Fiction</td>
+                                    <td> STE (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=781301&amp;shelfbrowse_itemnumber=2860508#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+
+
+                                        Available
+
+
+
+
+
+                                    </td>
+
+                                    <td></td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="dialogue alert">
+                                <b> Total <span class="HoldsLabel">holds</span>: 2 <p> Items with "<span class="HoldsLabel">On hold</span>" status are item specific <span class="HoldsLabel">holds</span>. </b>
+                            </div>
+
+
+
+
+
+
+                            <br clear="all" />
+                        </div>
+
+
+                        <div id="descriptions">
+                            <div class="content_set">
+
+
+
+
+                                <h4>Enhanced Descriptions from Syndetics:</h4>
+                                <p>With this extraordinary first volume in what promises to be an epoch-making masterpiece, Neal Stephenson hacks into the secret histories of nations and the private obsessions of men, decrypting with dazzling virtuosity the forces that shaped this century.In 1942, Lawrence Pritchard Waterhouse - mathematical genius and young Captain in the U.S. Navy - is assigned to detachment 2702. It is an outfit so secret that only a handful of people know it exists, and some of those people have names like Churchill and Roosevelt. The mission of Watrehouse and Detatchment 2702-commanded by Marine Raider Bobby Shaftoe-is to keep the Nazis ignorant of the fact that Allied Intelligence has cracked the enemy's fabled Enigma code. It is a game, a cryptographic chess match between Waterhouse and his German counterpart, translated into action by the gung-ho Shaftoe and his forces.Fast-forward to the present, where Waterhouse's crypto-hacker grandson, Randy, is attempting to create a "data haven" in Southeast Asia - a place where encrypted data can be stored and exchanged free of repression and scrutiny. As governments and multinationals attack the endeavor, Randy joins forces with Shaftoe's tough-as-nails grandaughter, Amy, to secretly salvage a sunken Nazi sumarine that holds the key to keeping the dream of a data haven afloat. But soon their scheme brings to light a massive conspiracy with its roots in Detachment 2702 linked to an unbreakable Nazi code called Arethusa. And it will represent the path to unimaginable riches and a future of personal and digital liberty...or to universal totalitarianism reborn.A breathtaking tour de force, and Neal Stephenson's most accomplished and affecting work to date, CRYPTONOMICON is profound and prophetic, hypnotic and hyper-driven, as it leaps forward and back between World War II and the World Wide Web, hinting all the while at a dark day-after-tomorrow. It is a work of great art, thought, and creative daring; the product of a truly icon</p>
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div id="excerpt">
+                            <div class="content_set">
+                                <h3>Excerpt provided by Syndetics</h3>
+                                <opt>
+                                    <anon I1="BLANK" I2="BLANK">
+                                        <p></p>
+                                        <p>Cryptonomicon Chapter One Barrens Let's set the existence-of-God issues aside for a later volume, and just stipulate that in some way, self-replicating organisms came into existence on this planet and immediately began trying to get rid of each other, either by spamming their environments with rough copies of themselves, or by more direct means which hardly need to be belabored. Most of them failed, and their genetic legacy was erased from the universe forever, but a few found some way to survive and to propagate. After about three billion years of this sometimes zany, frequently tedious fugue of carnality and carnage, Godfrey Waterhouse IV was born, in Murdo, South Dakota, to Blanche, the wife of a Congregational preacher named Bunyan Waterhouse. Like every other creature on the face of the earth, Godfrey was, by birthright, a stupendous badass, albeit in the somewhat narrow technical sense that he could trace his ancestry back up a long line of slightly less highly evolved stupendous badasses to that first self-replicating gizmo-which, given the number and variety of its descendants, might justifiably be described as the most stupendous badass of all time. Everyone and everything that wasn't a stupendous badass was dead. As nightmarishly lethal, memetically programmed death-machines went, these were the nicest you could ever hope to meet. In the tradition of his namesake (the Puritan writer John Bunyan, who spent much of his life in jail, or trying to avoid it) the Rev. Waterhouse did not preach in any one place for long. The church moved him from one small town in the Dakotas to another every year or two. It is possible that Godfrey found the lifestyle more than a little alienating, for, sometime during the course of his studies at Fargo Congregational College, he bolted from the fold and, to the enduring agony of his parents, fell into worldy pursuits, and ended up, somehow, getting a Ph.D. in Classics from a small private university in Ohio. Academics being no less nomadic than Congregational preachers, he took work where he could find it. He became a Professor of Greek and Latin at Bolger Christian College (enrollment 322) in West Point, Virginia, where the Mattaponi and Pamunkey Rivers came together to form the estuarial. James, and the loathsome fumes of the big paper mill permeated every drawer, every closet, even the interior pages of books. Godfrey's young bride, nee Alice Pritchard, who had grown up following her itinerant-preacher father across the vastnesses of eastern Montana-where air smelt of snow and sage threw up for three months. Six months later she gave birth to Lawrence Pritchard Waterhouse. The boy had a peculiar relationship with sound. When a fire engine passed, he was not troubled by the siren's howl or the bell's clang. But when a hornet got into the house and swung across the ceiling in a broad Lissajous, droning almost inaudibly, he cried in pain at the noise. And if he saw or smelled something that scared him, he would clap his hands over his ears. One noise that troubled him not at all was the pipe organ in the chapel at Bolger Christian College. The chapel itself was nothing worth mentioning, but the organ had been endowed by the paper mill family and would have sufficed for a church four times the size. It nicely complemented the organist, a retired high school math teacher who felt that certain attributes of the Lord (violence and capriciousness in the Old Testament, majesty and triumph in the New) could be directly conveyed into the souls of the enpewed sinners through a kind of frontal sonic impregnation. That he ran the risk of blowing out the stained-glass windows was of no consequence since no one liked them anyway, and the paper mill fumes were gnawing at the interstitial lead. But after one little old lady too many staggered down the aisle after a service, reeling from tinnitus, and made a barbed comment to the minister about the exceedingly dramatic music, the organist was replaced. Nevertheless, he continued to give lessons on the instrument. Students were not allowed to touch the organ until they were proficient at the piano, and when this was explained to Lawrence Pritchard Waterhouse, he taught himself, in three weeks, how to play a Bach fugue, and signed up for organ lessons. Since he was only five years old at the time, he was unable to reach both the manuals and the pedals, and had to play standing-or rather strolling, from pedal to pedal. When Lawrence was twelve, the organ broke down. That paper mill family had not left any endowment for maintenance, so the math teacher decided to have a crack at it. He was in poor health and required a nimble assistant: Lawrence, who helped him open up the hood of the thing. For the first time in all those years, the boy saw what had been happening when he had been pressing those keys. For each stop-each timbre, or type of sound, that the organ could make (viz. blockflöte, trumpet, piccolo)-there was a separate row of pipes, arranged in a line from long to short. Long pipes made low notes, short high. The tops of the pipes defined a graph: not a straight line but an upward-tending curve. The organist/math teacher sat down with a few loose pipes, a pencil, and paper, and helped Lawrence figure out why. When Lawrence understood, it was as if the math teacher had suddenly played the good part of Bach's Fantasia and Fugue in G Minor on a pipe organ the size of the Spiral Nebula in Andromeda-the part where Uncle Johann dissects the architecture of the Universe in one merciless descending ever-mutating chord, as if his foot is thrusting through skidding layers of garbage until it finally strikes bedrock. In particular, the final steps of the organist's explanation were like a falcon's dive through layer after layer of pretense and illusion, thrilling or sickening or confusing depending on what you were. The heavens were riven open. Lawrence glimpsed choirs of angels ranking off into geometrical infinity. The pipes sprouted in parallel ranks from a broad flat box of compressed air. All of the pipes for a given note-but belonging to different stops-lined up with each other along one axis. All of the pipes for a given stop-but tuned at different pitches-lined up with each other along the other, perpendicular axis. Down there in the flat box of air, then, was a mechanism that got air to the right pipes at the right times. When a key or pedal was depressed, all of the pipes capable of sounding the corresponding note would speak, as long as their stops were pulled out. Mechanically, all of this was handled in a fashion that was perfectly clear, simple, and logical. Lawrence had supposed that the machine must be at least as complicated as the most intricate fugue that could be played on it. Now he had learned that a machine, simple in its design, could produce results of infinite complexity. Stops were rarely used alone. They tended to be piled on top of each other in combinations that were designed to take advantage of the available harmonics (more tasty mathematics here!). Certain combinations in particular were used over and over again. Lots of blockflötes, in varying lengths, for the quiet Offertory, for example. The organ included an ingenious mechanism called the preset, which enabled the organist to select a particular combination of stops-stops he himself had chosen-instantly. He would punch a button and several stops would bolt out from the console, driven by pneumatic pressure, and in that instant the organ would become a different instrument with entirely new timbres. The next summer both Lawrence and Alice, his mother, were colonized by a distant cousin-a stupendous badass of a virus. Lawrence escaped from it with an almost imperceptible tendency to drag one of his feet. Alice wound up in an iron lung. Later, unable to cough effectively, she got pneumonia and died. Lawrence's father Godfrey freely confessed that he was not... Cryptonomicon . Copyright © by Neal Stephenson. Reprinted by permission of HarperCollins Publishers, Inc. All rights reserved. Available now wherever books are sold. Excerpted from Cryptonomicon by Neal Stephenson All rights reserved by the original copyright owners. Excerpts are provided for display purposes only and may not be reproduced, reprinted or distributed without the written permission of the publisher.</p>
+                                    </anon>
+                                </opt>
+
+                            </div>
+                        </div>
+
+
+
+                        <div id="reviews">
+                            <div class="content_set">
+                                <h3>Reviews provided by Syndetics</h3>
+
+
+                                <h4>Publishers Weekly Review</h4>
+
+
+
+                                Big, complex and ambitious, the new cyber-thriller from the talented author of Snowcrash and The Diamond Age calls to mind Thomas Pynchon's Gravity's Rainbow in its intense, paranoid evocation of conspiracies and secret histories. Set in part during WWII, Stephenson's novel concerns Lawrence Waterhouse, mathematical genius, a friend of Alan Turing and, like Turing, a code breaker extraordinaire. Assigned to the super-secret Detachment 2702, Waterhouse is instrumental in the Allied plot to keep the Nazis unaware that their fabled Enigma code has been broken. Almost as a sideline, he helps trigger the computer age. Nearly 60 years later, Waterhouse's grandson Randy, a computer hacker with a knack for cryptanalysis, is attempting to create a high-tech data haven in Southeast Asia, only to discover that a variety of governments, multinationals and shadowy secret organizations want a piece of his company's action. Uncovering evidence of a long-dormant conspiracy with its roots partly in his grandfather's work in cryptology, Randy eventually discovers that enormous amounts of war gold are involved, enough not just to make him and his fellow hackers wealthy but to change the entire economy of the planet. This fast-paced, genre-transcending novel is full of absorbing action, witty dialogue and well-drawn characters. Amazingly, it is also, even at its tremendous length, only the first volume in what promises to be one of the most extravagant literary creations of the turn of the millenniumÄand beyond. Major ad/promo; author tour. (May) (c) Copyright PWxyz, LLC. All rights reserved
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div id="anotes">
+                            <div class="content_set">
+                                <h3>Author Notes provided by Syndetics</h3>
+
+
+                                Neal Stephenson, the science fiction author, was born on October 31, 1959 in Maryland. He graduated from Boston University in 1981 with a B.A. in Geography with a minor in physics. His first novel, The Big U, was published in 1984. It received little attention and stayed out of print until Stephenson allowed it to be reprinted in 2001. His second novel was Zodiac: The Eco-Thriller was published in 1988, but it was his novel Snow Crash (1992) that brought him popularity. It fused memetics, computer viruses, and other high-tech themes with Sumerian mythology. Neal Stephenson has won several awards: Hugo for Best Novel for The Diamond Age (1996), the Arthur C. Clark for Best Novel for Quicksilver (2004), and the Prometheus Award for Best Novel for The System of the World (2005). He recently completed the The Baroque Cycle Trilogy, a series of historical novels. It consists of eight books and was originally published in three volumes and Reamde. He currently resides in Seattle, Washington. Stephenson also writes under the pseudonym Stephen Bury. (Bowker Author Biography)
+
+
+                            </div>
+                        </div>
+
+                        <!-- /SyndeticsEnabled -->
+
+
+
+
+
+
+
+                        <!-- Library Thing for Libraries Content -->
+                        <div id="LFTLSimilarItems">
+                            <div class="content_set">
+                                <!-- Uncommenting this span makes the font smaller in the tab for LTFL -->
+                                <!-- but breaks XHTML validation -->
+                                <!--	<span class="results_summary">-->
+                                <div id="ltfl_related"></div>
+                                <div id="ltfl_similars"></div>
+                                <!--			</span>-->
+                            </div>
+                        </div>
+                        <div id="LTFLTagBrowse">
+                            <div class="content_set">
+                                <!-- <span class="results_summary"> -->
+                                <div id="ltfl_tagbrowse" class="ltfl"></div>
+                                <!-- </span> -->
+                            </div>
+                        </div>
+
+
+                        <!-- /Library Thing for Libraries Content -->
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="yui-u">
+                <div class="container">
+                    <ul id="action">
+
+
+
+
+
+                        <li><a class="reserve" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=781301"><span class="hold">Place Hold </span> (2 <span class="HoldsLabel">holds</span>, 1 active) </a></li>
+
+
+
+
+                        <li><a class="print" onclick="window.print();" href="#">Print</a>
+                        </li>
+
+
+
+                        <li style="display:none;"><a href="#" id="furthersearches">More searches</a></li>
+                    </ul>
+
+
+
+                    <div id="export" class="detailtagcell">
+                        <form method="get" action="/cgi-bin/koha/opac-export.pl">
+                            <label for="format">Save Record:</label>
+                            <select name="format" id="format">
+                                <option value="">-- Choose Format --</option>
+                                <option value="bibtex">BIBTEX</option>
+                                <option value="dc">Dublin Core (XML)</option>
+                                <option value="marcxml">MARCXML</option>
+                                <option value="marc8">MARC (non-Unicode/MARC-8)</option>
+                                <option value="utf8">MARC (Unicode/UTF-8)</option>
+                                <option value="mods">MODS (XML)</option>
+                                <option value="ris">RIS</option>
+                            </select><input type="hidden" name="op" value="export" /><input type="hidden" name="bib" value="781301" />
+                            <input type="submit" name="save" value="Go" /></form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="https://ltfl.librarything.com/forlibraries/widget.js?systype=koha&amp;id=1590-1664015029" type="text/javascript"></script><noscript>This page contains enriched content visible when JavaScript is enabled or by clicking <a href="https://www.librarything.com/forlibraries/noscript.php?id=1590-1664015029&amp;accessibility=1">here</a>.</noscript>
+
+
+
+<div class="ft">
+    LINKcat is brought to you by <a href="http://help.linkcat.info/ask/">44 member libraries</a> of the <a href="http://www.scls.info">South Central Library System</a>.
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>
+

@@ -10,14 +10,14 @@
 <a href="/list?page=<%= previousPage %>">Previous</a>
 <% } %>
 <a href="/list?page=<%= nextPage %>">Next</a>
+
+<ul>
 <% for (var i = 0; i < books.length; i++) { %>
-<div class="book">
-    <table>
-        <% for (var propertyName in books[i]) { %>
-        <tr><td><%= propertyName %></td><td><%= books[i][propertyName] %></td></tr>
-        <% } %>
-    </table>
-</div>
+<li class="book">
+    <% var isbn = books[i].isbn10 || books[i].isbn13 %>
+    <a href="/book?isbn=<%= isbn %>"><%= books[i].isbn10 || books[i].isbn13 %>: <%= books[i].title %></a>
+</li>
 <% } %>
+</ul>
 </body>
 </html>

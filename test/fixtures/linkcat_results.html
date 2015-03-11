@@ -1,0 +1,2682 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en"  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+
+        LINKcat Catalog &rsaquo;
+
+        Results of Search for '*:*'
+
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Koha 4.0900033" /> <!-- leave this for stats -->
+    <link rel="shortcut icon" href="/opac-tmpl/prog/en/includes/favicon.ico" type="image/x-icon" />
+
+
+    <link rel="stylesheet" type="text/css" href="/opac-tmpl/prog/en/css/opac.css" />
+
+
+
+    <link rel="stylesheet" type="text/css" media="print" href="/opac-tmpl/prog/en/css/print.css" />
+
+
+    <style type="text/css">@import url("https://assets.linkcat.info/css/opacusercss.css");</style>
+    <!-- yui js -->
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/utilities/utilities.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/container/container-min.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/menu/menu-min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/opac-tmpl/prog/en/lib/jquery/css/smoothness/jquery-ui.css" />
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/lib/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/lib/jquery/jquery-ui-1.8.21.min.js"></script>
+
+
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.hoverIntent.minified.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.dropshadow-min.js"></script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/script.js"></script>
+
+
+    <script type="text/javascript" language="javascript">//<![CDATA[
+    var NO_AMAZON_IMAGE = _("No cover image available");
+    //]]>
+    </script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/amazonimages.js"></script>
+
+    <script type="text/javascript" language="javascript"
+            src="/opac-tmpl/prog/en/js/basket.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        //<![CDATA[
+        var MSG_BASKET_EMPTY = _("Your Cart is currently empty");
+        var BASKET_NAME = "Cart";
+        var MSG_RECORD_IN_BASKET = _("This item is already in your Cart");
+        var MSG_RECORD_ADDED = _("This item has been added to your Cart");
+        var MSG_NRECORDS_ADDED = _(" item(s) added to your Cart");
+        var MSG_NRECORDS_IN_BASKET = _("already in your Cart");
+        var MSG_NO_RECORD_SELECTED = _("No item was selected");
+        var MSG_NO_RECORD_ADDED = _("No item was added to your Cart");
+        var MSG_CONFIRM_DEL_BASKET = _("Are you sure you want to empty your Cart?");
+        var MSG_CONFIRM_DEL_RECORDS = _("Are you sure you want to remove the selected items?");
+        $("#cartDetails").ready(function(){ $("#cmspan").html("<a href=\"#\" id=\"cartmenulink\" class=\"\"><i><\/i><span><i><\/i><span><\/span><img src=\"/opac-tmpl/prog/images/cart.gif\" width=\"14\" height=\"14\" alt=\"\" border=\"0\" /> "+_("Cart")+"<span id=\"basketcount\"><\/span><\/span><\/a>"); });
+
+        $(window).load(function() {
+            verify_images();
+        });
+        $(document).ready(function(){
+            $("#advsearch #advsearch-shelvingloc").remove();
+
+// Add dropshadow to opacheader
+            $("#opacheaderprofile").dropShadow({left:3, top:0, blur:3, opacity: 0.2});
+
+// Remove Site Administrator link and change maintenance message
+//$('#doc a:contains("Site Administrator")').remove();
+//$('#doc').html($('#doc').html().replace(/System Maintenance \.\.\. we'll be back soon\! If you have any questions, please contact the/, '<h1>System Maintenance</h1><p>LINKcat is currently unavailable.</p><p>We are sorry for the inconvenience.</p>'));
+
+// Hide New This Week content
+// If the breadcrumb mentions catdate
+//if ($("#breadcrumbs li:contains('catdate:[NOW-')").length > 0) {
+// Hide the contents of the result count in the breadcrumbs
+//$("#breadcrumbs p").text("");
+// Place a message in the main column instead of the regular New This Week content
+//$("#yui-main").replaceWith("<div id=\"yui-main\"><h1>System Maintenance</h1><p>The New This Week list is currently unavailable while we migrate Portage County Public Library to LINKcat.</p><p>New This Week will return on May 28.</p><p>We apologize for any inconvenience.</p></div>");
+// Hide the sidebar content
+//$(".yui-b").replaceWith("<div class=\"yui-b\"></div>");
+//}
+
+// Change cart and list button images
+
+            $("#listsmenulink > span > img").attr('src','https://assets.linkcat.info/images/koha-overrides/list.gif');
+
+            $("#cartmenulink img").attr('src','https://assets.linkcat.info/images/koha-overrides/cart.gif');
+
+// Place cursor in contextually appropriate starting input
+// If the opac auth container element exists
+            if ($("#opac-auth").length) {
+// Add autofocus to the login username input
+                $("#userid").focus();
+
+// Change the password help to something useful
+                $("#auth h5:contains('Don\'t have a password yet?')").text("Don\'t remember your password?");
+                $("#auth p:contains('If you don\'t have a password yet,')").text("Bring your ID to the library, and we\'ll help you access your account.");
+            }
+            else if ($("#Oldkey").length) {
+// Add autofocus to the old password input
+                $("#Oldkey").focus();
+            }
+            else if ($("#addshelf").length) {
+// Add autofocus to the new list input
+                $("input#addshelf").focus();
+            }
+            else {
+// Add autofocus to the search text input
+                $("#transl1").focus();
+            }
+
+// If the checkouts or overdues table exists hide the Fines column
+            if ($("#checkoutst").length) {
+                checkoutsCols = $("#checkoutst").find('tr')[0].cells.length;
+                $("#checkoutst td:nth-child(" + checkoutsCols + "),#checkoutst th:nth-child(" + checkoutsCols + ")").hide();
+            }
+            if ($("#overduest").length) {
+                overduesCols = $("#overduest").find('tr')[0].cells.length;
+                $("#overduest td:nth-child(" + overduesCols + "),#overduest th:nth-child(" + overduesCols + ")").hide();
+            }
+
+// If the change password form exists change the text of the password hint
+            if ($("#mainform").length) {
+                $('.hint').replaceWith("\<div class=\"hint\"\>Your password must be at least 4 characters long. Use only numbers to avoid problems using self-checkout or reserving computers at the library.\<\/div\>");
+            }
+
+// Pre-selects Title instead of keyword for masthead search
+//$("#masthead_search option").eq(1).attr("selected","selected");
+
+//Changes label of Login/password boxes
+            $("label[for='userid']").html("Login/Barcode:");
+            $("label[for='password']").html("PIN/Password:");
+
+//Changes "Browse Shelf" link to "Browse the shelf"
+            $("a:contains('Browse Shelf')").text("Browse the shelf");
+
+//Hide My Fines tab
+            $("#menu a:contains('my fines')").hide();
+
+//Remove all resolved fees from patron's account screen
+            $("#opac-account .fines_detail tr").each(function(i, tr){ if($(tr).children('td').eq(3).html()=='0.00') $(tr).remove(); });
+
+            /* * * Begin Fines Production Test * * */
+            if (window.location.host == "mad.linkcat.info") {
+
+// Set the Pay Now link language and href
+                var payNowLink = "<a href=\"https://fees.linkcat.info\">Pay Now</a>";
+// Set the message about the online payment threshold
+                var dontPayNow = "\<em\>Online payment is available for fines and charges of $10.00 or more. Contact your local library for assistance.\<\/em\>";
+
+//if you are on the my summary page and click the vertical my fines tab, make the horizontal Fines tab the selected tab
+//and set the Pay Now link or payment message on the my summary page
+
+// Check to see if you are on the my summary page
+                if(window.location.pathname == "/cgi-bin/koha/opac-user.pl"){
+
+// Set a payment message with default saying online payment is not available
+                    var paymentMessage = dontPayNow;
+
+// Meet the condition of having 10.00 fines or more to show the Pay Now link
+                    if (parseFloat($("#opac-user-fines a[href$='/cgi-bin/koha/opac-account.pl']").html())>=10.00){
+                        paymentMessage = payNowLink;
+                    }
+
+// Display the appropriate payment message on Fines sub-tab
+                    $("#opac-user-fines").append(paymentMessage);
+                }
+
+// Add a link to Pay Fines on Fines and Charges page
+                if(window.location.pathname == "/cgi-bin/koha/opac-account.pl"){
+
+// Set a payment message with default saying online payment is not available
+                    var paymentMessage = dontPayNow;
+// Meet the condition of having 10.00 fines or more to show the Pay Now link
+                    if (parseFloat($(".sum:contains('Total due')").parent().children('td.sum').html())>=10.00){
+                        paymentMessage = payNowLink;
+                    }
+
+// Display the appropriate payment message
+                    $(".fines_summary").eq(0).append(paymentMessage);
+
+// Also make the vertical my fines tab selected white
+                    $("#finestab").parent().parent().attr('class', 'active');
+                }
+            }
+            /* * * End Fines Production Test * * */
+
+//Message on Confirm Holds screen
+            $('#HoldsConfirmMsg').replaceWith("\<div id=\"HoldsConfirmMsg\" class=\"dialog alert\" \>Please click the Submit button only once.\<\/div\>");
+
+            $("ul li span:contains('Supplements:')").replaceWith("Serials Summary holdings:");
+
+        });
+
+        // LibraryAnywhere mobile prompt
+        (function () {
+            var e = document.createElement('script');
+            e.src = 'https://www.libanywhere.com/check.js?from=www.linkcat.info';
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }());
+        //]]>
+    </script><script type="text/javascript" language="javascript"
+                     src="/opac-tmpl/prog/en/js/basket.js"></script>
+
+
+    <link rel="unapi-server" type="application/xml" title="unAPI" href="www.linkcat.info/cgi-bin/koha/unapi" />
+
+
+
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/screensaver.js"></script>
+    <script type="text/javascript">
+        window.onload=function (){
+            var ss = new ScreenSaver( 900 * 1000);
+
+            ss.onstart = function () {
+                document.location = '/cgi-bin/koha/opac-main.pl?logout.x=1';
+                updateBasket(0,null);
+                delCookie("bib_list");
+            };
+        }
+    </script>
+
+
+    <link rel="alternate" type="application/rss+xml" title="LINKcat Search RSS Feed" href="www.linkcat.info/cgi-bin/koha/opac-search.pl?%2A%3A%2A&amp;limit=format%3A%22Book%22&amp;idx=kw&amp;format=rss2" />
+
+
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.checkboxes.min.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.highlight-3.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+
+        function holdMultiple() {
+            var checkedBiblioNums = ""; // Separated by "/"
+            var checkedCount = 0;
+            if(document.bookbag_form.biblionumber.length > 0) {
+                for (var i=0; i < document.bookbag_form.biblionumber.length; i++) {
+                    if ((document.bookbag_form.biblionumber[i].checked) && (!document.bookbag_form.biblionumber[i].disabled)) {
+                        checkedBiblioNums += (document.bookbag_form.biblionumber[i].value + "/");
+                        checkedCount++;
+                    }
+                }
+            }
+
+            if (checkedCount > 0) {
+                holdBiblioNums(checkedBiblioNums);
+            } else {
+                alert(MSG_NO_RECORD_SELECTED);
+            }
+        }
+
+        function holdBiblioNums(numList) {
+            // numList: biblio numbers separated by "/"
+            $("#hold_form_biblios").attr("value", numList);
+            $("#hold_form").submit();
+        }
+
+
+        function tagSelected() {
+            var checkedBoxes = $(".searchresults :checkbox:checked");
+            if ($(checkedBoxes).size() == 0) {
+                alert(MSG_NO_RECORD_SELECTED);
+            } else {
+                $("#tagsel_tag").hide();
+                $("#sort_by").hide();
+                $("#tagsel_form").show();
+            }
+        }
+
+        function tagCanceled() {
+            $("#tagsel_form").hide();
+            $("#tagsel_tag").show();
+            $("#sort_by").show();
+        }
+
+        function tagAdded() {
+            var checkedBoxes = $(".searchresults :checkbox:checked");
+            if ($(checkedBoxes).size() == 0) {
+                alert(MSG_NO_RECORD_SELECTED);
+                return false;
+            }
+
+            var tag = $("#tagsel_new").val();
+            if (!tag || (tag == "")) {
+                return false;
+            }
+
+            var bibs = [];
+            for (var i = 0; i < $(checkedBoxes).size(); i++) {
+                var box = $(checkedBoxes).get(i);
+                bibs[i] = $(box).val();
+            }
+
+            KOHA.Tags.add_multitags_button(bibs, tag);
+            return false;
+        }
+
+        var q_array = new Array();  // holds search terms if available
+
+        function highlightOff() {
+            $("td").removeHighlight();
+            $(".highlight_toggle").toggle();
+        }
+        function highlightOn() {
+            var x;
+            for (x in q_array) {
+                $("td").highlight(q_array[x]);
+            }
+            $(".highlight_toggle").toggle();
+        }
+
+        $(document).ready(function(){
+            $(".addtocart").show();
+            var param1 = "<label for=\"addto\">"+_("Add to: ")+"<\/label><select name=\"addto\" id=\"addto\"><option value=\"\"><\/option>";
+            param1 += "<option value=\"addtocart\">"+_("Cart")+"<\/option>";
+
+
+            param1 += "<\/select> <input type=\"submit\" class=\"submit\" value=\""+_("Save")+"\" />";
+            $("span.clearall").html("<a id=\"CheckNone\" href=\"#\">"+_("Clear All")+"<\/a>");
+            $("span.checkall").html("<a id=\"CheckAll\" href=\"#\">"+_("Select All")+"<\/a>");
+            $("span.addto").html(param1);
+            $("#addto").change(function(){
+                cartList();
+            });
+            $(".addto").find("input:submit").click(function(){
+                cartList();
+                return false;
+            });
+
+            $("#tagsel_span").html("<input id=\"tagsel_tag\" class=\"submit\" type=\"submit\" value=\"Tag\"/>");
+
+            function cartList(){
+                if($("#addto").find("option:selected").attr("value") == "addtolist"){
+                    var shelfnumber = $("#addto").find("option:selected").attr("id").replace("s","");
+                    if (vShelfAdd()) {
+                        Dopop('/cgi-bin/koha/opac-addbybiblionumber.pl?selectedshelf='+shelfnumber+'&' + vShelfAdd());
+                    }
+                    return false;
+                } else if($("#addto").find("option:selected").attr("value") == "newlist"){
+                    alert('You must be logged in to create or add to Lists');
+                    return false;
+                }
+                if($("#addto").find("option:selected").attr("value") == "addtocart"){
+                    addMultiple();
+                    return false;
+                }
+            }
+            $("#CheckAll").click(function(){
+                $("#bookbag_form").checkCheckboxes();
+                return false;
+            });
+            $("#CheckNone").click(function(){
+                $("#bookbag_form").unCheckCheckboxes();
+                return false;
+            });
+
+
+
+            $("#placehold").html("<input class=\"submit\" type=\"submit\" value=\""+_("Place Hold")+"\"/>");
+            $("#placehold").find("input:submit").click(function(){
+                holdMultiple();
+                return false;
+            });
+
+
+
+            $("#holdDetails").hide();
+
+
+            var user_query = "*:*";
+            q_array = user_query.split(" ");
+
+            $("#highlight_toggle_on" ).show().click(function() {highlightOn() ;});
+            $("#highlight_toggle_off").hide().click(function() {highlightOff();});
+
+
+
+
+
+
+            // Query parameters
+            KOHA.qParam = "*:*";
+            KOHA.sortParam = ""; // for now just one.
+            KOHA.fq = "format:\u0022Book\u0022 suppress:0";
+            KOHA.limitParam = '';
+            KOHA.limitParam += '&limit=format:\u0022Book\u0022';
+            $("#search_desc li.limit").append("<a class='removeLimit' href=\"#\" title='Remove this limit'><img src='/opac-tmpl/prog/en../../images/shelf-delete.gif' /></a>");
+            $("a.removeLimit").click(function(){
+                // rebuild query limits from this list.
+                var $this_li = $(this).parent('li');
+                var new_query_uri = "/cgi-bin/koha/opac-search.pl?q=" + KOHA.qParam;
+                if(KOHA.sortParam){
+                    new_query_uri += "&sort=" + KOHA.sortParam;
+                }
+                $(this).parents('ul').children('li').each(function(){
+                    if(!$(this).is($this_li)){
+                        new_query_uri += "&limit=" + $(this).text();  // TODO: Allow mapping limits to user-friendly display
+                    }
+                });
+                window.location = new_query_uri;
+                return false;
+            });
+            $('#sort_by').change(function() {
+                window.location = "/cgi-bin/koha/opac-search.pl?q=" + KOHA.qParam + KOHA.limitParam + "&sort=" + $(this).val();
+            });
+            if(KOHA.sortParam){
+                $("#sort_by").val(KOHA.sortParam);
+            };
+
+            /* more facets */
+            KOHA.morefacetsOffset = 0;
+            KOHA.morefacetsCount = 20;
+            KOHA.facetTemplate = $('<li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22" class="facet_link"></a></li>');
+            KOHA.facetField = '';
+
+            $("#morefacets_dlog").dialog({
+                autoOpen: false,
+                title: "Narrow your search results",
+                width: '500px',
+            });
+
+            KOHA.updateFacets = function(json){
+                $("ul#morefacets_list").html('');
+                $.each(json, function(index, value){
+                    var $line = KOHA.facetTemplate.clone();
+                    var $link = $line.children('a');
+                    $link.html(value.display_value);
+                    $link.attr('href', $link.attr('href') + "&limit=" + KOHA.facetField + ":" + encodeURI(value.value)).after(" ("+value.count+")");
+                    $line.appendTo("ul#morefacets_list");
+                });
+                KOHA.toggleLink($("div.prevnext a.nextlink"), ($("#morefacets_list li").length == KOHA.morefacetsCount) );
+                KOHA.toggleLink($("div.prevnext a.prevlink"), ( KOHA.morefacetsOffset != 0) );
+            }
+            KOHA.toggleLink = function($link, bool){
+                if(bool){
+                    $link.off('click.linktoggle', function(){ return false; }).removeClass('disabled');
+                } else {
+                    $link.on('click.linktoggle', function(){ return false; }).addClass('disabled');
+                }
+            }
+            $("li.morefacets a, div.facetPager a.nextlink, div.facetPager a.prevlink").click(function(){
+                if($(this).hasClass('disabled')) { return false; } // see KOHA.toggleLink.  This handler is bound first, so toggleLink doesn't work.
+                var facetDisplayName = $(this).closest('li.facet').children('span.facetDisplayName').text();
+                if($(this).data('facet')){
+                    // i.e. target is li.morefacets
+                    KOHA.facetField = $(this).data('facet');
+                    KOHA.morefacetsOffset = 0;
+                    $("#morefacetsDisplayName").html($(this).closest('li.facet').children('span.facetDisplayName').text());
+                }
+                if($(this).hasClass('nextlink')){
+                    KOHA.morefacetsOffset += KOHA.morefacetsCount;
+                } else if($(this).hasClass('prevlink') && KOHA.morefacetsOffset > 0){
+                    KOHA.morefacetsOffset -= KOHA.morefacetsCount;
+                }
+                $.ajax({
+                    url: "/cgi-bin/koha/opac-facets.pl",
+                    type: 'POST',
+                    data: { "facet": KOHA.facetField,
+                        "solr_query": KOHA.qParam,
+                        "solr_fq":    KOHA.fq,
+                        "offset":     KOHA.morefacetsOffset
+                    } ,
+                    dataType: 'json',
+                    success: function(facets){
+                        KOHA.updateFacets(facets);
+                    },
+                    error: function(xhr, ajaxOptions, thrownError){
+                        alert('There was an error in the search.  Please reload the page and try again.');
+                    }
+                });
+                $("#morefacets_dlog").dialog('open');
+                return false;
+            });
+        });
+        //]]>
+    </script>
+</head>
+<body id="results">
+<div id="doc3" class="yui-t1">
+    <div id="bd">
+
+
+        <div id="header-wrapper"><div id="members">
+
+            <ul><li><a href="/cgi-bin/koha/opac-user.pl">Log in to Your Account</a></li>
+            </ul>
+
+        </div>
+
+            <div id="opacheaderprofile">
+                <div class="acl">
+                    <h2><a href="http://www.scls.lib.wi.us/acl/">Adams County Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/acl/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="alm">
+                    <h2><a href="http://library.uwsp.edu/pcl/almond.htm">Portage County Public Library - Almond Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/almond.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="arp">
+                    <h2><a href="http://www.arpinpl.org/">Lester Public Library of Arpin</a></h2>
+                    <p><a href="http://www.arpinpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="bar">
+                    <h2><a href="http://www.baraboopubliclibrary.org/">Baraboo Public Library</a></h2>
+                    <p><a href="http://www.baraboopubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ber">
+                    <h2><a href="http://www.bepubliclibrary.org/">Black Earth Public Library</a></h2>
+                    <p><a href="http://www.bepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="blv">
+                    <h2><a href="http://www.scls.lib.wi.us/blv/">Belleville Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/blv/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="brd">
+                    <h2><a href="http://www.brodheadlibrary.org/">Brodhead Memorial Public Library</a></h2>
+                    <p><a href="http://www.brodheadlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="cbr">
+                    <h2><a href="http://www.cambridgelib.org/">Cambridge Community Library</a></h2>
+                    <p><a href="http://www.cambridgelib.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="cia">
+                    <h2><a href="http://www.jmml.org/">Jane Morgan Memorial Library</a></h2>
+                    <p><a href="http://www.jmml.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="col">
+                    <h2><a href="http://www.columbuspubliclibrary.info/">Columbus Public Library</a></h2>
+                    <p><a href="http://www.columbuspubliclibrary.info/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="csp">
+                    <h2><a href="http://www.rgpl.org/">Rosemary Garfoot Public Library</a></h2>
+                    <p><a href="http://www.rgpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dcl">
+                    <h2><a href="http://www.dcls.info/">Dane County Library Service</a></h2>
+                    <p><a href="http://www.dcls.info/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dee">
+                    <h2><a href="http://www.deerfieldpubliclibrary.org/">Deerfield Public Library</a></h2>
+                    <p><a href="http://www.deerfieldpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dft">
+                    <h2><a href="http://www.deforest.lib.wi.us/">DeForest Public Library</a></h2>
+                    <p><a href="http://www.deforest.lib.wi.us/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="fch">
+                    <h2><a href="http://www.fitchburglibrary.org/">Fitchburg Public Library</a></h2>
+                    <p><a href="http://www.fitchburglibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="haw">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Hawthorne Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="hpb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Alicia Ashman Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="lak">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Lakeview Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="lav">
+                    <h2><a href="http://www.scls.lib.wi.us/lav/">LaValle Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/lav/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ldi">
+                    <h2><a href="http://www.lodipubliclibrary.org/">Lodi Woman's Club Public Library</a></h2>
+                    <p><a href="http://www.lodipubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mad">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mar">
+                    <h2><a href="http://www.marlib.org/">Marshall Community Library</a></h2>
+                    <p><a href="http://www.marlib.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="maz">
+                    <h2><a href="http://www.scls.lib.wi.us/mazomanie/">Mazomanie Free Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/mazomanie/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mcf">
+                    <h2><a href="http://www.mcfarlandlibrary.org/">E.D. Locke Public Library</a></h2>
+                    <p><a href="http://www.mcfarlandlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mcm">
+                    <h2><a href="http://www.mcmillanlibrary.org/">McMillan Memorial Library</a></h2>
+                    <p><a href="http://www.mcmillanlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mea">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Meadowridge Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mid">
+                    <h2><a href="http://www.midlibrary.org/">Middleton Public Library</a></h2>
+                    <p><a href="http://www.midlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="moo">
+                    <h2><a href="http://www.mononalibrary.org/">Monona Public Library</a></h2>
+                    <p><a href="http://www.mononalibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mro">
+                    <h2><a href="http://www.monroepubliclibrary.org/">Monroe Public Library</a></h2>
+                    <p><a href="http://www.monroepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="msb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Monroe Street Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mth">
+                    <h2><a href="http://www.mhpl.org/">Mount Horeb Public Library</a></h2>
+                    <p><a href="http://www.mhpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ngl">
+                    <h2><a href="http://www.newglaruspubliclibrary.org/">New Glarus Public Library</a></h2>
+                    <p><a href="http://www.newglaruspubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="nof">
+                    <h2><a href="http://www.northfreedomlibrary.com/">North Freedom Public Library</a></h2>
+                    <p><a href="http://www.northfreedomlibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ore">
+                    <h2><a href="http://www.oregonpubliclibrary.org/">Oregon Public Library</a></h2>
+                    <p><a href="http://www.oregonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="par">
+                    <h2><a href="http://www.pardeevillelibrary.com/">Angie W. Cox Public Library</a></h2>
+                    <p><a href="http://www.pardeevillelibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pds">
+                    <h2><a href="http://www.pdslibrary.org/">Ruth Culver Community Library</a></h2>
+                    <p><a href="http://www.pdslibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pin">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Pinney Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pla">
+                    <h2><a href="http://www.kraemerlibrary.org/">Kraemer Library &amp; Community Center</a></h2>
+                    <p><a href="http://www.kraemerlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="plo">
+                    <h2><a href="http://library.uwsp.edu/pcl/plover.htm">Portage County Public Library - Plover Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/plover.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="por">
+                    <h2><a href="http://www.portagelibrary.us/">Portage Public Library</a></h2>
+                    <p><a href="http://www.portagelibrary.us/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="poy">
+                    <h2><a href="http://www.poynettelibrary.com/">Poynette Public Library</a></h2>
+                    <p><a href="http://www.poynettelibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ree">
+                    <h2><a href="http://www.reedsburglibrary.org/">Reedsburg Public Library</a></h2>
+                    <p><a href="http://www.reedsburglibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="rks">
+                    <h2><a href="http://www.rockspringslibrary.com/">Rock Springs Public Library</a></h2>
+                    <p><a href="http://www.rockspringslibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ros">
+                    <h2><a href="http://library.uwsp.edu/pcl/rosholt.htm">Portage County Public Library - Rosholt Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/rosholt.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sca">
+                    <h2><a href="http://www.scls.info/">SCLS Headquarters</a></h2>
+                    <p><a href="http://www.scls.info/">Visit the SCLS Home Page</a></p>
+                </div>
+                <div class="scl">
+                    <h2><a href="http://www.linkcat.info">SCLS Test Catalog</a></h2>
+                    <p><a href="http://www.linkcat.info">LINKcat Home</a></p>
+                </div>
+                <div class="scls">
+                    <h2><a href="http://help.linkcat.info/ask/index.html">Get help from a LINKcat library</a></h2>
+                </div>
+                <div class="seq">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Sequoya Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sgr">
+                    <h2><a href="http://www.springgreenlibrary.org/">Spring Green Community Library</a></h2>
+                    <p><a href="http://www.springgreenlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="skc">
+                    <h2><a href="http://www.saukcitylibrary.org/">Sauk City Public Library</a></h2>
+                    <p><a href="http://www.saukcitylibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="smb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Goodman South Madison Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sto">
+                    <h2><a href="http://www.stoughtonpubliclibrary.org/">Stoughton Public Library</a></h2>
+                    <p><a href="http://www.stoughtonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="stp">
+                    <h2><a href="http://library.uwsp.edu/pcl/">Portage County Public Library - Stevens Point Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sun">
+                    <h2><a href="http://www.sunprairiepubliclibrary.org/">Sun Prairie Public Library</a></h2>
+                    <p><a href="http://www.sunprairiepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ver">
+                    <h2><a href="http://www.veronapubliclibrary.org/">Verona Public Library</a></h2>
+                    <p><a href="http://www.veronapubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wau">
+                    <h2><a href="http://www.waunakeepubliclibrary.org/">Waunakee Public Library</a></h2>
+                    <p><a href="http://www.waunakeepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wid">
+                    <h2><a href="http://www.dellslibrary.org/">Kilbourn Public Library</a></h2>
+                    <p><a href="http://www.dellslibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wyo">
+                    <h2><a href="http://www.wyocenalibrary.org/">Wyocena Public Library</a></h2>
+                    <p><a href="http://www.wyocenalibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+            </div>
+            <div id="opacheader">
+                <ul><li><a href="http://m.linkcat.info/">Mobile</a></li><li><a href="http://help.linkcat.info/">Help</a></li><li><a href="http://www.scls.info/resources/name.html">Databases</a></li><li><a href="http://lists.linkcat.info/">Don't&nbsp;Miss&nbsp;Lists</a></li><li><a title="Show all titles added to the catalog in the last 7 days" href="http://launcher.linkcat.info/go.cgi?q=&limit=catdate:[NOW-7DAYS+TO+*]&limit=&sort=catdate+desc">New&nbsp;This&nbsp;Week</a></li><li><a href="http://sclsp.kohalibrary.com/" title="Indexes of local newspapers and Wisconsin magazines">Newspapers</a></li><li><a href="http://dbooks.wplc.info/">OverDrive</a></li>
+                </ul>
+                <!--[if lte IE 8 ]><div class="lte-ie8 clearfix"><div class="dialog alert"><h2><img src="http://assets.linkcat.info/images/warning_16.png" alt="Warning" style="float:left; margin: 0 10px 0 0;">Your browser is out of date. It has security flaws and may not display all features of LINKcat. <a href="http://browsehappy.com/">Please update your browser.</a></h2></div></div><![endif]-->
+            </div>
+
+            <div id="opac-main-search" class="yui-g">
+
+                <h1 id="libraryname" style="background-image: url('https://assets.linkcat.info/images/koha-overrides/linkcatlogo.png');">
+                    <a href="/cgi-bin/koha/opac-main.pl">LINKcat</a></h1>
+
+                <div id="fluid">
+                    <div id="fluid-offset">
+                        <form name="searchform" method="get" action="/cgi-bin/koha/opac-search.pl" id="searchform">
+                            <label for="masthead_search" class="left"> Search </label>
+                            <select name="idx" id="masthead_search" class="left" style="max-width:10em;width:10em;">
+                                <option value="">Library Catalog</option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                                <option value="subject">Subject</option>
+                                <option value="isbn">ISBN</option>
+                                <option value="series-title">Series</option>
+                                <option value="callnumber">Call Number</option>
+                            </select>
+
+                            <select name="limit" class="left">
+
+
+                                <option value="">Any format</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Book&quot;">Book</option>
+
+
+
+                                <option value="format:&quot;Large print book&quot;">Large print book</option>
+
+
+
+                                <option value="format:&quot;Braille book&quot;">Braille book</option>
+
+
+
+                                <option value="format:&quot;Graphic novel&quot;">Graphic novel</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Videocassette&quot;">Videocassette</option>
+
+
+
+                                <option value="format:&quot;DVD&quot;">DVD</option>
+
+
+
+                                <option value="format:&quot;Blu-ray DVD&quot;">Blu-ray DVD</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Cassette&quot;">Cassette</option>
+
+
+
+                                <option value="format:&quot;Digital audio player&quot;">Digital audio player</option>
+
+
+
+                                <option value="format:&quot;Compact disc&quot;">Compact disc</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Software&quot;">Software</option>
+
+
+
+                                <option value="format:&quot;Website or downloadable&quot;">Website or downloadable</option>
+
+
+
+                                <option value="format:&quot;Video game&quot;">Video game</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Music&quot;">Music</option>
+
+
+
+                                <option value="format:&quot;Printed Music&quot;">Printed Music</option>
+
+
+
+                                <option value="format:&quot;Audiobook&quot;">Audiobook</option>
+
+
+                            </select>
+
+
+                            <!-- NAME="searchdomainoptions" -->
+
+
+                            <input type="text" id = "transl1" name="q" class="left" style="width: 35%; font-size: 111%;"/><div id="translControl"></div>
+
+
+
+
+
+                            <input type="submit" value="Go" id="searchsubmit" class="left" />
+                            <span id="cmspan"></span>
+
+                            <a href="/cgi-bin/koha/opac-shelves.pl" id="listsmenulink" class=""><i></i><span><i></i><span></span>Lists </span></a>
+                        </form>
+
+
+                        <div id="moresearches">
+                            <a href="/cgi-bin/koha/opac-search.pl">Advanced Search</a>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cartDetails">Your Cart is empty.</div>
+
+
+                <div id="listsmenu" class="yuimenu" style="display: none">
+                    <div class="bd">
+                        <h4>Public Lists</h4>
+
+                        <ul class="first-of-type">
+
+                            <li class="yuimenuitem"><a href="/cgi-bin/koha/opac-shelves.pl?viewshelf=85268&amp;sortfield=title">Public Lists created on LINKcat will be deleted</a></li>
+
+                        </ul>
+
+
+
+                        <ul class="first-of-type"><li><a href="/cgi-bin/koha/opac-user.pl">Log in to Create Your Own Lists</a></li></ul>
+
+
+                    </div>
+                </div><!-- /listmenu /virtualshelves -->
+
+                <div id="listsDetails"></div>
+            </div>
+        </div>
+        <div id="breadcrumbs" class="yui-g">
+            <div id="search_desc">
+                <span class="search_desc">Your search:</span> <ul><li class="searchTerm">&ldquo;*:*&rdquo;</li></ul>
+                <span class="search_desc">Limited to:</span> <ul><li class="limit">format:&quot;Book&quot;</li> </ul>
+                <p class="resultscount">Returned <span class="numresults">692883</span> results.
+                    <span class="rssfeed"><a href="/cgi-bin/koha/opac-search.pl?q=*:*&amp;format=rss2"><img src="/opac-tmpl/prog/images/feed-icon-16x16.png" alt="Subscribe to this search" title="Subscribe to this search" border="0" /></a></span></p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div id="yui-main">
+        <div class="yui-b">
+            <div class="container">
+
+
+
+
+                <!-- Search Results Table -->
+
+
+
+                <div class="searchresults">
+                    <form action="/cgi-bin/koha/opac-search.pl" method="get" name="bookbag_form" id="bookbag_form">
+
+                        <!-- TABLE RESULTS START -->
+                        <table>
+                            <tr><td colspan="5" class="resultscontrol" style="border : 1px solid #e8e8e8;">
+                                <div class="resort"> <select id="sort_by" name="sort_by"> <option value="score desc">Relevance</option>
+                                    <optgroup label="Popularity">
+                                        <option value="popularity desc">Popularity (Most to Least)</option>
+                                        <option value="popularity asc">Popularity (Least to Most)</option>
+                                    </optgroup>
+                                    <optgroup label="Author">
+                                        <option value="author-sort asc">Author (A-Z)</option>
+                                        <option value="author-sort desc">Author (Z-A)</option>
+                                    </optgroup>
+                                    <optgroup label="Call Number">
+                                        <option value="cn-sort asc">Call Number (Non-fiction 0-9 to Fiction A-Z)</option>
+                                        <option value="cn-sort desc">Call Number (Fiction Z-A to Non-fiction 9-0)</option>
+                                    </optgroup>
+                                    <optgroup label="Dates">
+                                        <option value="pubyear desc">Publication/Copyright Date: Newest to Oldest</option>
+                                        <option value="pubyear asc">Publication/Copyright Date: Oldest to Newest</option>
+                                        <option value="acqdate desc">Acquisition Date: Newest to Oldest</option>
+                                        <option value="acqdate asc">Acquisition Date: Oldest to Newest</option>
+                                    </optgroup>
+                                    <optgroup label="Title">
+                                        <option value="title-sort asc">Title (A-Z)</option>
+                                        <option value="title-sort desc">Title (Z-A)</option>
+                                    </optgroup>
+
+                                </select></div>
+                                <div class="cartlist">
+                                    <!-- checkall, clearall are now needed for placehold -->
+                                    <span class="checkall"></span>
+                                    <span class="clearall"></span>
+                                    <a href="#" class="highlight_toggle" id="highlight_toggle_off">Unhighlight</a>
+                                    <a href="#" class="highlight_toggle" id="highlight_toggle_on">Highlight</a>
+
+                                    <span class="addto"></span>
+
+                                    <span id="placehold"><!-- input class="submit" type="submit" value="Place Hold"/ --></span>
+                                    <div id="holdDetails"></div>
+
+
+                                </div>
+
+                            </td></tr>
+                            <!-- Actual Search Results -->
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib823192" name="biblionumber" value="823192" title="Click to add to Cart" /> <label for="bib823192"></label></td>
+                                <td class="select selectcol">21.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Successful+onboarding+:a+strategy+to+unlock+hidden+value+within+your+organization+/&amp;rft.isbn=9780071739375+(alk.+paper)&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Stein,+Mark+A.&amp;rft.au=Christiansen,+Lilith&amp;rft.pub=McGraw-Hill,&amp;rft.date=c2010."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=823192">Successful onboarding : a strategy to unlock hidden value within your organization    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Stein, Mark A  ;
+            Christiansen, Lilith .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+			bibliography
+                     <img src="/opac-tmpl/prog/famfamfam/silk/text_list_bullets.png" alt="bibliography" title="bibliography"/><span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">New York : McGraw-Hill, c2010.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=823192">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('823192'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=823192">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0071739378/SC.GIF&amp;client=sclsp&amp;type=xw10&amp;oclc=466353517" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib823194" name="biblionumber" value="823194" title="Click to add to Cart" /> <label for="bib823194"></label></td>
+                                <td class="select selectcol">22.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Wiley+CPA+exam+review+2011.&amp;rft.isbn=9780470554340+(pbk.)&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Whittington,+Ray,&amp;rft.au=Delaney,+Patrick+R.&amp;rft.pub=Wiley+;&amp;rft.date=c+2010."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=823194">Wiley CPA exam review 2011. Auditing and attestation    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Whittington, Ray  ;
+            Delaney, Patrick R  .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Hoboken, NJ : Wiley ; Chichester : John Wiley [distributor], c 2010.</span>
+</span><span class="results_summary">
+  <span class="resultsOTlabel label">Other title: </span>
+  <span class="resultsOT">CPA exam review 2011.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=823194">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('823194'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=823194">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0470554347/SC.GIF&amp;client=sclsp&amp;type=xw10&amp;oclc=587130755" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib823196" name="biblionumber" value="823196" title="Click to add to Cart" /> <label for="bib823196"></label></td>
+                                <td class="select selectcol">23.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Wiley+CPA+exam+review+2011.&amp;rft.isbn=9780470554364+(pbk.)&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Whittington,+Ray,&amp;rft.au=Delaney,+Patrick+R.&amp;rft.pub=Wiley+;&amp;rft.date=2010."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=823196">Wiley CPA exam review 2011. Financial accounting and reporting    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Whittington, Ray  ;
+            Delaney, Patrick R  .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Hoboken, NJ : Wiley ; Chichester : John Wiley [distributor], 2010.</span>
+</span><span class="results_summary">
+  <span class="resultsOTlabel label">Other title: </span>
+  <span class="resultsOT">CPA exam review 2011; Financial accounting and reporting.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=823196">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('823196'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=823196">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0470554363/SC.GIF&amp;client=sclsp&amp;type=xw10&amp;oclc=587130760" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib823199" name="biblionumber" value="823199" title="Click to add to Cart" /> <label for="bib823199"></label></td>
+                                <td class="select selectcol">24.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Wiley+CPA+exam+review+update+2011+:what+you+need+to+know+for+the+new+exam+format+/&amp;rft.isbn=9781118011485&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Philipp,+Roger&amp;rft.pub=Wiley,&amp;rft.date=c2011."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=823199">Wiley CPA exam review update 2011 : what you need to know for the new exam format    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Philipp, Roger .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                <span class="label">; Audience: </span>
+             Adult;
+             </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Hoboken, N.J. : Wiley, c2011.</span>
+</span><span class="results_summary">
+  <span class="resultsOTlabel label">Other title: </span>
+  <span class="resultsOT">CPA exam review update 2011; Wiley CPA examination review update 2011; CPA examination review update 2011.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=823199">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('823199'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=823199">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=1118011481/SC.GIF&amp;client=sclsp&amp;type=xw10&amp;oclc=668195926" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib823201" name="biblionumber" value="823201" title="Click to add to Cart" /> <label for="bib823201"></label></td>
+                                <td class="select selectcol">25.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Quick+job+search+:seven+steps+to+getting+a+good+job+in+less+time+/&amp;rft.isbn=9781593577469&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Farr,+J.+Michael&amp;rft.pub=Jist+Works,&amp;rft.date=c2010."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=823201">Quick job search : seven steps to getting a good job in less time    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Farr, J. Michael .
+            </span>
+                                </p><span class="results_summary">
+  <span class="resultseditionlabel label">Edition: </span>
+  <span class="resultsedition">5th ed.</span>
+</span><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+                    handbook
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Indianapolis, IN : Jist Works, c2010.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=823201">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('823201'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=823201">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=159357746X/SC.GIF&amp;client=sclsp&amp;type=xw10&amp;oclc=711793679" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib823208" name="biblionumber" value="823208" title="Click to add to Cart" /> <label for="bib823208"></label></td>
+                                <td class="select selectcol">26.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=The+entrepreneur's+guide+to+selling+/&amp;rft.isbn=9780313359187+(hard+copy+:+alk.+paper)&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=London,+Jonathan&amp;rft.pub=Praeger/ABC-CLIO,&amp;rft.date=c2009."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=823208">The entrepreneur's guide to selling    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">London, Jonathan .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Santa Barbara, Calif. : Praeger/ABC-CLIO, c2009.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=823208">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('823208'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=823208">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0313359180/SC.GIF&amp;client=sclsp&amp;type=xw10&amp;oclc=313016983" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib823209" name="biblionumber" value="823209" title="Click to add to Cart" /> <label for="bib823209"></label></td>
+                                <td class="select selectcol">27.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Doing+both+:how+Cisco+captures+today's+profit+and+drives+tomorrow's+growth+/&amp;rft.isbn=9780137083640+(hardcover+:+alk.+paper)&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Sidhu,+Inder,&amp;rft.pub=FT+Press,&amp;rft.date=c2010."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=823209">Doing both : how Cisco captures today's profit and drives tomorrow's growth    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Sidhu, Inder  .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+			bibliography
+                     <img src="/opac-tmpl/prog/famfamfam/silk/text_list_bullets.png" alt="bibliography" title="bibliography"/><span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Upper Saddle River, N.J. : FT Press, c2010.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=823209">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('823209'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=823209">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0137083645/SC.GIF&amp;client=sclsp&amp;type=xw10&amp;oclc=515464644" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62727" name="biblionumber" value="62727" title="Click to add to Cart" /> <label for="bib62727"></label></td>
+                                <td class="select selectcol">28.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Tiger+of+the+snows;the+autobiography+of+Tenzing+of+Everest,&amp;rft.isbn=&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Tenzing+Norkey,&amp;rft.au=Ullman,+James+Ramsey,&amp;rft.pub=Putnam&amp;rft.date=[1955]"></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62727">Tiger of the snows; the autobiography of Tenzing of Everest   </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Tenzing Norkey  ;
+            Ullman, James Ramsey  .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Nature of contents: </span><img src="/opac-tmpl/prog/famfamfam/silk/user.png" alt="biography" title="biography"/><span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">New York, Putnam [1955]</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62727">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62727'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62727">
+
+
+                                    <span class="no-image">No cover image available</span>
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62743" name="biblionumber" value="62743" title="Click to add to Cart" /> <label for="bib62743"></label></td>
+                                <td class="select selectcol">29.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=SIDS++infant+death+survival+guide+:information++comfort+for+grieving+family++friends++professionals+who+seek+to+help+them+/&amp;rft.isbn=0964121824+:&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Horchler,+Joani+Nelson,&amp;rft.au=Morris,+Robin+Rice,&amp;rft.pub=SIDS+Educational+Services,&amp;rft.date=2003."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62743">SIDS &amp; infant death survival guide : information &amp; comfort for grieving family &amp; friends &amp; professionals who seek to help them    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Horchler, Joani Nelson  ;
+            Morris, Robin Rice  ;
+            Horchler, Joani Nelson  .
+            </span>
+                                </p><span class="results_summary">
+  <span class="resultseditionlabel label">Edition: </span>
+  <span class="resultsedition">Rev. &amp; updated.</span>
+</span><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+			bibliography
+                     <img src="/opac-tmpl/prog/famfamfam/silk/text_list_bullets.png" alt="bibliography" title="bibliography"/><span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Cheverly, Md. : SIDS Educational Services, 2003.</span>
+</span><span class="results_summary">
+  <span class="resultsOTlabel label">Other title: </span>
+  <span class="resultsOT">SIDS and infant death survival guide.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62743">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62743'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62743">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0964121824/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62763" name="biblionumber" value="62763" title="Click to add to Cart" /> <label for="bib62763"></label></td>
+                                <td class="select selectcol">30.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Formosa;+a+study+in+Chinese+history.&amp;rft.isbn=&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Goddard,+W.+G.&amp;rft.pub=Michigan+State+University+Press,&amp;rft.date=1966."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62763">Formosa; a study in Chinese history   </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Goddard, W. G. (William G.) .
+            </span>
+                                </p><span class="results_summary">
+  <span class="resultseditionlabel label">Edition: </span>
+  <span class="resultsedition">[1st American ed.</span>
+</span><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">East Lansing] Michigan State University Press, 1966.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62763">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62763'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62763">
+
+
+                                    <span class="no-image">No cover image available</span>
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62771" name="biblionumber" value="62771" title="Click to add to Cart" /> <label for="bib62771"></label></td>
+                                <td class="select selectcol">31.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Pa-kua;Chinese+boxing+for+fitness+and+self-defense,&amp;rft.isbn=0870110446&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Smith,+Robert+W.,&amp;rft.pub=Kodansha+International&amp;rft.date=[1967]"></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62771">Pa-kua; Chinese boxing for fitness and self-defense   </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Smith, Robert W   .
+            </span>
+                                </p><span class="results_summary">
+  <span class="resultseditionlabel label">Edition: </span>
+  <span class="resultsedition">[1st ed.]</span>
+</span><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Tokyo, Palo Alto, Calif., Kodansha International [1967]</span>
+</span><span class="results_summary">
+  <span class="resultsOTlabel label">Other title: </span>
+  <span class="resultsOT">Chinese boxing for fitness and self-defense.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62771">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62771'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62771">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0870110446/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62775" name="biblionumber" value="62775" title="Click to add to Cart" /> <label for="bib62775"></label></td>
+                                <td class="select selectcol">32.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=A+little+history+of+British+gardening+/&amp;rft.isbn=0865477027+(alk.+paper)&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Uglow,+Jennifer+S.&amp;rft.pub=North+Point+Press,&amp;rft.date=2004."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62775">A little history of British gardening    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Uglow, Jennifer S  .
+            </span>
+                                </p><span class="results_summary">
+  <span class="resultseditionlabel label">Edition: </span>
+  <span class="resultsedition">1st American ed.</span>
+</span><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+			bibliography
+                     <img src="/opac-tmpl/prog/famfamfam/silk/text_list_bullets.png" alt="bibliography" title="bibliography"/><span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">New York : North Point Press, 2004.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62775">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62775'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62775">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0865477027/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62784" name="biblionumber" value="62784" title="Click to add to Cart" /> <label for="bib62784"></label></td>
+                                <td class="select selectcol">33.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=A+place+of+their+own+:creating+the+deaf+community+in+America+/&amp;rft.isbn=0930323491+(alk.+paper)+:&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Van+Cleve,+John+V.&amp;rft.au=Crouch,+Barry+A.,&amp;rft.pub=Gallaudet+University+Press,&amp;rft.date=1989."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62784">A place of their own : creating the deaf community in America    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Van Cleve, John V  ;
+            Crouch, Barry A   .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+			bibliography
+                     <img src="/opac-tmpl/prog/famfamfam/silk/text_list_bullets.png" alt="bibliography" title="bibliography"/><span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Washington, D.C. : Gallaudet University Press, 1989.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62784">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62784'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62784">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0930323491/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62792" name="biblionumber" value="62792" title="Click to add to Cart" /> <label for="bib62792"></label></td>
+                                <td class="select selectcol">34.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=The+calcium+bomb+:the+nanobacteria+link+to+heart+disease++cancer+/&amp;rft.isbn=1594111014&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Mulhall,+Douglas&amp;rft.au=Hansen,+Katja,&amp;rft.pub=The+Writers'+Collective,&amp;rft.date=c2005."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62792">The calcium bomb : the nanobacteria link to heart disease &amp; cancer    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Mulhall, Douglas ;
+            Hansen, Katja  .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+			bibliography
+                     <img src="/opac-tmpl/prog/famfamfam/silk/text_list_bullets.png" alt="bibliography" title="bibliography"/><span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Cranston, R.I. : The Writers' Collective, c2005.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62792">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62792'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62792">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=1594111014/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62804" name="biblionumber" value="62804" title="Click to add to Cart" /> <label for="bib62804"></label></td>
+                                <td class="select selectcol">35.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Rats,+spiders++love+/&amp;rft.isbn=0440401380+(pbk.)&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Pryor,+Bonnie&amp;rft.au=Higginbottom,+J.+Winslow&amp;rft.pub=Dell,&amp;rft.date=c1986."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62804">Rats, spiders &amp; love    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Pryor, Bonnie ;
+            Higginbottom, J. Winslow .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    fiction
+                <span class="label">; Audience: </span>
+             Juvenile;
+             </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">New York : Dell, c1986.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62804">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62804'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62804">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0440401380/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62807" name="biblionumber" value="62807" title="Click to add to Cart" /> <label for="bib62807"></label></td>
+                                <td class="select selectcol">36.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Drum+'n'+bass+:the+rough+guide+/&amp;rft.isbn=1858284333+:&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Shapiro,+Peter,&amp;rft.pub=Rough+Guides,&amp;rft.date=1999."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62807">Drum 'n' bass : the rough guide    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Shapiro, Peter  .
+            </span>
+                                </p><span class="results_summary">
+  <span class="resultseditionlabel label">Edition: </span>
+  <span class="resultsedition">1st ed.</span>
+</span><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">London : Rough Guides, 1999.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62807">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62807'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62807">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=1858284333/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62810" name="biblionumber" value="62810" title="Click to add to Cart" /> <label for="bib62810"></label></td>
+                                <td class="select selectcol">37.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=House+:the+rough+guide+/&amp;rft.isbn=1858284325+:&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Bidder,+Sean&amp;rft.pub=Rough+Guides,&amp;rft.date=1999."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62810">House : the rough guide    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Bidder, Sean .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">London : Rough Guides, 1999.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62810">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62810'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62810">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=1858284325/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib62820" name="biblionumber" value="62820" title="Click to add to Cart" /> <label for="bib62820"></label></td>
+                                <td class="select selectcol">38.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Chilton's+repair++tune-up+guide,+GM+C-body,+1985+:all+U.S.+and+Canadian+models+of+front-wheel+drive,+Buick+Electra+Limited,+Electra+T-Type,+Park+Avenue,+Oldsmobile+98+Regency,+98+Regency+Brougham,+Cadillac+Fleetwood,+DeVille+/&amp;rft.isbn=0801975875+(pbk.)+:&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Freeman,+Kerry+A.&amp;rft.pub=Chilton+Book+Co.,&amp;rft.date=c1985."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=62820">Chilton's repair &amp; tune-up guide, GM C-body, 1985 : all U.S. and Canadian models of front-wheel drive, Buick Electra Limited, Electra T-Type, Park Avenue, Oldsmobile 98 Regency, 98 Regency Brougham, Cadillac Fleetwood, DeVille    </a><p><span class="resultsauthorlabel label">by </span><span class="resultsauthor">Freeman, Kerry A  ;
+            Rivele, Richard J  .
+            </span> -- Chilton Book Company </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+                    handbook
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Radnor, Pa. : Chilton Book Co., c1985.</span>
+</span><span class="results_summary">
+  <span class="resultsOTlabel label">Other title: </span>
+  <span class="resultsOT">Chilton's repair and tune-up guide, GM C-body, 1985.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=62820">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('62820'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=62820">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0801975875/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr>
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib581942" name="biblionumber" value="581942" title="Click to add to Cart" /> <label for="bib581942"></label></td>
+                                <td class="select selectcol">39.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Dictionary+--+English-Cambodian+/&amp;rft.isbn=&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Sukhasobhano,&amp;rft.pub=Nha-Sach+Xuan-Thu,&amp;rft.date=1957."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=581942">Dictionary -- English-Cambodian    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Sukhasobhano  Bhikkhu .
+            </span>
+                                </p><span class="results_summary">
+  <span class="resultseditionlabel label">Edition: </span>
+  <span class="resultsedition">1st ed.</span>
+</span><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+
+                    dictionary
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">Lancaster, PA : Nha-Sach Xuan-Thu, 1957.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=581942">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('581942'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=581942">
+
+
+                                    <span class="no-image">No cover image available</span>
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+
+                            <tr class="highlight">
+
+
+                                <td class="select selectcol"><input type="checkbox" id="bib581948" name="biblionumber" value="581948" title="Click to add to Cart" /> <label for="bib581948"></label></td>
+                                <td class="select selectcol">40.</td>
+
+
+
+
+
+                                <td>
+
+                                    <!-- COinS / OpenURL --><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Shades+of+gray+:ordinary+people+in+extraordinary+circumstances+/&amp;rft.isbn=0553081152+:&amp;rft.issn=&amp;rft.aulast=&amp;rft.aufirst=&amp;rft.au=Siegel,+Barry&amp;rft.pub=Bantam+Books,&amp;rft.date=1992."></span>
+
+
+
+
+
+                                    <a href="/cgi-bin/koha/opac-detail.pl?biblionumber=581948">Shades of gray : ordinary people in extraordinary circumstances    </a><p>
+                                    <span class="resultsauthorlabel label">by </span>
+  <span class="resultsauthor">Siegel, Barry .
+            </span>
+                                </p><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/silk/book.png" alt="book" title="book"/> Book<span class="label">; Format: </span>
+                    print
+                <span class="label">; Literary form: </span>
+                    not fiction
+                 </span><span class="results_summary">
+  <span class="resultspublabel label">Publisher: </span>
+  <span class="resultspub">New York : Bantam Books, 1992.</span>
+</span>
+
+
+
+
+
+
+
+
+<span class="results_summary actions"><span class="label">Actions:</span>
+
+
+
+
+								<a class="hold" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=581948">Place Hold (0 holds, 0 active)</a><!-- add back when available 0 holds in queue-->
+
+
+
+
+
+
+
+        		<a class="addtocart" href="#" onclick="addRecord('581948'); return false;">Add to Cart</a>
+				</span>
+                                </td><td>
+                                <a class="p1" href="/cgi-bin/koha/opac-detail.pl?biblionumber=581948">
+
+
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=0553081152/SC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+                                </a>
+
+                            </td>
+                            </tr>
+
+                        </table>
+                    </form>
+                    <form id="hold_form" name="hold_form" method="get" action="/cgi-bin/koha/opac-reserve.pl">
+                        <!-- The value will be set by holdBiblioNums() in basket.js -->
+                        <input id="hold_form_biblios" type="hidden" name="biblionumbers" value=""/>
+                    </form>
+                </div>
+
+                <div class="pages">
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=0">&lt;&lt; Previous</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=0">1</a>
+                    <span class="current">2</span>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=40">3</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=60">4</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=80">5</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=100">6</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=120">7</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=140">8</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=160">9</a>
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=180">10</a>
+
+                    <a class="nav" href="/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&amp;offset=40">Next &gt;&gt;</a>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="yui-b"><div class="container">
+        <!-- FACETS START -->
+
+        <div id="search-facets">
+            <h4>Refine your search</h4>
+            <ul>
+
+                <li class="facet" id="on-shelf-at_facet">
+                    <span class="facetDisplayName">Available on shelf</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:*" title="Anywhere">Anywhere</a> (571474) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=url:*" title="Online">Online</a> (86306) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;ACL&quot;" title="Adams County Library">Adams County Library</a> (31059) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;BAR&quot;" title="Baraboo Library">Baraboo Library</a> (57124) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;BLV&quot;" title="Belleville Library">Belleville Library</a> (21284) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;BER&quot;" title="Black Earth Library">Black Earth Library</a> (17067) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;DCL&quot;" title="Bookmobile-Dane County Library">Bookmobile-Dane County Library</a> (31319) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;BRD&quot;" title="Brodhead Memorial Public Library">Brodhead Memorial Public Library</a> (37029) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;CIA&quot;" title="Cambria - Jane Morgan Library">Cambria - Jane Morgan Library</a> (8851) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;CBR&quot;" title="Cambridge Library">Cambridge Library</a> (19798) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;COL&quot;" title="Columbus Library">Columbus Library</a> (21164) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=on-shelf-at:&quot;CSP&quot;" title="Cross Plains Library">Cross Plains Library</a> (43523) </li>
+
+
+                        <li class="morefacets"><a data-facet="on-shelf-at" href="/cgi-bin/koha/opac-facets.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&facet=on-shelf-at">more</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="facet" id="format_facet">
+                    <span class="facetDisplayName">Format</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Book&quot;" title="Book">Book</a> (692883) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Website or downloadable&quot;" title="Website or downloadable">Website or downloadable</a> (38959) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Large print book&quot;" title="Large print book">Large print book</a> (30450) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Graphic novel&quot;" title="Graphic novel">Graphic novel</a> (9657) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Software&quot;" title="Software">Software</a> (1382) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Compact disc&quot;" title="Compact disc">Compact disc</a> (1216) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;DVD&quot;" title="DVD">DVD</a> (526) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Braille book&quot;" title="Braille book">Braille book</a> (179) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Videocassette&quot;" title="Videocassette">Videocassette</a> (39) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Cassette&quot;" title="Cassette">Cassette</a> (29) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=format:&quot;Digital audio player&quot;" title="Digital audio player">Digital audio player</a> (9) </li>
+
+
+                    </ul>
+                </li>
+
+                <li class="facet" id="author-display_facet">
+                    <span class="facetDisplayName">Author</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Shakespeare, William,&quot;" title="Shakespeare, William,">Shakespeare, William,</a> (751) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Keene, Carolyn&quot;" title="Keene, Carolyn">Keene, Carolyn</a> (526) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Martin, Ann M.,&quot;" title="Martin, Ann M.,">Martin, Ann M.,</a> (522) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Roberts, Nora&quot;" title="Roberts, Nora">Roberts, Nora</a> (505) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Dixon, Franklin W.&quot;" title="Dixon, Franklin W.">Dixon, Franklin W.</a> (479) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Johnstone, William W.&quot;" title="Johnstone, William W.">Johnstone, William W.</a> (468) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Macomber, Debbie&quot;" title="Macomber, Debbie">Macomber, Debbie</a> (446) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Christie, Agatha,&quot;" title="Christie, Agatha,">Christie, Agatha,</a> (427) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Brand, Max,&quot;" title="Brand, Max,">Brand, Max,</a> (424) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Stine, R. L.&quot;" title="Stine, R. L.">Stine, R. L.</a> (418) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Kalman, Bobbie&quot;" title="Kalman, Bobbie">Kalman, Bobbie</a> (394) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=author-display:&quot;Ziefert, Harriet&quot;" title="Ziefert, Harriet">Ziefert, Harriet</a> (387) </li>
+
+
+                        <li class="morefacets"><a data-facet="author-display" href="/cgi-bin/koha/opac-facets.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&facet=author-display">more</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="facet" id="topic_facet">
+                    <span class="facetDisplayName">Topic</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Large type books&quot;" title="Large type books">Large type books</a> (27172) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Comic books, strips, etc.&quot;" title="Comic books, strips, etc.">Comic books, strips, etc.</a> (17269) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Man-woman relationships&quot;" title="Man-woman relationships">Man-woman relationships</a> (14056) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Friendship&quot;" title="Friendship">Friendship</a> (9035) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Schools&quot;" title="Schools">Schools</a> (8677) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Murder&quot;" title="Murder">Murder</a> (8619) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Animals&quot;" title="Animals">Animals</a> (8499) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Families&quot;" title="Families">Families</a> (7644) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Dogs&quot;" title="Dogs">Dogs</a> (7398) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;Women&quot;" title="Women">Women</a> (6767) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;World War, 1939-1945&quot;" title="World War, 1939-1945">World War, 1939-1945</a> (6413) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=topic:&quot;African Americans&quot;" title="African Americans">African Americans</a> (6282) </li>
+
+
+                        <li class="morefacets"><a data-facet="topic" href="/cgi-bin/koha/opac-facets.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&facet=topic">more</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="facet" id="pubyear_facet">
+                    <span class="facetDisplayName">Publication date</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2010&quot;" title="2010">2010</a> (33614) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2011&quot;" title="2011">2011</a> (32945) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2012&quot;" title="2012">2012</a> (32875) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2009&quot;" title="2009">2009</a> (32525) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2008&quot;" title="2008">2008</a> (30686) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2013&quot;" title="2013">2013</a> (29628) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2007&quot;" title="2007">2007</a> (28888) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2006&quot;" title="2006">2006</a> (27758) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2014&quot;" title="2014">2014</a> (26951) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2005&quot;" title="2005">2005</a> (26735) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2004&quot;" title="2004">2004</a> (26424) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=pubyear:&quot;2003&quot;" title="2003">2003</a> (25427) </li>
+
+
+                        <li class="morefacets"><a data-facet="pubyear" href="/cgi-bin/koha/opac-facets.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&facet=pubyear">more</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="facet" id="language_facet">
+                    <span class="facetDisplayName">Language</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;English&quot;" title="English">English</a> (674370) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Spanish&quot;" title="Spanish">Spanish</a> (10818) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Chinese&quot;" title="Chinese">Chinese</a> (775) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;French&quot;" title="French">French</a> (610) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;German&quot;" title="German">German</a> (494) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Japanese&quot;" title="Japanese">Japanese</a> (463) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Russian&quot;" title="Russian">Russian</a> (342) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Korean&quot;" title="Korean">Korean</a> (296) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Polish&quot;" title="Polish">Polish</a> (193) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Vietnamese&quot;" title="Vietnamese">Vietnamese</a> (192) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Italian&quot;" title="Italian">Italian</a> (173) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=language:&quot;Hindi&quot;" title="Hindi">Hindi</a> (101) </li>
+
+
+                        <li class="morefacets"><a data-facet="language" href="/cgi-bin/koha/opac-facets.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&facet=language">more</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="facet" id="geo_facet">
+                    <span class="facetDisplayName">Region</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;United States&quot;" title="United States">United States</a> (18584) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;Great Britain&quot;" title="Great Britain">Great Britain</a> (4981) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;New York (N.Y.)&quot;" title="New York (N.Y.)">New York (N.Y.)</a> (4420) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;England&quot;" title="England">England</a> (4292) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;London (England)&quot;" title="London (England)">London (England)</a> (3311) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;Texas&quot;" title="Texas">Texas</a> (2530) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;Wisconsin&quot;" title="Wisconsin">Wisconsin</a> (2036) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;France&quot;" title="France">France</a> (1884) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;West (U.S.)&quot;" title="West (U.S.)">West (U.S.)</a> (1706) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;California&quot;" title="California">California</a> (1675) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;China&quot;" title="China">China</a> (1590) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=geo:&quot;Japan&quot;" title="Japan">Japan</a> (1377) </li>
+
+
+                        <li class="morefacets"><a data-facet="geo" href="/cgi-bin/koha/opac-facets.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&facet=geo">more</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="facet" id="owned-by_facet">
+                    <span class="facetDisplayName">Owning library</span>
+                    <ul>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;MAD&quot;" title="MAD">MAD</a> (206659) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;STP&quot;" title="STP">STP</a> (119815) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;MCM&quot;" title="MCM">MCM</a> (91036) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;SUN&quot;" title="SUN">SUN</a> (88704) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;VER&quot;" title="VER">VER</a> (78697) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;FCH&quot;" title="FCH">FCH</a> (78235) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;REE&quot;" title="REE">REE</a> (76168) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;SEQ&quot;" title="SEQ">SEQ</a> (76166) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;MID&quot;" title="MID">MID</a> (75551) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;POR&quot;" title="POR">POR</a> (69124) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;BAR&quot;" title="BAR">BAR</a> (67592) </li>
+
+                        <li><a href="/cgi-bin/koha/opac-search.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&amp;limit=owned-by:&quot;STO&quot;" title="STO">STO</a> (62265) </li>
+
+
+                        <li class="morefacets"><a data-facet="owned-by" href="/cgi-bin/koha/opac-facets.pl?q=%2A%3A%2A&limit=format%3A%22Book%22&facet=owned-by">more</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- FACETS END -->
+    </div></div>
+
+</div>
+<div id="morefacets_dlog" class="hidden">
+    <div class="facetPager">
+        <div class="prevnext"><a class="prevlink" href="#">&laquo; Previous</a> | <a class="nextlink" href="#">Next &raquo;</a></div>
+        <div class="facet_sort hidden">Sort: <a class="azsort" href="#">A-Z</a> | <a class="fsort" href="#">Frequency</a></div>
+    </div>
+    <h4 id="morefacetsDisplayName"></h4>
+    <ul id="morefacets_list"></ul>
+    <div class="facetPager">
+        <div class="prevnext"><a class="prevlink" href="#">&laquo; Previous</a> | <a class="nextlink" href="#">Next &raquo;</a></div>
+        <div class="facet_sort hidden">Sort: <a class="azsort" href="#">A-Z</a> | <a class="fsort" href="#">Frequency</a></div>
+    </div>
+</div>
+
+
+
+<div class="ft">
+    LINKcat is brought to you by <a href="http://help.linkcat.info/ask/">44 member libraries</a> of the <a href="http://www.scls.info">South Central Library System</a>.
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>
+

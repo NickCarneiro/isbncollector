@@ -1,6 +1,7 @@
 var test = require('tape');
 var fs = require('fs');
 var amazonScraper = require('../scrapers/amazon');
+var linkcatScraper = require('../scrapers/linkcat');
 
 
 test('amazon book page html extraction - tsukuru', function (t) {
@@ -98,3 +99,71 @@ test('amazon search page result url extraction', function (t) {
     t.deepEquals(bookProperties, expectedUrls);
     t.end();
 });
+
+
+test('linkcat search page result url extraction', function (t) {
+    var linkcatHtml = fs.readFileSync(__dirname + '/fixtures/linkcat_results.html');
+    var bookProperties = linkcatScraper.extractSearchResultUrls(linkcatHtml);
+    var expectedUrls = [
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823192",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823194",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823196",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823199",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823201",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823208",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823209",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62727",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62743",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62763",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62771",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62775",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62784",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62792",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62804",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62807",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62810",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62820",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=581942",
+        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=581948"
+    ];
+    t.deepEquals(bookProperties, expectedUrls);
+    t.end();
+});
+
+
+
+test('linkcat - book page properties extraction - cryptonomicon', function (t) {
+    var linkcatHtml = fs.readFileSync(__dirname + '/fixtures/cryptonomicon_linkcat.html');
+    var bookProperties = linkcatScraper.extractBookProperties(linkcatHtml);
+    var expectedProperties = {
+        title: 'Cryptonomicon',
+        isbn10: '0380973464',
+        relatedIsbns: ['9781439501795', '0380788624', '0060512806'],
+        pages: 918,
+        authors: ['Neal Stephenson'],
+        binding: 'Hardcover',
+        publisher: 'Avon Press',
+        publicationDate: 1999
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+test('linkcat - book page extraction - zero to one', function (t) {
+    var linkcatHtml = fs.readFileSync(__dirname + '/fixtures/zero_to_one_linkcat.html');
+    var bookProperties = linkcatScraper.extractBookProperties(linkcatHtml);
+    var expectedProperties = {
+        title: 'Zero to one : notes on startups, or how to build the future',
+        isbn10: '0804139296',
+        isbn13: '9780804139298',
+        pages: 210,
+        authors: ['Peter A Thiel', 'Blake G Masters'],
+        binding: 'Hardcover',
+        publisher: 'Crown Business',
+        publicationDate: 2014
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+

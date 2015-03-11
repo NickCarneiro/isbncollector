@@ -3,7 +3,7 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/isbncollector';
-var PAGE_SIZE = 20;
+var PAGE_SIZE = 100;
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var page = req.query.page;

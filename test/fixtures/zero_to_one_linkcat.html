@@ -1,0 +1,1420 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en"  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+        LINKcat Catalog &rsaquo; Details for: Zero to one :
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Koha 4.0900033" /> <!-- leave this for stats -->
+    <link rel="shortcut icon" href="/opac-tmpl/prog/en/includes/favicon.ico" type="image/x-icon" />
+
+
+    <link rel="stylesheet" type="text/css" href="/opac-tmpl/prog/en/css/opac.css" />
+
+
+
+    <link rel="stylesheet" type="text/css" media="print" href="/opac-tmpl/prog/en/css/print.css" />
+
+
+    <style type="text/css">@import url("https://assets.linkcat.info/css/opacusercss.css");</style>
+    <!-- yui js -->
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/utilities/utilities.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/container/container-min.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/yui/menu/menu-min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/opac-tmpl/prog/en/lib/jquery/css/smoothness/jquery-ui.css" />
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/lib/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/lib/jquery/jquery-ui-1.8.21.min.js"></script>
+
+
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.hoverIntent.minified.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.dropshadow-min.js"></script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/script.js"></script>
+
+
+    <script type="text/javascript" language="javascript">//<![CDATA[
+    var NO_AMAZON_IMAGE = _("No cover image available");
+    //]]>
+    </script>
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/amazonimages.js"></script>
+
+    <script type="text/javascript" language="javascript"
+            src="/opac-tmpl/prog/en/js/basket.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        //<![CDATA[
+        var MSG_BASKET_EMPTY = _("Your Cart is currently empty");
+        var BASKET_NAME = "Cart";
+        var MSG_RECORD_IN_BASKET = _("This item is already in your Cart");
+        var MSG_RECORD_ADDED = _("This item has been added to your Cart");
+        var MSG_NRECORDS_ADDED = _(" item(s) added to your Cart");
+        var MSG_NRECORDS_IN_BASKET = _("already in your Cart");
+        var MSG_NO_RECORD_SELECTED = _("No item was selected");
+        var MSG_NO_RECORD_ADDED = _("No item was added to your Cart");
+        var MSG_CONFIRM_DEL_BASKET = _("Are you sure you want to empty your Cart?");
+        var MSG_CONFIRM_DEL_RECORDS = _("Are you sure you want to remove the selected items?");
+        $("#cartDetails").ready(function(){ $("#cmspan").html("<a href=\"#\" id=\"cartmenulink\" class=\"\"><i><\/i><span><i><\/i><span><\/span><img src=\"/opac-tmpl/prog/images/cart.gif\" width=\"14\" height=\"14\" alt=\"\" border=\"0\" /> "+_("Cart")+"<span id=\"basketcount\"><\/span><\/span><\/a>"); });
+
+        $(window).load(function() {
+            verify_images();
+        });
+        $(document).ready(function(){
+            $("#advsearch #advsearch-shelvingloc").remove();
+
+// Add dropshadow to opacheader
+            $("#opacheaderprofile").dropShadow({left:3, top:0, blur:3, opacity: 0.2});
+
+// Remove Site Administrator link and change maintenance message
+//$('#doc a:contains("Site Administrator")').remove();
+//$('#doc').html($('#doc').html().replace(/System Maintenance \.\.\. we'll be back soon\! If you have any questions, please contact the/, '<h1>System Maintenance</h1><p>LINKcat is currently unavailable.</p><p>We are sorry for the inconvenience.</p>'));
+
+// Hide New This Week content
+// If the breadcrumb mentions catdate
+//if ($("#breadcrumbs li:contains('catdate:[NOW-')").length > 0) {
+// Hide the contents of the result count in the breadcrumbs
+//$("#breadcrumbs p").text("");
+// Place a message in the main column instead of the regular New This Week content
+//$("#yui-main").replaceWith("<div id=\"yui-main\"><h1>System Maintenance</h1><p>The New This Week list is currently unavailable while we migrate Portage County Public Library to LINKcat.</p><p>New This Week will return on May 28.</p><p>We apologize for any inconvenience.</p></div>");
+// Hide the sidebar content
+//$(".yui-b").replaceWith("<div class=\"yui-b\"></div>");
+//}
+
+// Change cart and list button images
+
+            $("#listsmenulink > span > img").attr('src','https://assets.linkcat.info/images/koha-overrides/list.gif');
+
+            $("#cartmenulink img").attr('src','https://assets.linkcat.info/images/koha-overrides/cart.gif');
+
+// Place cursor in contextually appropriate starting input
+// If the opac auth container element exists
+            if ($("#opac-auth").length) {
+// Add autofocus to the login username input
+                $("#userid").focus();
+
+// Change the password help to something useful
+                $("#auth h5:contains('Don\'t have a password yet?')").text("Don\'t remember your password?");
+                $("#auth p:contains('If you don\'t have a password yet,')").text("Bring your ID to the library, and we\'ll help you access your account.");
+            }
+            else if ($("#Oldkey").length) {
+// Add autofocus to the old password input
+                $("#Oldkey").focus();
+            }
+            else if ($("#addshelf").length) {
+// Add autofocus to the new list input
+                $("input#addshelf").focus();
+            }
+            else {
+// Add autofocus to the search text input
+                $("#transl1").focus();
+            }
+
+// If the checkouts or overdues table exists hide the Fines column
+            if ($("#checkoutst").length) {
+                checkoutsCols = $("#checkoutst").find('tr')[0].cells.length;
+                $("#checkoutst td:nth-child(" + checkoutsCols + "),#checkoutst th:nth-child(" + checkoutsCols + ")").hide();
+            }
+            if ($("#overduest").length) {
+                overduesCols = $("#overduest").find('tr')[0].cells.length;
+                $("#overduest td:nth-child(" + overduesCols + "),#overduest th:nth-child(" + overduesCols + ")").hide();
+            }
+
+// If the change password form exists change the text of the password hint
+            if ($("#mainform").length) {
+                $('.hint').replaceWith("\<div class=\"hint\"\>Your password must be at least 4 characters long. Use only numbers to avoid problems using self-checkout or reserving computers at the library.\<\/div\>");
+            }
+
+// Pre-selects Title instead of keyword for masthead search
+//$("#masthead_search option").eq(1).attr("selected","selected");
+
+//Changes label of Login/password boxes
+            $("label[for='userid']").html("Login/Barcode:");
+            $("label[for='password']").html("PIN/Password:");
+
+//Changes "Browse Shelf" link to "Browse the shelf"
+            $("a:contains('Browse Shelf')").text("Browse the shelf");
+
+//Hide My Fines tab
+            $("#menu a:contains('my fines')").hide();
+
+//Remove all resolved fees from patron's account screen
+            $("#opac-account .fines_detail tr").each(function(i, tr){ if($(tr).children('td').eq(3).html()=='0.00') $(tr).remove(); });
+
+            /* * * Begin Fines Production Test * * */
+            if (window.location.host == "mad.linkcat.info") {
+
+// Set the Pay Now link language and href
+                var payNowLink = "<a href=\"https://fees.linkcat.info\">Pay Now</a>";
+// Set the message about the online payment threshold
+                var dontPayNow = "\<em\>Online payment is available for fines and charges of $10.00 or more. Contact your local library for assistance.\<\/em\>";
+
+//if you are on the my summary page and click the vertical my fines tab, make the horizontal Fines tab the selected tab
+//and set the Pay Now link or payment message on the my summary page
+
+// Check to see if you are on the my summary page
+                if(window.location.pathname == "/cgi-bin/koha/opac-user.pl"){
+
+// Set a payment message with default saying online payment is not available
+                    var paymentMessage = dontPayNow;
+
+// Meet the condition of having 10.00 fines or more to show the Pay Now link
+                    if (parseFloat($("#opac-user-fines a[href$='/cgi-bin/koha/opac-account.pl']").html())>=10.00){
+                        paymentMessage = payNowLink;
+                    }
+
+// Display the appropriate payment message on Fines sub-tab
+                    $("#opac-user-fines").append(paymentMessage);
+                }
+
+// Add a link to Pay Fines on Fines and Charges page
+                if(window.location.pathname == "/cgi-bin/koha/opac-account.pl"){
+
+// Set a payment message with default saying online payment is not available
+                    var paymentMessage = dontPayNow;
+// Meet the condition of having 10.00 fines or more to show the Pay Now link
+                    if (parseFloat($(".sum:contains('Total due')").parent().children('td.sum').html())>=10.00){
+                        paymentMessage = payNowLink;
+                    }
+
+// Display the appropriate payment message
+                    $(".fines_summary").eq(0).append(paymentMessage);
+
+// Also make the vertical my fines tab selected white
+                    $("#finestab").parent().parent().attr('class', 'active');
+                }
+            }
+            /* * * End Fines Production Test * * */
+
+//Message on Confirm Holds screen
+            $('#HoldsConfirmMsg').replaceWith("\<div id=\"HoldsConfirmMsg\" class=\"dialog alert\" \>Please click the Submit button only once.\<\/div\>");
+
+            $("ul li span:contains('Supplements:')").replaceWith("Serials Summary holdings:");
+
+        });
+
+        // LibraryAnywhere mobile prompt
+        (function () {
+            var e = document.createElement('script');
+            e.src = 'https://www.libanywhere.com/check.js?from=www.linkcat.info';
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }());
+        //]]>
+    </script><script type="text/javascript" language="javascript"
+                     src="/opac-tmpl/prog/en/js/basket.js"></script>
+
+
+    <link rel="unapi-server" type="application/xml" title="unAPI" href="www.linkcat.info/cgi-bin/koha/unapi" />
+
+
+
+    <script type="text/javascript" language="javascript" src="/opac-tmpl/prog/en/js/screensaver.js"></script>
+    <script type="text/javascript">
+        window.onload=function (){
+            var ss = new ScreenSaver( 900 * 1000);
+
+            ss.onstart = function () {
+                document.location = '/cgi-bin/koha/opac-main.pl?logout.x=1';
+                updateBasket(0,null);
+                delCookie("bib_list");
+            };
+        }
+    </script>
+
+
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/jquery/plugins/jquery.tablesorter.min.js"></script>
+    <script type="text/JavaScript" language="JavaScript">
+        //<![CDATA[
+        $(document).ready(function() {
+            $("#tagform").hide();
+            $("#addtagl").show();
+            $('#bibliodescriptions').tabs();
+            $("#addtagl a").click(function(){
+                $("#addtagl").hide();
+                $("#tagform, #tagform a").show();
+                return false;
+            });
+
+            $("#tagform a").click(function(){
+                $("#addtagl").show();
+                $("#tagform").hide();
+                return false;
+            });
+
+            $("#holdingst").tablesorter({
+                widgets : ['zebra']
+            });
+
+
+            $("a.print").parent().after("<li><a class=\"addtocart\" href=\"#\" onclick=\"addRecord('"+$("input[name=bib]").val()+"'); return false;\">"+_("Add to Your Cart")+"<\/a><\/li>");
+        });
+
+        YAHOO.util.Event.onContentReady("furtherm", function () {
+            $("#furtherm").css("display","block").css("visibility","hidden");
+            $("#furthersearches").parent().show();
+            var furthersearchesMenu = new YAHOO.widget.Menu("furtherm");
+            furthersearchesMenu.render();
+            furthersearchesMenu.cfg.setProperty("context", ["furthersearches", "tr", "br"]);
+            furthersearchesMenu.subscribe("beforeShow",positionfurthersearchesMenu);
+            furthersearchesMenu.subscribe("show", furthersearchesMenu.focus);
+            function positionfurthersearchesMenu() {
+                furthersearchesMenu.align("tr", "br");
+            }
+            YAHOO.util.Event.addListener("furthersearches", "click", furthersearchesMenu.show, null, furthersearchesMenu);
+            YAHOO.widget.Overlay.windowResizeEvent.subscribe(positionfurthersearchesMenu);
+        });
+
+        //]]>
+    </script>
+    <style type="text/css">
+        #addtagl { display: none; }
+    </style>
+    <script type="text/javascript">
+        var GB_ROOT_DIR = "/opac-tmpl/prog/en/lib/greybox/";
+    </script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/greybox/AJS.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/greybox/AJS_fx.js"></script>
+    <script type="text/javascript" src="/opac-tmpl/prog/en/lib/greybox/gb_scripts.js"></script>
+    <link href="/opac-tmpl/prog/en/lib/greybox/gb_styles.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id="doc3" class="yui-t7">
+    <div id="bd">
+
+        <div id="header-wrapper"><div id="members">
+
+            <ul><li><a href="/cgi-bin/koha/opac-user.pl">Log in to Your Account</a></li>
+            </ul>
+
+        </div>
+
+            <div id="opacheaderprofile">
+                <div class="acl">
+                    <h2><a href="http://www.scls.lib.wi.us/acl/">Adams County Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/acl/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="alm">
+                    <h2><a href="http://library.uwsp.edu/pcl/almond.htm">Portage County Public Library - Almond Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/almond.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="arp">
+                    <h2><a href="http://www.arpinpl.org/">Lester Public Library of Arpin</a></h2>
+                    <p><a href="http://www.arpinpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="bar">
+                    <h2><a href="http://www.baraboopubliclibrary.org/">Baraboo Public Library</a></h2>
+                    <p><a href="http://www.baraboopubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ber">
+                    <h2><a href="http://www.bepubliclibrary.org/">Black Earth Public Library</a></h2>
+                    <p><a href="http://www.bepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="blv">
+                    <h2><a href="http://www.scls.lib.wi.us/blv/">Belleville Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/blv/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="brd">
+                    <h2><a href="http://www.brodheadlibrary.org/">Brodhead Memorial Public Library</a></h2>
+                    <p><a href="http://www.brodheadlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="cbr">
+                    <h2><a href="http://www.cambridgelib.org/">Cambridge Community Library</a></h2>
+                    <p><a href="http://www.cambridgelib.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="cia">
+                    <h2><a href="http://www.jmml.org/">Jane Morgan Memorial Library</a></h2>
+                    <p><a href="http://www.jmml.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="col">
+                    <h2><a href="http://www.columbuspubliclibrary.info/">Columbus Public Library</a></h2>
+                    <p><a href="http://www.columbuspubliclibrary.info/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="csp">
+                    <h2><a href="http://www.rgpl.org/">Rosemary Garfoot Public Library</a></h2>
+                    <p><a href="http://www.rgpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dcl">
+                    <h2><a href="http://www.dcls.info/">Dane County Library Service</a></h2>
+                    <p><a href="http://www.dcls.info/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dee">
+                    <h2><a href="http://www.deerfieldpubliclibrary.org/">Deerfield Public Library</a></h2>
+                    <p><a href="http://www.deerfieldpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="dft">
+                    <h2><a href="http://www.deforest.lib.wi.us/">DeForest Public Library</a></h2>
+                    <p><a href="http://www.deforest.lib.wi.us/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="fch">
+                    <h2><a href="http://www.fitchburglibrary.org/">Fitchburg Public Library</a></h2>
+                    <p><a href="http://www.fitchburglibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="haw">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Hawthorne Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="hpb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Alicia Ashman Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="lak">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Lakeview Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="lav">
+                    <h2><a href="http://www.scls.lib.wi.us/lav/">LaValle Public Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/lav/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ldi">
+                    <h2><a href="http://www.lodipubliclibrary.org/">Lodi Woman's Club Public Library</a></h2>
+                    <p><a href="http://www.lodipubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mad">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mar">
+                    <h2><a href="http://www.marlib.org/">Marshall Community Library</a></h2>
+                    <p><a href="http://www.marlib.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="maz">
+                    <h2><a href="http://www.scls.lib.wi.us/mazomanie/">Mazomanie Free Library</a></h2>
+                    <p><a href="http://www.scls.lib.wi.us/mazomanie/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mcf">
+                    <h2><a href="http://www.mcfarlandlibrary.org/">E.D. Locke Public Library</a></h2>
+                    <p><a href="http://www.mcfarlandlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mcm">
+                    <h2><a href="http://www.mcmillanlibrary.org/">McMillan Memorial Library</a></h2>
+                    <p><a href="http://www.mcmillanlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mea">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Meadowridge Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mid">
+                    <h2><a href="http://www.midlibrary.org/">Middleton Public Library</a></h2>
+                    <p><a href="http://www.midlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="moo">
+                    <h2><a href="http://www.mononalibrary.org/">Monona Public Library</a></h2>
+                    <p><a href="http://www.mononalibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mro">
+                    <h2><a href="http://www.monroepubliclibrary.org/">Monroe Public Library</a></h2>
+                    <p><a href="http://www.monroepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="msb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Monroe Street Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="mth">
+                    <h2><a href="http://www.mhpl.org/">Mount Horeb Public Library</a></h2>
+                    <p><a href="http://www.mhpl.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ngl">
+                    <h2><a href="http://www.newglaruspubliclibrary.org/">New Glarus Public Library</a></h2>
+                    <p><a href="http://www.newglaruspubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="nof">
+                    <h2><a href="http://www.northfreedomlibrary.com/">North Freedom Public Library</a></h2>
+                    <p><a href="http://www.northfreedomlibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ore">
+                    <h2><a href="http://www.oregonpubliclibrary.org/">Oregon Public Library</a></h2>
+                    <p><a href="http://www.oregonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="par">
+                    <h2><a href="http://www.pardeevillelibrary.com/">Angie W. Cox Public Library</a></h2>
+                    <p><a href="http://www.pardeevillelibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pds">
+                    <h2><a href="http://www.pdslibrary.org/">Ruth Culver Community Library</a></h2>
+                    <p><a href="http://www.pdslibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pin">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Pinney Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="pla">
+                    <h2><a href="http://www.kraemerlibrary.org/">Kraemer Library &amp; Community Center</a></h2>
+                    <p><a href="http://www.kraemerlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="plo">
+                    <h2><a href="http://library.uwsp.edu/pcl/plover.htm">Portage County Public Library - Plover Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/plover.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="por">
+                    <h2><a href="http://www.portagelibrary.us/">Portage Public Library</a></h2>
+                    <p><a href="http://www.portagelibrary.us/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="poy">
+                    <h2><a href="http://www.poynettelibrary.com/">Poynette Public Library</a></h2>
+                    <p><a href="http://www.poynettelibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ree">
+                    <h2><a href="http://www.reedsburglibrary.org/">Reedsburg Public Library</a></h2>
+                    <p><a href="http://www.reedsburglibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="rks">
+                    <h2><a href="http://www.rockspringslibrary.com/">Rock Springs Public Library</a></h2>
+                    <p><a href="http://www.rockspringslibrary.com/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ros">
+                    <h2><a href="http://library.uwsp.edu/pcl/rosholt.htm">Portage County Public Library - Rosholt Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/rosholt.htm">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sca">
+                    <h2><a href="http://www.scls.info/">SCLS Headquarters</a></h2>
+                    <p><a href="http://www.scls.info/">Visit the SCLS Home Page</a></p>
+                </div>
+                <div class="scl">
+                    <h2><a href="http://www.linkcat.info">SCLS Test Catalog</a></h2>
+                    <p><a href="http://www.linkcat.info">LINKcat Home</a></p>
+                </div>
+                <div class="scls">
+                    <h2><a href="http://help.linkcat.info/ask/index.html">Get help from a LINKcat library</a></h2>
+                </div>
+                <div class="seq">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Sequoya Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sgr">
+                    <h2><a href="http://www.springgreenlibrary.org/">Spring Green Community Library</a></h2>
+                    <p><a href="http://www.springgreenlibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="skc">
+                    <h2><a href="http://www.saukcitylibrary.org/">Sauk City Public Library</a></h2>
+                    <p><a href="http://www.saukcitylibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="smb">
+                    <h2><a href="http://www.madisonpubliclibrary.org/">Madison Public Library - Goodman South Madison Branch</a></h2>
+                    <p><a href="http://www.madisonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sto">
+                    <h2><a href="http://www.stoughtonpubliclibrary.org/">Stoughton Public Library</a></h2>
+                    <p><a href="http://www.stoughtonpubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="stp">
+                    <h2><a href="http://library.uwsp.edu/pcl/">Portage County Public Library - Stevens Point Branch</a></h2>
+                    <p><a href="http://library.uwsp.edu/pcl/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="sun">
+                    <h2><a href="http://www.sunprairiepubliclibrary.org/">Sun Prairie Public Library</a></h2>
+                    <p><a href="http://www.sunprairiepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="ver">
+                    <h2><a href="http://www.veronapubliclibrary.org/">Verona Public Library</a></h2>
+                    <p><a href="http://www.veronapubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wau">
+                    <h2><a href="http://www.waunakeepubliclibrary.org/">Waunakee Public Library</a></h2>
+                    <p><a href="http://www.waunakeepubliclibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wid">
+                    <h2><a href="http://www.dellslibrary.org/">Kilbourn Public Library</a></h2>
+                    <p><a href="http://www.dellslibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+                <div class="wyo">
+                    <h2><a href="http://www.wyocenalibrary.org/">Wyocena Public Library</a></h2>
+                    <p><a href="http://www.wyocenalibrary.org/">Visit the Library's Home Page</a></p>
+                </div>
+            </div>
+            <div id="opacheader">
+                <ul><li><a href="http://m.linkcat.info/">Mobile</a></li><li><a href="http://help.linkcat.info/">Help</a></li><li><a href="http://www.scls.info/resources/name.html">Databases</a></li><li><a href="http://lists.linkcat.info/">Don't&nbsp;Miss&nbsp;Lists</a></li><li><a title="Show all titles added to the catalog in the last 7 days" href="http://launcher.linkcat.info/go.cgi?q=&limit=catdate:[NOW-7DAYS+TO+*]&limit=&sort=catdate+desc">New&nbsp;This&nbsp;Week</a></li><li><a href="http://sclsp.kohalibrary.com/" title="Indexes of local newspapers and Wisconsin magazines">Newspapers</a></li><li><a href="http://dbooks.wplc.info/">OverDrive</a></li>
+                </ul>
+                <!--[if lte IE 8 ]><div class="lte-ie8 clearfix"><div class="dialog alert"><h2><img src="http://assets.linkcat.info/images/warning_16.png" alt="Warning" style="float:left; margin: 0 10px 0 0;">Your browser is out of date. It has security flaws and may not display all features of LINKcat. <a href="http://browsehappy.com/">Please update your browser.</a></h2></div></div><![endif]-->
+            </div>
+
+            <div id="opac-main-search" class="yui-g">
+
+                <h1 id="libraryname" style="background-image: url('https://assets.linkcat.info/images/koha-overrides/linkcatlogo.png');">
+                    <a href="/cgi-bin/koha/opac-main.pl">LINKcat</a></h1>
+
+                <div id="fluid">
+                    <div id="fluid-offset">
+                        <form name="searchform" method="get" action="/cgi-bin/koha/opac-search.pl" id="searchform">
+                            <label for="masthead_search" class="left"> Search </label>
+                            <select name="idx" id="masthead_search" class="left" style="max-width:10em;width:10em;">
+                                <option value="">Library Catalog</option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                                <option value="subject">Subject</option>
+                                <option value="isbn">ISBN</option>
+                                <option value="series-title">Series</option>
+                                <option value="callnumber">Call Number</option>
+                            </select>
+
+                            <select name="limit" class="left">
+
+
+                                <option value="">Any format</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Book&quot;">Book</option>
+
+
+
+                                <option value="format:&quot;Large print book&quot;">Large print book</option>
+
+
+
+                                <option value="format:&quot;Braille book&quot;">Braille book</option>
+
+
+
+                                <option value="format:&quot;Graphic novel&quot;">Graphic novel</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Videocassette&quot;">Videocassette</option>
+
+
+
+                                <option value="format:&quot;DVD&quot;">DVD</option>
+
+
+
+                                <option value="format:&quot;Blu-ray DVD&quot;">Blu-ray DVD</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Cassette&quot;">Cassette</option>
+
+
+
+                                <option value="format:&quot;Digital audio player&quot;">Digital audio player</option>
+
+
+
+                                <option value="format:&quot;Compact disc&quot;">Compact disc</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Software&quot;">Software</option>
+
+
+
+                                <option value="format:&quot;Website or downloadable&quot;">Website or downloadable</option>
+
+
+
+                                <option value="format:&quot;Video game&quot;">Video game</option>
+
+
+
+                                <option disabled="disabled" class="separator">------</option>
+
+
+
+                                <option value="format:&quot;Music&quot;">Music</option>
+
+
+
+                                <option value="format:&quot;Printed Music&quot;">Printed Music</option>
+
+
+
+                                <option value="format:&quot;Audiobook&quot;">Audiobook</option>
+
+
+                            </select>
+
+
+                            <!-- NAME="searchdomainoptions" -->
+
+
+                            <input type="text" id = "transl1" name="q" class="left" style="width: 35%; font-size: 111%;"/><div id="translControl"></div>
+
+
+
+
+
+                            <input type="submit" value="Go" id="searchsubmit" class="left" />
+                            <span id="cmspan"></span>
+
+                            <a href="/cgi-bin/koha/opac-shelves.pl" id="listsmenulink" class=""><i></i><span><i></i><span></span>Lists </span></a>
+                        </form>
+
+
+                        <div id="moresearches">
+                            <a href="/cgi-bin/koha/opac-search.pl">Advanced Search</a>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cartDetails">Your Cart is empty.</div>
+
+
+                <div id="listsmenu" class="yuimenu" style="display: none">
+                    <div class="bd">
+                        <h4>Public Lists</h4>
+
+                        <ul class="first-of-type">
+
+                            <li class="yuimenuitem"><a href="/cgi-bin/koha/opac-shelves.pl?viewshelf=85268&amp;sortfield=title">Public Lists created on LINKcat will be deleted</a></li>
+
+                        </ul>
+
+
+
+                        <ul class="first-of-type"><li><a href="/cgi-bin/koha/opac-user.pl">Log in to Create Your Own Lists</a></li></ul>
+
+
+                    </div>
+                </div><!-- /listmenu /virtualshelves -->
+
+                <div id="listsDetails"></div>
+            </div>
+        </div>
+        <div id="breadcrumbs" class="yui-g">
+
+
+            <!-- <p>You did not specify any search criteria. </p> -->
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div id="yui-main">
+        <div class="yui-b"><div id="opac-detail" class="yui-ge">
+            <div class="yui-u first">
+                <div class="container">
+                    <div id="catalogue_detail_biblio">
+
+                        <div id="bookcover">
+
+                            <img src="https://secure.syndetics.com/index.aspx?isbn=0804139296/MC.GIF&amp;client=sclsp&amp;type=xw10" alt="" class="thumbnail" />
+
+
+                        </div>
+
+
+
+
+                        <h1>
+                            <span class="displaytitle">Zero to one : notes on startups, or how to build the future / </span>
+                        </h1><h5><span class="displayauthorlabel label">by </span><a href="/cgi-bin/koha/opac-search.pl?q=linked_rcn:%22(DLC)n  96029353%22">Thiel, Peter A  </a>; <a href="/cgi-bin/koha/opac-search.pl?q=linked_rcn:%22(DLC)no2014136039%22">Masters, Blake G  </a>.</h5><div id="views">
+  <span class="view">
+    <span id="Normalview">Normal View</span>
+  </span>
+  <span class="view">
+    <a id="MARCviewPop" href="/cgi-bin/koha/opac-showmarc.pl?id=1143523" title="MARC" rel="gb_page_center[600,500]">MARC View</a>
+  </span>
+  <span class="view">
+    <a id="MARCview" href="/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=1143523" title="MARC">Expanded MARC View</a>
+  </span>
+  <span class="view">
+    <a id="ISBDview" href="/cgi-bin/koha/opac-ISBDdetail.pl?biblionumber=1143523">Card View (ISBD)</a>
+  </span>
+                    </div><span class="results_summary"><span class="label">Type: </span><img src="/opac-tmpl/prog/famfamfam/BK.png" alt=""/>Book</span><span class="results_summary"><span class="label">Publication: </span>New York : Crown Business, [2014]</span><span class="results_summary">
+  <span class="displayeditionlabel label">Edition: </span>
+  <span class="displayedition">First edition  .</span>
+</span><span class="results_summary">
+  <span class="displaydesclabel label">Description: </span>
+  <span class="displaydesc">210 pages : illustrations ; 22 cm .</span>
+</span><abbr class="unapi-id" title="koha:biblionumber:1143523"/><span class="results_summary">
+  <span class="displayISBNlabel label">ISBN: </span>
+  <span class="displayISBN">9780804139298 (hardback); 0804139296 (hardback).</span>
+</span><span class="results_summary"><span class="displaysubjectlabel label">Related Subjects: </span><a href="/cgi-bin/koha/opac-search.pl?q=linked_rcn:%22(DLC)470694%22">New business enterprises  </a> | <a href="/cgi-bin/koha/opac-search.pl?q=linked_rcn:%22(DLC)470752%22">New products  </a> | <a href="/cgi-bin/koha/opac-search.pl?q=linked_rcn:%22(DLC)457394%22">Entrepreneurship  </a> | <a href="/cgi-bin/koha/opac-search.pl?q=linked_rcn:%22(DLC)455566%22">Diffusion of innovations  </a></span><span class="results_summary"><span class="displayURLlabel label">Online Resources: </span><a href="9780804139298.jpg">Cover image</a>  </span><span class="results_summary"><span class="label">Contents: </span>The challenge of the future -- Party like it's 1999 -- All happy companies are different -- The ideology of competition -- Last mover advantage -- You are not a lottery ticket -- Follow the money -- Secrets -- Foundations -- The mechanics of mafia -- If you build it, will they come? -- Man and machine -- Seeing green -- The founder's paradox -- Conclusion: Stagnation or singularity.</span><span class="results_summary"><span class="label">Summary: </span>Every moment in business happens only once. The next Bill Gates will not build an operating system. The next Larry Page or Sergey Brin won't make a search engine. And the next Mark Zuckerberg won't create a social network. If you are copying these guys, you aren't learning from them. It's easier to copy a model than to make something new: doing what we already know how to do takes the world from 1 to n, adding more of something familiar. But every time we create something new, we go from 0 to 1. The act of creation is singular, as is the moment of creation, and the result is something fresh and strange. Zero to One is about how to build companies that create new things. It draws on everything the author learned directly as a co-founder of PayPal and Palantir and then an investor in hundreds of startups, including Facebook and SpaceX. The single most powerful pattern he has noticed is that successful people find value in unexpected places, and they do this by thinking about business from first principles instead of formulas. Ask not, what would Mark do? Ask: what valuable company is no one building?</span>
+
+
+
+
+
+
+                        <!-- This puts the LTFL reviews in, and if TabbedView is not set, puts the remaining content above the Tabs instead of in them -->
+
+
+	<span class="results_summary">
+        <span class="label">Reviews from LibraryThing.com:</span>
+        <span style="display: block;" class="ltfl_reviews"></span>
+    </span>
+
+
+
+
+                        <!--This grabs all of the lists a bib record appears in -->
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+                    <div id="bibliodescriptions" class="toptabs">
+
+                        <ul>
+                            <li> <a href="#holdings">Holdings ( 13 )</a> </li>
+                            <li> <a href="#descriptions">Title Notes</a></li>
+
+                            <li> <a href="#toc">TOC</a></li>
+
+
+
+
+                            <li> <a href="#reviews">Reviews</a></li>
+                            <li> <script src="https://www.librarything.com/forlibraries/widget.js?id=1590-1664015029" type="text/javascript"></script><noscript>This page contains enriched content visible when JavaScript is enabled or by clicking <a href="https://www.librarything.com/forlibraries/noscript.php?id=99-274208589&amp;accessibility=1">here</a>.</noscript></li>
+
+
+                            <li> <a href="#anotes">About the Author</a></li>
+
+
+
+
+                            <li> <a href="#LFTLSimilarItems">Similar Items</a></li>
+                            <li> <a href="#LTFLTagBrowse">Tag Browser</a></li>
+
+
+
+
+
+
+
+
+
+
+                        </ul>
+
+                        <div id="holdings">
+
+
+
+
+                            <table id="holdingst">
+                                <thead><tr>
+
+                                    <th>Library</th>
+                                    <th>Location</th>
+                                    <th>Collection</th>
+                                    <th>Call Number</th>
+
+
+
+
+                                    <th>Status</th>
+
+                                    <th>Date Due</th>
+                                </tr></thead>
+                                <tbody>
+                                <tr>
+
+
+                                    <td>Baraboo Library</td>
+                                    <td>Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.11 THI (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4509427#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>04/06/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Columbus Library</td>
+                                    <td>Adult</td>
+                                    <td>Business and Economics</td>
+                                    <td> 658.1 THI (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4505120#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>04/07/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>DeForest Library</td>
+                                    <td>New Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.1 THI (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4475391#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/23/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>DeForest Library</td>
+                                    <td>New Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.1 THI (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4475392#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/22/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Fitchburg Public Library</td>
+                                    <td>New Adult, 1st Floor</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.11 THIEL (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4527091#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>04/02/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Madison PL-Central</td>
+                                    <td>New Adult, 2nd Floor</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.11 T346z (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4504417#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>04/01/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Madison PL-Monroe St</td>
+                                    <td>New Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.11 T346z (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4504418#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/30/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Madison PL-Sequoya</td>
+                                    <td>New Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.11 T346z (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4504419#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>04/02/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Monona Library</td>
+                                    <td>New Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.1 THI 02/15 (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4606882#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/26/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Monroe PL-Green County</td>
+                                    <td>New Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.1 THI (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4504364#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/16/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Mount Horeb Library</td>
+                                    <td>New Adult</td>
+                                    <td>Business and Economics</td>
+                                    <td> BUS. 658.11 THI (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4514060#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>04/06/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Sun Prairie Library</td>
+                                    <td>New Adult</td>
+                                    <td>Non-Fiction</td>
+                                    <td> 658.11 Thi (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4510891#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/29/2015</td>
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Wis. Rapids - McMillan Library</td>
+                                    <td>New Adult</td>
+                                    <td>Business and Economics</td>
+                                    <td> 658.1 T43 (<a href="/cgi-bin/koha/opac-detail.pl?biblionumber=1143523&amp;shelfbrowse_itemnumber=4489363#shelfbrowser">Browse Shelf</a>)</td>
+
+
+
+
+                                    <td>
+
+
+                                        Checked out
+
+
+
+                                    </td>
+
+                                    <td>03/20/2015</td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="dialogue alert">
+                                <b> Total <span class="HoldsLabel">holds</span>: 2 <p> Items with "<span class="HoldsLabel">On hold</span>" status are item specific <span class="HoldsLabel">holds</span>. </b>
+                            </div>
+
+
+
+
+
+
+                            <br clear="all" />
+                        </div>
+
+
+                        <div id="descriptions">
+                            <div class="content_set">
+
+
+
+
+                                <h4>Enhanced Descriptions from Syndetics:</h4>
+                                <p>If you want to build a better future, you must believe in secrets. The great secret of our time is that there are still uncharted frontiers to explore and new inventions to create. In Zero to One , legendary entrepreneur and investor Peter Thiel shows how we can find singular ways to create those new things. Thiel begins with the contrarian premise that we live in an age of technological stagnation, even if we're too distracted by shiny mobile devices to notice. Information technology has improved rapidly, but there is no reason why progress should be limited to computers or Silicon Valley. Progress can be achieved in any industry or area of business. It comes from the most important skill that every leader must master: learning to think for yourself. Doing what someone else already knows how to do takes the world from 1 to n, adding more of something familiar. But when you do something new, you go from 0 to 1. The next Bill Gates will not build an operating system. The next Larry Page or Sergey Brin won't make a search engine. Tomorrow's champions will not win by competing ruthlessly in today's marketplace. They will escape competition altogether, because their businesses will be unique. Zero to One presents at once an optimistic view of the future of progress in America and a new way of thinking about innovation: it starts by learning to ask the questions that lead you to find value in unexpected places.</p>
+
+
+
+
+
+
+                                <p> Every moment in business happens only once. The next Bill Gates will not build an operating system. The next Larry Page or Sergey Brin won't make a search engine. And the next Mark Zuckerberg won't create a social network. If you are copying these guys, you aren't learning from them. It's easier to copy a model than to make something new: doing what we already know how to do takes the world from 1 to n, adding more of something familiar. But every time we create something new, we go from 0 to 1. The act of creation is singular, as is the moment of creation, and the result is something fresh and strange. Zero to One is about how to build companies that create new things. It draws on everything the author learned directly as a co-founder of PayPal and Palantir and then an investor in hundreds of startups, including Facebook and SpaceX. The single most powerful pattern he has noticed is that successful people find value in unexpected places, and they do this by thinking about business from first principles instead of formulas. Ask not, what would Mark do? Ask: what valuable company is no one building?</p>
+
+                                <p>Includes index.</p>
+
+                                <p>The challenge of the future -- Party like it's 1999 -- All happy companies are different -- The ideology of competition -- Last mover advantage -- You are not a lottery ticket -- Follow the money -- Secrets -- Foundations -- The mechanics of mafia -- If you build it, will they come? -- Man and machine -- Seeing green -- The founder's paradox -- Conclusion: Stagnation or singularity.</p>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div id="toc">
+                            <div class="content_set">
+                                <h3>Table of Contents provided by Syndetics</h3>
+                                <ul>
+
+
+                                    <li><b> Preface: Zeto to One</b> (p. 1)</li>
+
+
+
+                                    <li><b>1 The Challenge of the Future</b> (p. 5)</li>
+
+
+
+                                    <li><b>2 Party Like It's 1999</b> (p. 12)</li>
+
+
+
+                                    <li><b>3 All Happy Companies Are Different</b> (p. 23)</li>
+
+
+
+                                    <li><b>4 The Ideology of Competition</b> (p. 35)</li>
+
+
+
+                                    <li><b>5 Last Mover Advantage</b> (p. 44)</li>
+
+
+
+                                    <li><b>6 You Are Not a Lottery Ticket</b> (p. 59)</li>
+
+
+
+                                    <li><b>7 Follow the Money</b> (p. 82)</li>
+
+
+
+                                    <li><b>8 Secrets</b> (p. 93)</li>
+
+
+
+                                    <li><b>9 Foundations</b> (p. 107)</li>
+
+
+
+                                    <li><b>10 The Mechanics of Mafia</b> (p. 118)</li>
+
+
+
+                                    <li><b>11 If You Build It, Will They Come?</b> (p. 126)</li>
+
+
+
+                                    <li><b>12 Man and Machine</b> (p. 140)</li>
+
+
+
+                                    <li><b>13 Seeing Green</b> (p. 152)</li>
+
+
+
+                                    <li><b>14 The Founder's Paradox</b> (p. 173)</li>
+
+
+
+                                    <li><b> Conclusion: Stagnation or Singularity?</b> (p. 191)</li>
+
+
+
+                                    <li><b> Acknowledgments</b> (p. 197)</li>
+
+
+
+                                    <li><b> Illustration Credits</b> (p. 199)</li>
+
+
+
+                                    <li><b> Index</b> (p. 201)</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div id="reviews">
+                            <div class="content_set">
+                                <h3>Reviews provided by Syndetics</h3>
+
+
+                                <h4>Publishers Weekly Review</h4>
+
+
+
+                                In his first book, PayPal cofounder Thiel presents a series of musings-for example,Doing what we already know how to do takes the world from 1 to n, adding more of something familiar. But every time we create something new, we go from 0 to 1-rather than a cohesive narrative. He begins with promise, drawing a strict distinction between horizontal progress-making more of what already exists in the world-and vertical progress-creating something entirely new. To accomplish the latter, he proposes, more businesses need to think like startups. From there, the text sprawls wildly from one subject to the next, with periodic references to PayPals evolution as the main recurring motif. His provocative central premise is that successful businesses should strive to be monopolies-that readers should build something singular and exciting enough that it will be the only one of its kind. Though the book is presented as an instructional guide, it gives the reader little to take away. A brief meditation on the lessons of the dot-com bust (make incremental advances, stay lean and flexible, improve on the competition, focus on product, not sales) offers standard truisms rather than practical insights. Thiel touches on how to build a successful business, but the discussion is too abstract to offer much to the next Steve Jobs-or Peter Thiel. (Sept.) (c) Copyright PWxyz, LLC. All rights reserved.
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div id="anotes">
+                            <div class="content_set">
+                                <h3>Author Notes provided by Syndetics</h3>
+
+
+                                Peter Thiel is an entrepreneur and investor. He started PayPal in 1998, led it as CEO, and took it public in 2002. In 2004, he made the first outside investment in Facebook, where he serves as a director, and launched Palantir Technologies, a software company that harnesses computers to empower human analysts in fields like national security and global finance. He started the Thiel Fellowship, which encourages young people to put learning before schooling, and he leads the Thiel Foundation, which works to advance technological progress and long- term thinking about the future. (Bowker Author Biography)
+
+
+                            </div>
+                        </div>
+
+                        <!-- /SyndeticsEnabled -->
+
+
+
+
+
+
+
+                        <!-- Library Thing for Libraries Content -->
+                        <div id="LFTLSimilarItems">
+                            <div class="content_set">
+                                <!-- Uncommenting this span makes the font smaller in the tab for LTFL -->
+                                <!-- but breaks XHTML validation -->
+                                <!--	<span class="results_summary">-->
+                                <div id="ltfl_related"></div>
+                                <div id="ltfl_similars"></div>
+                                <!--			</span>-->
+                            </div>
+                        </div>
+                        <div id="LTFLTagBrowse">
+                            <div class="content_set">
+                                <!-- <span class="results_summary"> -->
+                                <div id="ltfl_tagbrowse" class="ltfl"></div>
+                                <!-- </span> -->
+                            </div>
+                        </div>
+
+
+                        <!-- /Library Thing for Libraries Content -->
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="yui-u">
+                <div class="container">
+                    <ul id="action">
+
+
+
+
+
+                        <li><a class="reserve" href="/cgi-bin/koha/opac-reserve.pl?biblionumber=1143523"><span class="hold">Place Hold </span> (2 <span class="HoldsLabel">holds</span>,  active) </a></li>
+
+
+
+
+                        <li><a class="print" onclick="window.print();" href="#">Print</a>
+                        </li>
+
+
+
+                        <li style="display:none;"><a href="#" id="furthersearches">More searches</a></li>
+                    </ul>
+
+
+
+                    <div id="export" class="detailtagcell">
+                        <form method="get" action="/cgi-bin/koha/opac-export.pl">
+                            <label for="format">Save Record:</label>
+                            <select name="format" id="format">
+                                <option value="">-- Choose Format --</option>
+                                <option value="bibtex">BIBTEX</option>
+                                <option value="dc">Dublin Core (XML)</option>
+                                <option value="marcxml">MARCXML</option>
+                                <option value="marc8">MARC (non-Unicode/MARC-8)</option>
+                                <option value="utf8">MARC (Unicode/UTF-8)</option>
+                                <option value="mods">MODS (XML)</option>
+                                <option value="ris">RIS</option>
+                            </select><input type="hidden" name="op" value="export" /><input type="hidden" name="bib" value="1143523" />
+                            <input type="submit" name="save" value="Go" /></form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="https://ltfl.librarything.com/forlibraries/widget.js?systype=koha&amp;id=1590-1664015029" type="text/javascript"></script><noscript>This page contains enriched content visible when JavaScript is enabled or by clicking <a href="https://www.librarything.com/forlibraries/noscript.php?id=1590-1664015029&amp;accessibility=1">here</a>.</noscript>
+
+
+
+<div class="ft">
+    LINKcat is brought to you by <a href="http://help.linkcat.info/ask/">44 member libraries</a> of the <a href="http://www.scls.info">South Central Library System</a>.
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>
+
