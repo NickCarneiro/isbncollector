@@ -38,11 +38,13 @@ var extractBookProperties = function(bookPageHtml) {
         publisherText = $('.results_summary:contains("Publication:")').text();
     }
     var publisherMatches = publisherText.match(/.+ : (.+), /);
-    if (publisherMatches && publisherMatches.length >= 2) {
-        publisherName = publisherMatches[1];
-    }
+    var publisherName = publisherMatches[1];
     properties.publisher = publisherName;
-    var publicationYear = publisherText.match(/c(\d{4})/)[1];
+    var publicationYearMatches = publisherText.match(/c(\d{4})/);
+    if (!publicationYearMatches) {
+        publicationYearMatches = publisherText.match(/\[(\d{4}\])/)
+    }
+    var publicationYear = publicationYearMatches[1];
     properties.publicationDate = parseInt(publicationYear);
     var isbnText = $('.displayISBN').text();
     var isbn = isbnText.match(/^([^\(^\s^:]+) \(/)[1];
@@ -56,12 +58,18 @@ var extractBookProperties = function(bookPageHtml) {
         return isbnText.replace('; ', '');
     });
     properties.relatedIsbns = relatedIsbns;
-    var bindingText = isbnText.match(/\((.+)\)/)[1];
-    if (bindingText.toLowerCase() === 'hardcover') {
+    var bindingText = isbnText.match(/\(([^\()]+)\)/)[1];
+    if (bindingText.toLowerCase() === 'hardcover' || bindingText.toLowerCase() === 'hardback') {
         properties.binding = 'Hardcover';
     } else if (bindingText.toLowerCase() === 'paperback') {
         properties.binding = 'Paperback';
     }
+
+    var pagesText = $('.results_summary:contains("Description:")').text();
+    var pagesMatches = pagesText.match(/(\d+) p/);
+    var pageCount = parseInt(pagesMatches[1]);
+    properties.pages = pageCount;
+    return properties;
 };
 
 var reverseNames = function(name) {
@@ -69,7 +77,7 @@ var reverseNames = function(name) {
     if (commaIndex === -1) {
         return name;
     }
-    return name.substring(commaIndex + 2) + ' ' + name.substring(0, commaIndex);
+    return name.substring(commaIndex + 2).trim() + ' ' + name.substring(0, commaIndex).trim();
 };
 
 module.exports = {

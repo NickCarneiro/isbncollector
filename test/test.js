@@ -155,8 +155,8 @@ test('linkcat - book page extraction - zero to one', function (t) {
     var bookProperties = linkcatScraper.extractBookProperties(linkcatHtml);
     var expectedProperties = {
         title: 'Zero to one : notes on startups, or how to build the future',
-        isbn10: '0804139296',
         isbn13: '9780804139298',
+        relatedIsbns: ['0804139296'],
         pages: 210,
         authors: ['Peter A Thiel', 'Blake G Masters'],
         binding: 'Hardcover',
