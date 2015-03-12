@@ -35,19 +35,24 @@ var extractBookProperties = function(bookPageHtml) {
     if (!publisherText) {
         publisherText = $('.results_summary:contains("Publication:")').text();
     }
-    var publisherMatches = publisherText.match(/.+ : (.+), /);
-    if (!publisherMatches) {
-        publisherMatches = publisherText.match(/(.+) \[/);
+    if (publisherText) {
+        var publisherMatches = publisherText.match(/.+ : (.+), /);
+        if (!publisherMatches) {
+            publisherMatches = publisherText.match(/(.+) \[/);
+        }
+        if (!publisherMatches) {
+            publisherMatches = publisherText.match(/\] (.+),/);
+        }
+        if (!publisherMatches) {
+            // "New York, Knopf, 1964    ."
+            publisherMatches = publisherText.match(/(.+), \d{4}/);
+        }
+        if (publisherMatches) {
+            var publisherName = publisherMatches[1];
+            properties.publisher = publisherName;
+        }
     }
-    if (!publisherMatches) {
-        publisherMatches = publisherText.match(/\] (.+),/);
-    }
-    if (!publisherMatches) {
-        // "New York, Knopf, 1964    ."
-        publisherMatches = publisherText.match(/(.+), \d{4}/);
-    }
-    var publisherName = publisherMatches[1];
-    properties.publisher = publisherName;
+
     var publicationYearMatches = publisherText.match(/(\d{4})/);
     if (publicationYearMatches) {
         var publicationYear = publicationYearMatches[0];
