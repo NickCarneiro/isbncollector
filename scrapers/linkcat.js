@@ -42,10 +42,16 @@ var extractBookProperties = function(bookPageHtml) {
     if (!publisherMatches) {
         publisherMatches = publisherText.match(/\] (.+),/);
     }
+    if (!publisherMatches) {
+        // "New York, Knopf, 1964    ."
+        publisherMatches = publisherText.match(/(.+), \d{4}/);
+    }
     var publisherName = publisherMatches[1];
     properties.publisher = publisherName;
     var publicationYearMatches = publisherText.match(/(\d{4})/);
-    var publicationYear = publicationYearMatches[0];
+    if (publicationYearMatches) {
+        var publicationYear = publicationYearMatches[0];
+    }
     properties.publicationDate = parseInt(publicationYear);
     var isbnText = $('.displayISBN').text();
     var isbn = '';

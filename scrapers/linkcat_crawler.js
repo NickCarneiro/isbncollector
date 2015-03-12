@@ -15,6 +15,7 @@ var scrapeLinkcat = function(offset) {
     if (offset === undefined) {
         offset = 0;
     }
+    offset = parseInt(offset);
     var resultPageUrl = LINKCAT_SEARCH_URL.replace('$OFFSET', offset);
 
     var requestOptions = {
