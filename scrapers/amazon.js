@@ -31,6 +31,7 @@ var extractBookProperties = function(html) {
     var contributors = byline.split(',');
     var authors = [];
     var translators = [];
+    var editors = [];
     contributors.forEach(function(contributor) {
         if (contributor.indexOf('(Author)') !== -1) {
             var author = contributor.replace('(Author)', '').trim();
@@ -41,6 +42,11 @@ var extractBookProperties = function(html) {
             var translator = contributor.replace('(Translator)', '').trim();
             if (translator) {
                 translators.push(translator);
+            }
+        } else if (contributor.indexOf('(Editor)' !== -1)) {
+            var editor = contributor.replace('(Editor)', '').trim();
+            if (editor) {
+                editors.push(editor);
             }
         }
     });
@@ -131,6 +137,9 @@ var extractBookProperties = function(html) {
 
     if (translators.length > 0) {
         properties.translators = translators;
+    }
+    if (editors.length > 0) {
+        properties.editors = editors;
     }
     if (binding) {
         properties.binding = binding;

@@ -59,7 +59,7 @@ var currentPage = 0;
 var scrapeCategory = function(resultPageUrl) {
 
     if (!resultPageUrl) {
-        resultPageUrl = BASE_URL + categories[0];
+        resultPageUrl = BASE_URL + categories[1];
     }
     var requestOptions = {
         url: resultPageUrl,

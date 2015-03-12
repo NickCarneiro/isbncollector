@@ -79,6 +79,13 @@ test('amazon book page html extraction, multiple authors - zero to one', functio
     t.end();
 });
 
+test('amazon book page html extraction, no author, one editor - rsmeans', function (t) {
+    var amazonHtml = fs.readFileSync(__dirname + '/fixtures/rsmeans_amazon.html');
+    var bookProperties = amazonScraper.extractBookProperties(amazonHtml);
+    t.deepEquals(bookProperties.editors, ['Bob Mewis']);
+    t.end();
+});
+
 
 test('amazon search page result url extraction', function (t) {
     var amazonHtml = fs.readFileSync(__dirname + '/fixtures/walden_search_results.html');
