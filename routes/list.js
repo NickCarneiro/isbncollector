@@ -25,6 +25,7 @@ router.get('/', function(req, res, next) {
             } else {
                 res.render('list', {books: results, page: page, nextPage: nextPage, previousPage: previousPage});
             }
+            db.close();
         });
     });
 });
