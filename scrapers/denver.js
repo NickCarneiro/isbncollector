@@ -23,21 +23,22 @@ var tableToMap = function(tableRows, $) {
 var extractAuthorNames = function(authors, otherAuthors) {
     var authorList = [];
     var mainAndSecondaryAuthors = [authors, otherAuthors];
-    mainAndSecondaryAuthors.forEach(function(unprocessedAuthorList) {
-        if (unprocessedAuthorList) {
-            var authorNames = authors.trim().split(/\n/);
+    mainAndSecondaryAuthors.forEach(function(authorString) {
+        if (authorString) {
+            var authorNames = authorString.trim().split(/\n/);
             authorNames.forEach(function(name) {
                 var trimmedName = name.trim();
                 if (trimmedName === '') {
                     return;
                 }
                 // remove trailing period unless the author's first name is initials like J. K. Rowling
-                console.log(trimmedName);
                 if (trimmedName.match(/[a-z]\.$/)) {
                     trimmedName = trimmedName.replace(/\.$/, '');
                 }
                 var reversedName = stringUtils.reverseNames(trimmedName);
-                authorList.push(reversedName);
+                if (authorList.indexOf(trimmedName) === -1) {
+                    authorList.push(reversedName);
+                }
             });
         }
     });
@@ -86,21 +87,8 @@ var extractBookProperties = function(bookPageHtml) {
     properties.authors = authors;
     var publisherText = rawBookProperties['Publisher, Date'];
     if (publisherText) {
-        var publisherMatches = publisherText.match(/:([\d\s\w]+), /);
-        if (!publisherMatches) {
-            publisherMatches = publisherText.match(/(.+) \[/);
-        }
-        if (!publisherMatches) {
-            publisherMatches = publisherText.match(/\] (.+),/);
-        }
-        if (!publisherMatches) {
-            // "New York, Knopf, 1964    ."
-            publisherMatches = publisherText.match(/(.+), \d{4}/);
-        }
-        if (publisherMatches) {
-            var publisherName = publisherMatches[1].trim();
-            properties.publisher = publisherName;
-        }
+        // This combined publisher/date field is too difficult to parse
+        properties.publisher = publisherText;
     }
 
     var publicationYearMatches = publisherText.match(/(\d{4})/);
@@ -122,7 +110,7 @@ var extractBookProperties = function(bookPageHtml) {
                 properties.isbn10 = firstIsbn;
             }
         }
-        if (isbns.length > 0) {
+        if (isbns.length > 1) {
             properties.relatedIsbns = isbns.splice(1);
         }
     }

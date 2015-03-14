@@ -31,12 +31,15 @@ var getBook = function(bookId) {
     };
 
     function callback(error, response, body) {
+        console.log('bookId: ' + bookId);
         if (!error && response.statusCode == 200) {
             var properties = denver.extractBookProperties(body);
-            console.log(properties);
+            console.log(properties.title);
             if ((properties.isbn10 || properties.isbn13) && properties.title) {
                 //save to mongo
-                //storageUtils.saveBookToMongo(properties);
+                storageUtils.saveBookToMongo(properties);
+            } else {
+                console.log('no title or isbn');
             }
         }
         setTimeout(getBook(bookId + 1), SLEEP_TIME_MILLIS);
