@@ -2,7 +2,7 @@ var request = require('request');
 var linkcat = require('./linkcat');
 var storageUtils = require('./storage_utils');
 
-var SLEEP_TIME_MILLIS = 3000;
+var SLEEP_TIME_MILLIS = 1500;
 
 var RESULTS_PER_PAGE = 20;
 var LINKCAT_SEARCH_URL = 'http://www.linkcat.info/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&offset=$OFFSET';

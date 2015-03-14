@@ -2,6 +2,9 @@ var test = require('tape');
 var fs = require('fs');
 var amazonScraper = require('../scrapers/amazon');
 var linkcatScraper = require('../scrapers/linkcat');
+var denver = require('../scrapers/denver');
+var cheerio = require('cheerio');
+var stringUtils = require('../scrapers/string_utils');
 
 
 test('amazon book page html extraction - tsukuru', function (t) {
@@ -87,6 +90,26 @@ test('amazon book page html extraction, no author, one editor - rsmeans', functi
 });
 
 
+test('denver book page html extraction - cryptonomicon', function (t) {
+    var denverHtml = fs.readFileSync(__dirname + '/fixtures/cryptonomicon_denver.html');
+    var expectedProperties = {
+        title: 'Cryptonomicon',
+        isbn13: '9780060512804',
+        relatedIsbns: [ '0060512806', '0380973464', '9780380973460' ],
+        pages: 1152,
+        authors: ['Neal Stephenson'],
+        binding: 'Paperback',
+        publisher: 'Avon Books',
+        description: 'An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold. The gold was stolen by the Japanese during the war. By the author of The Diamond Age.',
+        publicationDate: 2002
+    };
+    $ = cheerio.load(denverHtml);
+    var bookProperties = denver.extractBookProperties(denverHtml, $);
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
 test('amazon search page result url extraction', function (t) {
     var amazonHtml = fs.readFileSync(__dirname + '/fixtures/walden_search_results.html');
     var bookProperties = amazonScraper.extractSearchResultUrls(amazonHtml);
@@ -112,26 +135,26 @@ test('linkcat search page result url extraction', function (t) {
     var linkcatHtml = fs.readFileSync(__dirname + '/fixtures/linkcat_results.html');
     var bookProperties = linkcatScraper.extractSearchResultUrls(linkcatHtml);
     var expectedUrls = [
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823192",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823194",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823196",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823199",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823201",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823208",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823209",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62727",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62743",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62763",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62771",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62775",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62784",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62792",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62804",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62807",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62810",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62820",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=581942",
-        "http://linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=581948"
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823192",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823194",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823196",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823199",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823201",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823208",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=823209",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62727",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62743",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62763",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62771",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62775",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62784",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62792",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62804",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62807",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62810",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=62820",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=581942",
+        "http://www.linkcat.info/cgi-bin/koha/opac-detail.pl?biblionumber=581948"
     ];
     t.deepEquals(bookProperties, expectedUrls);
     t.end();
@@ -171,6 +194,31 @@ test('linkcat - book page extraction - zero to one', function (t) {
         publicationDate: 2014
     };
     t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+test('reverse names', function (t) {
+    var names = ['ABERT, J. W. (JAMES WILLIAM), 1820-1897.',
+        'KENNEDY, LAWTON R.',
+        'GALVIN, JOHN R., 1929-',
+        'HOWELL, JOHN, 1874-1956.',
+        'ROWLING, J. K.',
+        'STENDHAL, 1783-1842 CN.',
+        'WHARFIELD, H. B.'
+    ];
+    var reversedNames = names.map(function(name) {
+        return stringUtils.reverseNames(name);
+    });
+    var expectedNames = [
+        'J. W. ABERT',
+        'LAWTON R. KENNEDY',
+        'JOHN R. GALVIN',
+        'JOHN HOWELL',
+        'J. K. ROWLING',
+        'STENDHAL',
+        'H. B. WHARFIELD'
+    ];
+    t.deepEquals(reversedNames, expectedNames);
     t.end();
 });
 

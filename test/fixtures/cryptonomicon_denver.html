@@ -1,0 +1,675 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>
+        Denver Public Library
+    </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <link type="text/css" rel="stylesheet" href="http://catalog.denverlibrary.org/themes/shared/styles.css?ver=5.0.191.0">
+    <link type="text/css" rel="stylesheet" href="http://catalog.denverlibrary.org/themes/shared/river.css?ver=5.0.191.0">
+    <link type="text/css" rel="stylesheet" href="http://catalog.denverlibrary.org/themes/shared/tabs/jquery.ui.all.css">
+    <link type="text/css" rel="stylesheet" href="http://catalog.denverlibrary.org/themes/shared/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="https://catalog.denverlibrary.org/custom/themes/denver/styles.css?ver=5.0.191.0">
+    <link rel="shortcut icon" type="image/ico" href="http://catalog.denverlibrary.org/favicon.ico" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Denver Public Library" href="http://catalog.denverlibrary.org/ERMSDaemon/POLARIS/Public/OpenSearch/POLARIS.PAC/KW/OpenSearchDescription.xml?v=5.0.191.0" />
+
+    <script type="text/javascript" language="javascript" src="http://catalog.denverlibrary.org/scripts/powerpac.js?ver=5.0.191.0"></script>
+    <script type="text/javascript" language="javascript" src="http://catalog.denverlibrary.org/scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="http://catalog.denverlibrary.org/scripts/jquery.ui.core.js"></script>
+    <script type="text/javascript" language="javascript" src="http://catalog.denverlibrary.org/scripts/jquery.ui.widget.js"></script>
+    <script type="text/javascript" language="javascript" src="http://catalog.denverlibrary.org/scripts/jquery.ui.dialog.js"></script>
+    <script type="text/javascript" language="javascript" src="http://catalog.denverlibrary.org/scripts/jquery.ui.position.js"></script>
+    <script type="text/javascript" language="javascript" src="https://catalog.denverlibrary.org/scripts/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript" language="javascript" src="http://catalog.denverlibrary.org/scripts/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+    <script language="javascript" src="http://catalog.denverlibrary.org/scripts/results.js?ver=5.0.191.0"></script>
+    <script language="javascript" src="http://catalog.denverlibrary.org/scripts/title.js?ver=5.0.191.0"></script>
+
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+
+
+
+    <script language="javascript">
+
+        SetServerRoot('http://catalog.denverlibrary.org/');
+        g_ska_timer = window.setTimeout(sessionKeepAlive, g_ska_interval * 60000);
+
+
+        $(document).ready(function () {
+            $(".marcview").fancybox({
+                'transitionIn': 'elastic',
+                'transitionOut': 'fade',
+                'overlayOpacity': 0.2,
+                'width': 800,
+                'height': 380,
+                'type': 'iframe'
+            });
+        });
+
+
+
+
+        function toggle(e)
+        {
+            doToggle(e, 'https://catalog.denverlibrary.org/custom/themes/denver/plus.bmp',
+                    'https://catalog.denverlibrary.org/custom/themes/denver/minus.bmp',
+                    'Click to show list of items',
+                    'Click to hide details');
+        }
+
+        function stopB(e) { if (!e) e = window.event; e.cancelBubble = true; }
+
+        var AxisCkoButtonTxt = 'Check Out';
+        var AxisHoldButtonTxt = 'Place Hold';
+        var OverdriveCkoButtonTxt = 'Check Out';
+        var OverdriveHoldButtonTxt = 'Place Hold';
+        var MMMCkoButtonTxt = 'Check Out';
+        var MMMHoldButtonTxt = 'Place Hold';
+        var eContentPleaseLogin = 'Please log in for availability.';
+        var IsSpoof = 'False';
+
+    </script>
+</head>
+
+<body onscroll="ResetTimer();" onclick="javascript:toggle(event);ResetTimer();" onload="">
+
+
+
+<form name="formMain" method="post" action="title.aspx?ctx=1.1033.0.0.6&amp;pos=1" id="formMain">
+    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJODE4NDk2OTc0D2QWDGYPFQcPPCFkb2N0eXBlIGh0bWw+FURlbnZlciBQdWJsaWMgTGlicmFyeaYQDQo8bWV0YSBodHRwLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPUVkZ2UiLz4NCjxsaW5rIHR5cGU9InRleHQvY3NzIiByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3RoZW1lcy9zaGFyZWQvc3R5bGVzLmNzcz92ZXI9NS4wLjE5MS4wIj4NCjxsaW5rIHR5cGU9InRleHQvY3NzIiByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3RoZW1lcy9zaGFyZWQvcml2ZXIuY3NzP3Zlcj01LjAuMTkxLjAiPg0KPGxpbmsgdHlwZT0idGV4dC9jc3MiIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvdGhlbWVzL3NoYXJlZC90YWJzL2pxdWVyeS51aS5hbGwuY3NzIj4NCjxsaW5rIHR5cGU9InRleHQvY3NzIiByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3RoZW1lcy9zaGFyZWQvZmFuY3lib3gvanF1ZXJ5LmZhbmN5Ym94LTEuMy40LmNzcyIgbWVkaWE9InNjcmVlbiIgLz4NCjxsaW5rIHR5cGU9InRleHQvY3NzIiByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9jdXN0b20vdGhlbWVzL2RlbnZlci9zdHlsZXMuY3NzP3Zlcj01LjAuMTkxLjAiPg0KPGxpbmsgcmVsPSJzaG9ydGN1dCBpY29uIiB0eXBlPSJpbWFnZS9pY28iIGhyZWY9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL2Zhdmljb24uaWNvIiAvPg0KPGxpbmsgcmVsPSJzZWFyY2giIHR5cGU9ImFwcGxpY2F0aW9uL29wZW5zZWFyY2hkZXNjcmlwdGlvbit4bWwiIHRpdGxlPSJEZW52ZXIgUHVibGljIExpYnJhcnkiIGhyZWY9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL0VSTVNEYWVtb24vUE9MQVJJUy9QdWJsaWMvT3BlblNlYXJjaC9QT0xBUklTLlBBQy9LVy9PcGVuU2VhcmNoRGVzY3JpcHRpb24ueG1sP3Y9NS4wLjE5MS4wIiAvPg0KDQo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHNyYz0iaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvc2NyaXB0cy9wb3dlcnBhYy5qcz92ZXI9NS4wLjE5MS4wIj48L3NjcmlwdD4NCjxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgc3JjPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9zY3JpcHRzL2pxdWVyeS0xLjguMi5taW4uanMiPjwvc2NyaXB0Pg0KPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIGxhbmd1YWdlPSJqYXZhc2NyaXB0IiBzcmM9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3NjcmlwdHMvanF1ZXJ5LnVpLmNvcmUuanMiPjwvc2NyaXB0Pg0KPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIGxhbmd1YWdlPSJqYXZhc2NyaXB0IiBzcmM9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3NjcmlwdHMvanF1ZXJ5LnVpLndpZGdldC5qcyI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHNyYz0iaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvc2NyaXB0cy9qcXVlcnkudWkuZGlhbG9nLmpzIj48L3NjcmlwdD4NCjxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgc3JjPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9zY3JpcHRzL2pxdWVyeS51aS5wb3NpdGlvbi5qcyI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHNyYz0iaHR0cHM6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3NjcmlwdHMvanF1ZXJ5LnVpLmRhdGVwaWNrZXIuanMiPjwvc2NyaXB0Pg0KPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIGxhbmd1YWdlPSJqYXZhc2NyaXB0IiBzcmM9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3NjcmlwdHMvanF1ZXJ5LmZhbmN5Ym94LTEuMy40LnBhY2suanMiPjwvc2NyaXB0PiFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8JNS4wLjE5MS4wIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwk1LjAuMTkxLjBkAgMPZBYCZg8VAiFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8JNS4wLjE5MS4wZAIEDxUBIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL2QCCA8VDT9odHRwczovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvY3VzdG9tL3RoZW1lcy9kZW52ZXIvcGx1cy5ibXBAaHR0cHM6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL2N1c3RvbS90aGVtZXMvZGVudmVyL21pbnVzLmJtcBtDbGljayB0byBzaG93IGxpc3Qgb2YgaXRlbXMVQ2xpY2sgdG8gaGlkZSBkZXRhaWxzCUNoZWNrIE91dApQbGFjZSBIb2xkCUNoZWNrIE91dApQbGFjZSBIb2xkCUNoZWNrIE91dApQbGFjZSBIb2xkH1BsZWFzZSBsb2cgaW4gZm9yIGF2YWlsYWJpbGl0eS4FRmFsc2UAZAIJD2QWAmYPFQIAAGQCCw9kFggCAQ9kFgZmD2QWAmYPFQJSaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvZGVmYXVsdC5hc3B4P2N0eD1fX29yZ2lkX18uMTAzMy4wLjAuNiZvcmdTZWxlY3Q9MXdKYXZhU2NyaXB0IGhhcyBiZWVuIGRpc2FibGVkIGluIHlvdXIgYnJvd3Nlci4gUGxlYXNlIGVuYWJsZSBKYXZhU2NyaXB0IGluIG9yZGVyIHRvIGVuam95IGFsbCB0aGUgZmVhdHVyZXMgb2YgdGhpcyBzaXRlLmQCAg9kFgJmDxUBAGQCAw9kFgJmDxUBAGQCAg8VBYIBPGEgaHJlZj0iaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvU2VhcmNoL2Rpc3BhdGNoLmFzcHg/Y3R4PTEuMTAzMy4wLjAuNiZhY3Rpb249NCZwYWdlPTAmcG9zPTEiPiZsdDsmbHQ7IFJldHVybiB0byBMaXN0PC9hPgABMQExAGQCAw9kFpoBAgQPFgIeB1Zpc2libGVnZAIGDxUBqwE8aW1nIGNsYXNzPSJ0aHVtYm5haWwiIHNyYz0iaHR0cHM6Ly9zZWN1cmUuc3luZGV0aWNzLmNvbS9pbmRleC5hc3B4P2lzYm49OTc4MDA2MDUxMjgwNC9NQy5HSUYmY2xpZW50PWRlbnZwJnVwYz0mb2NsYz01MDk4OTQxMyIgYWx0PSJDcnlwdG9ub21pY29uIiB0aXRsZT0iQ3J5cHRvbm9taWNvbiIgLz5kAgcPZBYCZg8VAg05NzgwMDYwNTEyODA0ATFkAggPZBYCZg8VA6cCPHNwYW4gY2xhc3M9IlozOTg4IiB0aXRsZT0iY3R4X3Zlcj1aMzkuODgtMjAwNCZhbXA7cmZ0X3ZhbF9mbXQ9aW5mbyUzQW9maSUyRmZtdCUzQWtldiUzQW10eCUzQWJvb2smYW1wO3JmdC5hdT1TdGVwaGVuc29uLCBOZWFsLiZhbXA7cmZ0LmJ0aXRsZT1DcnlwdG9ub21pY29uJmFtcDtyZnQuZGF0ZT0yMDAyJmFtcDtyZnQuaXNibj05NzgwMDYwNTEyODA0JmFtcDtyZnRfaWQ9aHR0cCUzYSUyZiUyZmNhdGFsb2cuZGVudmVybGlicmFyeS5vcmclMmZ2aWV3LmFzcHglM2Zpc2JuJTNkOTc4MDA2MDUxMjgwNCI+PC9zcGFuPg05NzgwMDYwNTEyODA0ATFkAgkPFgIfAGcWAmYPFQQNOTc4MDA2MDUxMjgwNCFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8NOTc4MDA2MDUxMjgwNEVodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy90aGVtZXMvc2hhcmVkL2dic19wcmV2aWV3X2J1dHRvbi5naWZkAgoPZBYCZg8VAwAARGh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3RoZW1lcy9zaGFyZWQvb2RfcHJldmlld19idXR0b24uZ2lmZAILDxUCATHMITx0YWJsZSBjbGFzcz0ibnNtLWZ1bGwtcmVjb3JkIiBjZWxsc3BhY2luZz0iNSI+DQoJPHRyIGNsYXNzPSJuc20tZnVsbC1zdGFuZGFyZC1ncm91cCI+DQoJCTx0ZCBjbGFzcz0ibnNtLWZ1bGwtbGFiZWwiPlRpdGxlOjwvdGQ+PHRkIGNsYXNzPSJuc20tZnVsbC1jb250ZW50Ij48ZGl2IGNsYXNzPSJuc20tbG9uZy1pdGVtIG5zbS1lMzUiPg0KCQkJPGEgY2xhc3M9Im5zbS1icm93c2UtbGluayIgaHJlZj0iLi4vc2VhcmNoL2Jyb3dzZS5hc3B4P2N0eD0xLjEwMzMuMC4wLjYmYW1wO3R5cGU9QnJvd3NlJmFtcDtieT1USSZhbXA7dGVybT1DcnlwdG9ub21pY29uKyUyZiZhbXA7cGFnZT0wIj48c3BhbiBjbGFzcz0ibnNtLWJyb3dzZS10ZXh0Ij5DcnlwdG9ub21pY29uIC88L3NwYW4+IE5lYWwgU3RlcGhlbnNvbi48L2E+DQoJCTwvZGl2PjwvdGQ+DQoJPC90cj48dHIgY2xhc3M9Im5zbS1mdWxsLXN0YW5kYXJkLWdyb3VwIj4NCgkJPHRkIGNsYXNzPSJuc20tZnVsbC1sYWJlbCI+QXV0aG9yOjwvdGQ+PHRkIGNsYXNzPSJuc20tZnVsbC1jb250ZW50Ij48ZGl2IGNsYXNzPSJuc20tbG9uZy1pdGVtIG5zbS1lMTgiPg0KCQkJPGEgY2xhc3M9Im5zbS1icm93c2UtbGluayIgaHJlZj0iLi4vc2VhcmNoL2Jyb3dzZS5hc3B4P2N0eD0xLjEwMzMuMC4wLjYmYW1wO3R5cGU9QnJvd3NlJmFtcDtieT1BVSZhbXA7dGVybT1TdGVwaGVuc29uJTJjK05lYWwuJmFtcDtwYWdlPTAiPjxzcGFuIGNsYXNzPSJuc20tYnJvd3NlLXRleHQiPlN0ZXBoZW5zb24sIE5lYWwuPC9zcGFuPjwvYT4NCgkJPC9kaXY+PC90ZD4NCgk8L3RyPjx0ciBjbGFzcz0ibnNtLWZ1bGwtc3RhbmRhcmQtZ3JvdXAiPg0KCQk8dGQgY2xhc3M9Im5zbS1mdWxsLWxhYmVsIj5Gb3JtYXQ6PC90ZD48dGQgY2xhc3M9Im5zbS1mdWxsLWNvbnRlbnQiPjxkaXYgY2xhc3M9Im5zbS1sb25nLWl0ZW0gbnNtLWUxNyI+DQoJCQlCb29rDQoJCTwvZGl2PjwvdGQ+DQoJPC90cj48dHIgY2xhc3M9Im5zbS1mdWxsLXN0YW5kYXJkLWdyb3VwIj4NCgkJPHRkIGNsYXNzPSJuc20tZnVsbC1sYWJlbCI+Q2FsbCBOdW1iZXI6PC90ZD48dGQgY2xhc3M9Im5zbS1mdWxsLWNvbnRlbnQiPjxkaXYgY2xhc3M9Im5zbS1sb25nLWl0ZW0gbnNtLWUxMyI+DQoJCQlTVEVQSEVOU09ODQoJCTwvZGl2PjwvdGQ+DQoJPC90cj48dHIgY2xhc3M9Im5zbS1mdWxsLXN0YW5kYXJkLWdyb3VwIj4NCgkJPHRkIGNsYXNzPSJuc20tZnVsbC1sYWJlbCI+UHVibGlzaGVyLCBEYXRlOjwvdGQ+PHRkIGNsYXNzPSJuc20tZnVsbC1jb250ZW50Ij48ZGl2IGNsYXNzPSJuc20tbG9uZy1pdGVtIG5zbS1lMiI+DQoJCQlOZXcgWW9yayA6IEF2b24gQm9va3MsIDIwMDIsIGMxOTk5Lg0KCQk8L2Rpdj48L3RkPg0KCTwvdHI+PHRyIGNsYXNzPSJuc20tZnVsbC1zdGFuZGFyZC1ncm91cCI+DQoJCTx0ZCBjbGFzcz0ibnNtLWZ1bGwtbGFiZWwiPkRlc2NyaXB0aW9uOjwvdGQ+PHRkIGNsYXNzPSJuc20tZnVsbC1jb250ZW50Ij48ZGl2IGNsYXNzPSJuc20tbG9uZy1pdGVtIG5zbS1lMyI+DQoJCQkxMTUyIHAuIDsgMTggY20uDQoJCTwvZGl2PjwvdGQ+DQoJPC90cj48dHIgY2xhc3M9Im5zbS1mdWxsLXN0YW5kYXJkLWdyb3VwIj4NCgkJPHRkIGNsYXNzPSJuc20tZnVsbC1sYWJlbCI+U3VtbWFyeTo8L3RkPjx0ZCBjbGFzcz0ibnNtLWZ1bGwtY29udGVudCI+PGRpdiBjbGFzcz0ibnNtLWxvbmctaXRlbSBuc20tZTkiPg0KCQkJQW4gQW1lcmljYW4gY29tcHV0ZXIgaGFja2VyIG9wZXJhdGluZyBpbiBTb3V0aGVhc3QgQXNpYSBhdHRlbXB0cyB0byBicmVhayBhIFdvcmxkIFdhciBJSSBjeXBoZXIgdG8gZmluZCB0aGUgbG9jYXRpb24gb2YgYSBtaXNzaW5nIHNoaXBtZW50IG9mIGdvbGQuIFRoZSBnb2xkIHdhcyBzdG9sZW4gYnkgdGhlIEphcGFuZXNlIGR1cmluZyB0aGUgd2FyLiBCeSB0aGUgYXV0aG9yIG9mIFRoZSBEaWFtb25kIEFnZS4NCgkJPC9kaXY+PC90ZD4NCgk8L3RyPjx0ciBjbGFzcz0ibnNtLWZ1bGwtc3RhbmRhcmQtZ3JvdXAiPg0KCQk8dGQgY2xhc3M9Im5zbS1mdWxsLWxhYmVsIj5TdWJqZWN0czo8L3RkPjx0ZCBjbGFzcz0ibnNtLWZ1bGwtY29udGVudCI+PGRpdiBjbGFzcz0ibnNtLWxvbmctaXRlbSBuc20tZTIwIj4NCgkJCTxhIGNsYXNzPSJuc20tYnJvd3NlLWxpbmsiIGhyZWY9Ii4uL3NlYXJjaC9icm93c2UuYXNweD9jdHg9MS4xMDMzLjAuMC42JmFtcDt0eXBlPUJyb3dzZSZhbXA7Ynk9U1UmYW1wO3Rlcm09V29ybGQrV2FyJTJjKzE5MzktMTk0NSstLStDcnlwdG9ncmFwaHkrLS0rRmljdGlvbi4mYW1wO3BhZ2U9MCI+PHNwYW4gY2xhc3M9Im5zbS1icm93c2UtdGV4dCI+V29ybGQgV2FyLCAxOTM5LTE5NDUgLS0gQ3J5cHRvZ3JhcGh5IC0tIEZpY3Rpb24uPC9zcGFuPjwvYT4NCgkJPC9kaXY+PGRpdiBjbGFzcz0ibnNtLWxvbmctaXRlbSBuc20tZTIwIj4NCgkJCTxhIGNsYXNzPSJuc20tYnJvd3NlLWxpbmsiIGhyZWY9Ii4uL3NlYXJjaC9icm93c2UuYXNweD9jdHg9MS4xMDMzLjAuMC42JmFtcDt0eXBlPUJyb3dzZSZhbXA7Ynk9U1UmYW1wO3Rlcm09RGF0YStlbmNyeXB0aW9uKyhDb21wdXRlcitzY2llbmNlKSstLStGaWN0aW9uLiZhbXA7cGFnZT0wIj48c3BhbiBjbGFzcz0ibnNtLWJyb3dzZS10ZXh0Ij5EYXRhIGVuY3J5cHRpb24gKENvbXB1dGVyIHNjaWVuY2UpIC0tIEZpY3Rpb24uPC9zcGFuPjwvYT4NCgkJPC9kaXY+PC90ZD4NCgk8L3RyPjx0ciBjbGFzcz0ibnNtLWZ1bGwtc3RhbmRhcmQtZ3JvdXAiPg0KCQk8dGQgY2xhc3M9Im5zbS1mdWxsLWxhYmVsIj5HZW5yZTo8L3RkPjx0ZCBjbGFzcz0ibnNtLWZ1bGwtY29udGVudCI+PGRpdiBjbGFzcz0ibnNtLWxvbmctaXRlbSBuc20tZTI3Ij4NCgkJCTxhIGNsYXNzPSJuc20tYnJvd3NlLWxpbmsiIGhyZWY9Ii4uL3NlYXJjaC9icm93c2UuYXNweD9jdHg9MS4xMDMzLjAuMC42JmFtcDt0eXBlPUJyb3dzZSZhbXA7Ynk9U1UmYW1wO3Rlcm09QWR2ZW50dXJlK2ZpY3Rpb24uJmFtcDtwYWdlPTAiPjxzcGFuIGNsYXNzPSJuc20tYnJvd3NlLXRleHQiPkFkdmVudHVyZSBmaWN0aW9uLjwvc3Bhbj48L2E+DQoJCTwvZGl2PjxkaXYgY2xhc3M9Im5zbS1sb25nLWl0ZW0gbnNtLWUyNyI+DQoJCQk8YSBjbGFzcz0ibnNtLWJyb3dzZS1saW5rIiBocmVmPSIuLi9zZWFyY2gvYnJvd3NlLmFzcHg/Y3R4PTEuMTAzMy4wLjAuNiZhbXA7dHlwZT1Ccm93c2UmYW1wO2J5PVNVJmFtcDt0ZXJtPVN1c3BlbnNlK2ZpY3Rpb24uJmFtcDtwYWdlPTAiPjxzcGFuIGNsYXNzPSJuc20tYnJvd3NlLXRleHQiPlN1c3BlbnNlIGZpY3Rpb24uPC9zcGFuPjwvYT4NCgkJPC9kaXY+PC90ZD4NCgk8L3RyPjx0ciBjbGFzcz0ibnNtLWZ1bGwtc3RhbmRhcmQtZ3JvdXAiPg0KCQk8dGQgY2xhc3M9Im5zbS1mdWxsLWxhYmVsIj5PdGhlciBUaXRsZTo8L3RkPjx0ZCBjbGFzcz0ibnNtLWZ1bGwtY29udGVudCI+PGRpdiBjbGFzcz0ibnNtLWxvbmctaXRlbSBuc20tZTIyIj4NCgkJCTxhIGNsYXNzPSJuc20tYnJvd3NlLWxpbmsiIGhyZWY9Ii4uL3NlYXJjaC9icm93c2UuYXNweD9jdHg9MS4xMDMzLjAuMC42JmFtcDt0eXBlPUJyb3dzZSZhbXA7Ynk9VEkmYW1wO3Rlcm09Q3J5cHRvLW5vbWljb24mYW1wO3BhZ2U9MCI+PHNwYW4gY2xhc3M9Im5zbS1icm93c2UtdGV4dCI+Q3J5cHRvLW5vbWljb248L3NwYW4+PC9hPg0KCQk8L2Rpdj48L3RkPg0KCTwvdHI+PHRyIGNsYXNzPSJuc20tZnVsbC1zdGFuZGFyZC1ncm91cCI+DQoJCTx0ZCBjbGFzcz0ibnNtLWZ1bGwtbGFiZWwiPk5vdGVzOjwvdGQ+PHRkIGNsYXNzPSJuc20tZnVsbC1jb250ZW50Ij48ZGl2IGNsYXNzPSJuc20tbG9uZy1pdGVtIG5zbS1lMjgiPg0KCQkJRWRpdGlvbnMgdmFyeS4NCgkJPC9kaXY+PC90ZD4NCgk8L3RyPjx0ciBjbGFzcz0ibnNtLWZ1bGwtc3RhbmRhcmQtZ3JvdXAiPg0KCQk8dGQgY2xhc3M9Im5zbS1mdWxsLWxhYmVsIj5JU0JOOjwvdGQ+PHRkIGNsYXNzPSJuc20tZnVsbC1jb250ZW50Ij48ZGl2IGNsYXNzPSJuc20tbG9uZy1pdGVtIG5zbS1lNiI+DQoJCQk5NzgwMDYwNTEyODA0IChwYmsuKQ0KCQk8L2Rpdj48ZGl2IGNsYXNzPSJuc20tbG9uZy1pdGVtIG5zbS1lNiI+DQoJCQkwMDYwNTEyODA2DQoJCTwvZGl2PjxkaXYgY2xhc3M9Im5zbS1sb25nLWl0ZW0gbnNtLWU2Ij4NCgkJCTxzcGFuIGNsYXNzPSJuc20taGl0LXRleHQiPjAzODA5NzM0NjQ8L3NwYW4+IChoYXJkY292ZXIpDQoJCTwvZGl2PjxkaXYgY2xhc3M9Im5zbS1sb25nLWl0ZW0gbnNtLWU2Ij4NCgkJCTk3ODAzODA5NzM0NjAgKGhhcmRjb3ZlcikNCgkJPC9kaXY+PC90ZD4NCgk8L3RyPg0KPC90YWJsZT5kAgwPZBYCZg8VAgAAZAIND2QWAmYPFQEAZAIODxUEIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwEwATEGMzQ2ODAyZAIPDxUEIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwEwATEGMzQ2ODAyZAIQDxUEDTk3ODAwNjA1MTI4MDQBMQ05NzgwMDYwNTEyODA0ATFkAhEPFQENOTc4MDA2MDUxMjgwNGQCEw8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BMQEwZAIVDxUCIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwExZAIWD2QWAmYPFQEAZAIXDxUEIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwIyOQtTVU1NQVJZLlhNTBc5NzgwMDYwNTEyODA0fHw1MDk4OTQxM2QCGA9kFgJmDxUBAGQCGQ8VBCFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8CMjELRklDVElPTi5YTUwXOTc4MDA2MDUxMjgwNHx8NTA5ODk0MTNkAhoPZBYCZg8VAQBkAhsPFQMhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvAjIzFzk3ODAwNjA1MTI4MDR8fDUwOTg5NDEzZAIcD2QWAmYPFQEAZAIdDxUEIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwIxOAAXOTc4MDA2MDUxMjgwNHx8NTA5ODk0MTNkAh4PZBYCZg8VAQBkAh8PFQQhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvAjIyBkxDLkpQRxc5NzgwMDYwNTEyODA0fHw1MDk4OTQxM2QCIA9kFgJmDxUBAGQCIQ8VBCFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8CMjgAFzk3ODAwNjA1MTI4MDR8fDUwOTg5NDEzZAIiD2QWAmYPFQEAZAIjDxUEIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwIzMAAXOTc4MDA2MDUxMjgwNHx8NTA5ODk0MTNkAiQPZBYCZg8VAQBkAiUPFQQhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvAjIwDURCQ0hBUFRFUi5YTUwXOTc4MDA2MDUxMjgwNHx8NTA5ODk0MTNkAiYPZBYCZg8VAQBkAicPFQQhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvAjE3ABc5NzgwMDYwNTEyODA0fHw1MDk4OTQxM2QCKA9kFgJmDxUBAGQCKQ8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BMw45NzgwMDYwNTEyODA0fGQCKg9kFgJmDxUBAGQCKw8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BNA45NzgwMDYwNTEyODA0fGQCLA9kFgJmDxUBAGQCLQ8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BNQ45NzgwMDYwNTEyODA0fGQCLg9kFgJmDxUBAGQCLw8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BNg45NzgwMDYwNTEyODA0fGQCMA9kFgJmDxUBAGQCMQ8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BNw45NzgwMDYwNTEyODA0fGQCMg9kFgJmDxUBAGQCMw8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BOA45NzgwMDYwNTEyODA0fGQCNA9kFgJmDxUBAGQCNQ8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8BOQ45NzgwMDYwNTEyODA0fGQCNg9kFgJmDxUBAGQCNw8VAyFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8CMTAOOTc4MDA2MDUxMjgwNHxkAjgPZBYCZg8VAQBkAjkPFQMhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvAjExDjk3ODAwNjA1MTI4MDR8ZAI6D2QWAmYPFQFZaHR0cHM6Ly9zZWN1cmUuc3luZGV0aWNzLmNvbS9pbmRleC5hc3B4P2lzYm49OTc4MDA2MDUxMjgwNC9MQy5HSUYmY2xpZW50PWRlbnZwJnVwYz0mb2NsYz1kAjsPFQUhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvAjEyDTk3ODAwNjA1MTI4MDQAAGQCPA9kFgJmDxUBAGQCPQ8VBCFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8CMzgAFzk3ODAwNjA1MTI4MDR8fDUwOTg5NDEzZAI+D2QWAmYPFQEAZAI/DxUEIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwIzOQAXOTc4MDA2MDUxMjgwNHx8NTA5ODk0MTNkAkAPZBYCZg8VAQBkAkEPFQIhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvAGQCQg9kFgICAQ9kFgJmDxUCQWh0dHBzOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9TZWFyY2gvcmVxdWVzdC5hc3B4P3Bvcz0xJm5ldz0xClBsYWNlIEhvbGRkAkMPZBYGZg9kFgJmDxUDPVNvcnJ5LCB0aGlzIHRpdGxlIGlzIG5vdCBhdmFpbGFibGUgYXQgeW91ciByZWdpc3RlcmVkIGJyYW5jaC4BMQpSZXN0cmljdGVkZAIBD2QWAmYPFQNJU29ycnksIHRoaXMgdGl0bGUgaXMgbm90IGF2YWlsYWJsZSBhdCB0aGlzIHRpbWUuICBQbGVhc2UgdHJ5IGFnYWluIGxhdGVyLgExF1RlbXBvcmFyaWx5IFVuYXZhaWxhYmxlZAICD2QWAmYPZBYCZg8VAXNZb3UgbXVzdCBiZSBsb2dnZWQgaW4gdG8geW91ciBhY2NvdW50IHRvIGFjY2VzcyB0aGlzIHJlc291cmNlLiBDbGljayBPSyB0byBsb2cgaW4sIG9yIGNhbmNlbCB0byBjb250aW51ZSBzZWFyY2hpbmcuZAJED2QWBmYPZBYCZg8VAz1Tb3JyeSwgdGhpcyB0aXRsZSBpcyBub3QgYXZhaWxhYmxlIGF0IHlvdXIgcmVnaXN0ZXJlZCBicmFuY2guATEKUmVzdHJpY3RlZGQCAQ9kFgJmDxUDSVNvcnJ5LCB0aGlzIHRpdGxlIGlzIG5vdCBhdmFpbGFibGUgYXQgdGhpcyB0aW1lLiAgUGxlYXNlIHRyeSBhZ2FpbiBsYXRlci4BMRdUZW1wb3JhcmlseSBVbmF2YWlsYWJsZWQCAg9kFgJmD2QWAmYPFQFzWW91IG11c3QgYmUgbG9nZ2VkIGluIHRvIHlvdXIgYWNjb3VudCB0byBhY2Nlc3MgdGhpcyByZXNvdXJjZS4gQ2xpY2sgT0sgdG8gbG9nIGluLCBvciBjYW5jZWwgdG8gY29udGludWUgc2VhcmNoaW5nLmQCRQ9kFgZmD2QWAmYPFQM9U29ycnksIHRoaXMgdGl0bGUgaXMgbm90IGF2YWlsYWJsZSBhdCB5b3VyIHJlZ2lzdGVyZWQgYnJhbmNoLgExClJlc3RyaWN0ZWRkAgEPZBYCZg8VA0lTb3JyeSwgdGhpcyB0aXRsZSBpcyBub3QgYXZhaWxhYmxlIGF0IHRoaXMgdGltZS4gIFBsZWFzZSB0cnkgYWdhaW4gbGF0ZXIuATEXVGVtcG9yYXJpbHkgVW5hdmFpbGFibGVkAgIPZBYCZg9kFgJmDxUBc1lvdSBtdXN0IGJlIGxvZ2dlZCBpbiB0byB5b3VyIGFjY291bnQgdG8gYWNjZXNzIHRoaXMgcmVzb3VyY2UuIENsaWNrIE9LIHRvIGxvZyBpbiwgb3IgY2FuY2VsIHRvIGNvbnRpbnVlIHNlYXJjaGluZy5kAkYPZBYCZg8VAa8BUGxlYXNlIHNlbGVjdCBhbmQgcmVxdWVzdCBhIHNwZWNpZmljIHZvbHVtZSBieSBjbGlja2luZyBvbmUgb2YgdGhlIDxpbWcgc3JjPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy90aGVtZXMvc2hhcmVkL3JlcXVlc3QuZ2lmIj4gaWNvbnMgaW4gdGhlICdGaW5kIEl0JyBzZWN0aW9uIGJlbG93LmQCRw9kFgJmDxUCUGh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL1NlYXJjaC9wdXJjaGFzZS5hc3B4P2lzYm49OTc4MDA2MDUxMjgwNCZzdG9yZT0xCkJ1eSBpdCBOb3dkAkgPZBYCZg8VAkhodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9TZWFyY2gvcHVyY2hhc2UuYXNweD9pc2JuPTk3ODAwNjA1MTI4MDQIUHVyY2hhc2VkAkkPZBYCZg8VAwAAAGQCSg9kFgJmDxUFIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwExTWh0dHBzOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9jdXN0b20vdGhlbWVzL2RlbnZlci9mb3JtYXRzL2Zvcm1hdGlkMDEuZ2lmBEJvb2sEQm9va2QCSw9kFgJmDxUDTWh0dHBzOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9jdXN0b20vdGhlbWVzL2RlbnZlci9mb3JtYXRzL2Zvcm1hdGlkMDEuZ2lmBEJvb2sEQm9va2QCTA8VAQQyMDAyZAJNDxUBhgE8c3BhbiBpZD1hZGR0b2xpc3RfMT48YSBjbGFzcz1BZGRUb0xpc3QgaHJlZj0iamF2YXNjcmlwdDpBZGRUb0xpc3QoNDMsIDEsICczNDY4MDInLCAnJywgJycsICcnKSI+QWRkIHRvIE15IExpc3Q8L2E+Jm5ic3A7Jm5ic3A7PC9zcGFuPmQCTg9kFgJmDxUCDURlbnZlclBvbGFyaXPCHDxhIGFkZHRoaXM6dXJsPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9zZWFyY2gvdGl0bGUuYXNweD9jdHg9MS4xMDMzLjAuMC42JmNuPTM0NjgwMiIgYWRkdGhpczp0aXRsZT0iQ3J5cHRvbm9taWNvbiIgYWRkdGhpczpkZXNjcmlwdGlvbj0iQW4gQW1lcmljYW4gY29tcHV0ZXIgaGFja2VyIG9wZXJhdGluZyBpbiBTb3V0aGVhc3QgQXNpYSBhdHRlbXB0cyB0byBicmVhayBhIFdvcmxkIFdhciBJSSBjeXBoZXIgdG8gZmluZCB0aGUgbG9jYXRpb24gb2YgYSBtaXNzaW5nIHNoaXBtZW50IG9mIGdvbGQgVGhlIGdvbGQgd2FzIHN0b2xlbiBieSB0aGUgSmFwYW5lc2UgZHVyaW5nIHRoZSB3YXIgQnkgdGhlIGF1dGhvciBvZiBUaGUgRGlhbW9uZCBBZ2UgIiBocmVmPSJodHRwczovL3d3dy5hZGR0aGlzLmNvbS9ib29rbWFyay5waHA/dj0yNTAmYW1wO3B1YmlkPURlbnZlclBvbGFyaXMiIGNsYXNzPSJhZGR0aGlzX2J1dHRvbl9tb3JlIj5TaGFyZTwvYT4NCjxhIGFkZHRoaXM6dXJsPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9zZWFyY2gvdGl0bGUuYXNweD9jdHg9MS4xMDMzLjAuMC42JmNuPTM0NjgwMiIgYWRkdGhpczp0aXRsZT0iQ3J5cHRvbm9taWNvbiIgYWRkdGhpczpkZXNjcmlwdGlvbj0iQW4gQW1lcmljYW4gY29tcHV0ZXIgaGFja2VyIG9wZXJhdGluZyBpbiBTb3V0aGVhc3QgQXNpYSBhdHRlbXB0cyB0byBicmVhayBhIFdvcmxkIFdhciBJSSBjeXBoZXIgdG8gZmluZCB0aGUgbG9jYXRpb24gb2YgYSBtaXNzaW5nIHNoaXBtZW50IG9mIGdvbGQgVGhlIGdvbGQgd2FzIHN0b2xlbiBieSB0aGUgSmFwYW5lc2UgZHVyaW5nIHRoZSB3YXIgQnkgdGhlIGF1dGhvciBvZiBUaGUgRGlhbW9uZCBBZ2UgIiBocmVmPSJodHRwczovL3d3dy5hZGR0aGlzLmNvbS9ib29rbWFyay5waHA/dj0yNTAmYW1wO3B1YmlkPURlbnZlclBvbGFyaXMiIGNsYXNzPSJhZGR0aGlzX2J1dHRvbl9lbWFpbCI+PC9hPg0KPGEgYWRkdGhpczp1cmw9Imh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnL3NlYXJjaC90aXRsZS5hc3B4P2N0eD0xLjEwMzMuMC4wLjYmY249MzQ2ODAyIiBhZGR0aGlzOnRpdGxlPSJDcnlwdG9ub21pY29uIiBhZGR0aGlzOmRlc2NyaXB0aW9uPSJBbiBBbWVyaWNhbiBjb21wdXRlciBoYWNrZXIgb3BlcmF0aW5nIGluIFNvdXRoZWFzdCBBc2lhIGF0dGVtcHRzIHRvIGJyZWFrIGEgV29ybGQgV2FyIElJIGN5cGhlciB0byBmaW5kIHRoZSBsb2NhdGlvbiBvZiBhIG1pc3Npbmcgc2hpcG1lbnQgb2YgZ29sZCBUaGUgZ29sZCB3YXMgc3RvbGVuIGJ5IHRoZSBKYXBhbmVzZSBkdXJpbmcgdGhlIHdhciBCeSB0aGUgYXV0aG9yIG9mIFRoZSBEaWFtb25kIEFnZSAiIGhyZWY9Imh0dHBzOi8vd3d3LmFkZHRoaXMuY29tL2Jvb2ttYXJrLnBocD92PTI1MCZhbXA7cHViaWQ9RGVudmVyUG9sYXJpcyIgY2xhc3M9ImFkZHRoaXNfYnV0dG9uX3R3aXR0ZXIiPjwvYT4NCjxhIGFkZHRoaXM6dXJsPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9zZWFyY2gvdGl0bGUuYXNweD9jdHg9MS4xMDMzLjAuMC42JmNuPTM0NjgwMiIgaHJlZj0iaHR0cHM6Ly93d3cuYWRkdGhpcy5jb20vYm9va21hcmsucGhwP3Y9MjUwJmFtcDtwdWJpZD1EZW52ZXJQb2xhcmlzIiBjbGFzcz0iYWRkdGhpc19idXR0b25fZmFjZWJvb2siPjwvYT4NCjxhIGFkZHRoaXM6dXJsPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9zZWFyY2gvdGl0bGUuYXNweD9jdHg9MS4xMDMzLjAuMC42JmNuPTM0NjgwMiIgYWRkdGhpczp0aXRsZT0iQ3J5cHRvbm9taWNvbiIgYWRkdGhpczpkZXNjcmlwdGlvbj0iQW4gQW1lcmljYW4gY29tcHV0ZXIgaGFja2VyIG9wZXJhdGluZyBpbiBTb3V0aGVhc3QgQXNpYSBhdHRlbXB0cyB0byBicmVhayBhIFdvcmxkIFdhciBJSSBjeXBoZXIgdG8gZmluZCB0aGUgbG9jYXRpb24gb2YgYSBtaXNzaW5nIHNoaXBtZW50IG9mIGdvbGQgVGhlIGdvbGQgd2FzIHN0b2xlbiBieSB0aGUgSmFwYW5lc2UgZHVyaW5nIHRoZSB3YXIgQnkgdGhlIGF1dGhvciBvZiBUaGUgRGlhbW9uZCBBZ2UgIiBocmVmPSJodHRwczovL3d3dy5hZGR0aGlzLmNvbS9ib29rbWFyay5waHA/dj0yNTAmYW1wO3B1YmlkPURlbnZlclBvbGFyaXMiIGNsYXNzPSJhZGR0aGlzX2J1dHRvbl9nb29nbGUiPjwvYT4NCjxhIGFkZHRoaXM6dXJsPSJodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy9zZWFyY2gvdGl0bGUuYXNweD9jdHg9MS4xMDMzLjAuMC42JmNuPTM0NjgwMiIgYWRkdGhpczp0aXRsZT0iQ3J5cHRvbm9taWNvbiIgYWRkdGhpczpkZXNjcmlwdGlvbj0iQW4gQW1lcmljYW4gY29tcHV0ZXIgaGFja2VyIG9wZXJhdGluZyBpbiBTb3V0aGVhc3QgQXNpYSBhdHRlbXB0cyB0byBicmVhayBhIFdvcmxkIFdhciBJSSBjeXBoZXIgdG8gZmluZCB0aGUgbG9jYXRpb24gb2YgYSBtaXNzaW5nIHNoaXBtZW50IG9mIGdvbGQgVGhlIGdvbGQgd2FzIHN0b2xlbiBieSB0aGUgSmFwYW5lc2UgZHVyaW5nIHRoZSB3YXIgQnkgdGhlIGF1dGhvciBvZiBUaGUgRGlhbW9uZCBBZ2UgIiBocmVmPSJodHRwczovL3d3dy5hZGR0aGlzLmNvbS9ib29rbWFyay5waHA/dj0yNTAmYW1wO3B1YmlkPURlbnZlclBvbGFyaXMiIGNsYXNzPSJhZGR0aGlzX2J1dHRvbl9ibG9nZ2VyIj48L2E+DQo8YSBhZGR0aGlzOnVybD0iaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvc2VhcmNoL3RpdGxlLmFzcHg/Y3R4PTEuMTAzMy4wLjAuNiZjbj0zNDY4MDIiIGFkZHRoaXM6dGl0bGU9IkNyeXB0b25vbWljb24iIGFkZHRoaXM6ZGVzY3JpcHRpb249IkFuIEFtZXJpY2FuIGNvbXB1dGVyIGhhY2tlciBvcGVyYXRpbmcgaW4gU291dGhlYXN0IEFzaWEgYXR0ZW1wdHMgdG8gYnJlYWsgYSBXb3JsZCBXYXIgSUkgY3lwaGVyIHRvIGZpbmQgdGhlIGxvY2F0aW9uIG9mIGEgbWlzc2luZyBzaGlwbWVudCBvZiBnb2xkIFRoZSBnb2xkIHdhcyBzdG9sZW4gYnkgdGhlIEphcGFuZXNlIGR1cmluZyB0aGUgd2FyIEJ5IHRoZSBhdXRob3Igb2YgVGhlIERpYW1vbmQgQWdlICIgaHJlZj0iaHR0cHM6Ly93d3cuYWRkdGhpcy5jb20vYm9va21hcmsucGhwP3Y9MjUwJmFtcDtwdWJpZD1EZW52ZXJQb2xhcmlzIiBjbGFzcz0iYWRkdGhpc19idXR0b25fbGl2ZSI+PC9hPg0KPGEgdGFyZ2V0PSJfYmxhbmsiIGhyZWY9Imh0dHA6Ly9waW50ZXJlc3QuY29tL3Bpbi9jcmVhdGUvYnV0dG9uLz91cmw9aHR0cCUzYSUyZiUyZmNhdGFsb2cuZGVudmVybGlicmFyeS5vcmclMmZzZWFyY2glMmZ0aXRsZS5hc3B4JTNmY3R4JTNkMS4xMDMzLjAuMC42JTI2Y24lM2QzNDY4MDImbWVkaWE9aHR0cHMlM2ElMmYlMmZzZWN1cmUuc3luZGV0aWNzLmNvbSUyZmluZGV4LmFzcHglM2Zpc2JuJTNkOTc4MDA2MDUxMjgwNCUyZlNDLkdJRiUyNmNsaWVudCUzZGRlbnZwJTI2dXBjJTNkJTI2b2NsYyUzZDUwOTg5NDEzJmRlc2NyaXB0aW9uPUNyeXB0b25vbWljb24iIGRhdGEtcGluLWRvPSJidXR0b25QaW4iIGRhdGEtcGluLWNvbmZpZz0ibm9uZSI+PGltZyBzdHlsZT0id2lkdGg6MTVweDsgaGVpZ2h0OjE2cHg7IiBib3JkZXI9IjAiIHNyYz0iaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvdGhlbWVzL3NoYXJlZC9waW50cmVzdDMyLmpwZyIgdGl0bGU9IlBpbiBJdCIgLz48L2E+ZAJQD2QWAmYPFQMNOTc4MDA2MDUxMjgwNAAAZAJRDxYCHwBnFgJmDxUBDTk3ODAwNjA1MTI4MDRkAlQPZBYCZg8UKwIeBTRodHRwOi8vY2hpbGlmcmVzaC5jb20vY29ubmVjdGlvbnMvb3BhYy9jaGlsaWZyZXNoLmpzZWVlBSFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8FATEFIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwUBMQUhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvBQExBSFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8FATEFImh0dHBzOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8FATEFImh0dHBzOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8FATEFImh0dHBzOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8FATEFIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwUBMQUhaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvBQExBSFodHRwOi8vY2F0YWxvZy5kZW52ZXJsaWJyYXJ5Lm9yZy8FATEFIWh0dHA6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwUBMQUiaHR0cHM6Ly9jYXRhbG9nLmRlbnZlcmxpYnJhcnkub3JnLwU9aHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvdGhlbWVzL3NoYXJlZC9jaGlsaWZyZXNoLmNzc2VkZAJVD2QWAmYPFQIAAGQCVg9kFgJmDxUBAGQCBQ9kFgZmD2QWAmYPFQJSaHR0cDovL2NhdGFsb2cuZGVudmVybGlicmFyeS5vcmcvZGVmYXVsdC5hc3B4P2N0eD1fX29yZ2lkX18uMTAzMy4wLjAuNiZvcmdTZWxlY3Q9MXdKYXZhU2NyaXB0IGhhcyBiZWVuIGRpc2FibGVkIGluIHlvdXIgYnJvd3Nlci4gUGxlYXNlIGVuYWJsZSBKYXZhU2NyaXB0IGluIG9yZGVyIHRvIGVuam95IGFsbCB0aGUgZmVhdHVyZXMgb2YgdGhpcyBzaXRlLmQCAg8WAh8AZxYCZg8VAQtVQS0xMzEwNzYtN2QCAw9kFgJmDxUBAGRkMf3XgIX0Ga8k9g4RnMV+Bx5f+iM5B6nSCkkT7lAVzU8=" />
+
+    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7C57FFAA" />
+
+
+
+    <script language="javascript">
+        <!--
+        function set_sessionOrgID(varNewOrgID)
+        {
+            var strURLTemplate = "http://catalog.denverlibrary.org/default.aspx?ctx=__orgid__.1033.0.0.6&orgSelect=1";
+            var strURL = strURLTemplate.replace("__orgid__", varNewOrgID);
+            location.replace(strURL);
+        }
+
+        $(document).ready(function ()
+        {
+            $(".help-content").fancybox(
+                    {
+                        'transitionIn': 'elastic',
+                        'transitionOut': 'fade',
+                        'overlayOpacity': 0.2,
+                        'width': 800,
+                        'height': 500,
+                        'type': 'iframe'
+                    });
+        });
+        //-->
+    </script>
+
+    <noscript>
+        <div style="background-color: #ffffcc; border: 2px solid Red; padding: 10px; text-align: center; font-family : Verdana, Arial, Helvetica; font-size: 14px;">
+            JavaScript has been disabled in your browser. Please enable JavaScript in order to enjoy all the features of this site.
+        </div>
+    </noscript>
+
+
+
+    <?xml version="1.0" encoding="utf-16"?><div id="header-top-options-container"><div id="header-top-options-content"><div class="SkipNav"><a href="#maincontent">Skip to main content</a><a href="#mainmenu">Skip to main menu</a></div><div class="header-top-options-label"><div><a class="header-top-options-label-link" href="#" onmouseover="menuOpen('idHeaderLanguages')" onmouseout="menuCloseTime()"><img border="0" src="http://catalog.denverlibrary.org/themes/shared/language_icon.gif" alt="Language" />
+    Language
+</a></div><div id="idHeaderLanguages" class="header-top-options-droplist" onmouseover="menuCancelCloseTime()" onmouseout="menuCloseTime()"><div>English</div><a href="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.3082.0.0.6&amp;pos=1">Español</a></div></div><div class="header-top-options-tab-right"> </div><div style="float: right; padding-right: 5px;" /></div></div><div id="header-banner-container"><div id="header-banner-content"><table width="1%" cellspacing="0" cellpadding="0" border="0" align="left"><tr><td><a href="http://denverlibrary.org"><img border="0" src="http://catalog.denverlibrary.org/dpl_org_logo_polaris.png" alt="Polaris" title="Polaris" /></a></td></tr></table><div style="clear: both;" /><div id="header-menu-container"><table border="0" cellspacing="0" cellpadding="0" align="center"><tr><td nowrap="nowrap"><ul class="header-menu-main"><li><a href="http://denverlibrary.org/?ctx=1.1033.0.0.6">DPL Home</a></li><li><a href="http://catalog.denverlibrary.org/default.aspx?ctx=1.1033.0.0.6&amp;Header=1">Catalog</a></li><li class="header-menu-main-selected"><a onmouseout="childOnMouseOut(this, event, 'menuCloseTime()');" onclick="&#xA;                          menuOpen('idMenu2')&#xA;                        ">Search<img border="0" alt="" src="http://catalog.denverlibrary.org/themes/shared/arrow_down_menu.gif" /></a><div onmouseover="menuCancelCloseTime()" onmouseout="menuCloseTime()" id="idMenu2" style="z-index:30;"><a href="http://catalog.denverlibrary.org/search/default.aspx?ctx=1.1033.0.0.6&amp;type=Keyword">Keyword</a><a href="http://catalog.denverlibrary.org/search/default.aspx?ctx=1.1033.0.0.6&amp;amp;type=Browse">Browse</a><a href="http://catalog.denverlibrary.org/search/default.aspx?ctx=1.1033.0.0.6&amp;type=Advanced">Advanced</a><a href="http://catalog.denverlibrary.org/search/titlelist.aspx?ctx=1.1033.0.0.6">My Lists</a></div></li><li><a onmouseout="childOnMouseOut(this, event, 'menuCloseTime()');" onclick="&#xA;                          menuOpen('idMenu4')&#xA;                        ">My Account<img border="0" alt="" src="http://catalog.denverlibrary.org/themes/shared/arrow_down_menu.gif" /></a><div onmouseover="menuCancelCloseTime()" onmouseout="menuCloseTime()" id="idMenu4" style="z-index:30;"><a href="https://catalog.denverlibrary.org/patronaccount/default.aspx?ctx=1.1033.0.0.6">My Account</a><a href="https://catalog.denverlibrary.org/patronaccount/itemsout.aspx?ctx=1.1033.0.0.6">Items Out</a><a href="https://catalog.denverlibrary.org/patronaccount/requests.aspx?ctx=1.1033.0.0.6">Holds</a><a href="https://catalog.denverlibrary.org/patronaccount/finesfees.aspx?ctx=1.1033.0.0.6">Fines &amp; Fees</a><a href="https://catalog.denverlibrary.org/patronaccount/searchagent.aspx?ctx=1.1033.0.0.6">Saved Searches</a><a href="https://catalog.denverlibrary.org/logon.aspx?ctx=1.1033.0.0.6&amp;Header=1">Sign In</a></div></li><li><a href="http://downloadmedia.denverlibrary.org/?ctx=1.1033.0.0.6">eBooks</a></li><li><a href="http://www.denverlibrary.org/content/didnt-find-it?ctx=1.1033.0.0.6">Didn't Find It?</a></li><li><a onmouseout="childOnMouseOut(this, event, 'menuCloseTime()');" onclick="&#xA;                          menuOpen('idMenu99')&#xA;                        ">Help<img border="0" alt="" src="http://catalog.denverlibrary.org/themes/shared/arrow_down_menu.gif" /></a><div onmouseover="menuCancelCloseTime()" onmouseout="menuCloseTime()" id="idMenu99" style="margin-left: -150px; height: 300px; overflow: auto; z-index:30;"><a href="http://espanol.denverlibrary.org/tu-biblioteca" class="help-content">Para ayuda en español</a><a href="http://catalog.denverlibrary.org/help/content/1033/keyword.htm" class="help-content">Keyword Searches</a><a href="http://catalog.denverlibrary.org/help/content/1033/advanced.htm" class="help-content">Advanced Searches</a><a href="http://catalog.denverlibrary.org/help/content/1033/browse.htm" class="help-content">Browse the Catalog</a><a href="http://catalog.denverlibrary.org/help/content/1033/savingsearches.htm" class="help-content">Saving Searches</a><a href="http://catalog.denverlibrary.org/help/content/1033/titlelists.htm" class="help-content">Save Results with Title Lists</a><a href="http://catalog.denverlibrary.org/help/content/1033/request.htm" class="help-content">Place Holds</a><a href="http://catalog.denverlibrary.org/help/content/1033/newaccount.htm" class="help-content">Set Up a New Account</a><a href="http://catalog.denverlibrary.org/help/content/1033/username.htm" class="help-content">Create a User Name</a><a href="http://catalog.denverlibrary.org/help/content/1033/acctupdates.htm" class="help-content">Edit My Account</a><a href="http://catalog.denverlibrary.org/help/content/1033/acctrequests.htm" class="help-content">Manage My Holds</a><a href="http://catalog.denverlibrary.org/help/content/1033/acctitemsout.htm" class="help-content">Checkouts and Renewals</a><a href="http://catalog.denverlibrary.org/help/content/1033/acctfines.htm" class="help-content">Fines and Fees</a><a href="http://denverlibrary.org/ask" class="help-content">Ask Us</a><a href="http://catalog.denverlibrary.org/help/default.aspx?Header=1">All Topics...</a></div></li><li><a href="http://catalog.denverlibrary.org/Mobile/?ctx=1.1033.0.0.6">Mobile</a></li></ul></td></tr></table></div></div></div><div id="header-main-container"><div id="header-main-content">
+
+
+
+
+
+
+
+
+    <div class="navigation-panel">
+        <div class="navigation-segment" style="float: left;"><a href="http://catalog.denverlibrary.org/Search/dispatch.aspx?ctx=1.1033.0.0.6&action=4&page=0&pos=1">&lt;&lt; Return to List</a></div>
+
+        <div class="navigation-segment" style="float: right;">
+            Displaying 1 of 1
+        </div>
+
+        <div style="clear: both"></div>
+    </div>
+    <a name="maincontent"></a>
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        function processDynamicLinksResponse(booksInfo) {
+            for (id in booksInfo) {
+                if (booksInfo[id] && booksInfo[id].preview == 'partial' && booksInfo[id].embeddable == true)
+                {
+                    $('.gbs-preview-div').each(function () {
+                        if ($(this).attr('id').indexOf(id) != -1)
+                            $(this).show();
+                    });
+                }
+            }
+
+            $('.gbs-preview-link').fancybox({
+                'transitionIn': 'elastic',
+                'transitionOut': 'fade',
+                'overlayOpacity': 0.2,
+                'width': 850,
+                'height': '95%',
+                'type': 'iframe'
+            });
+        }
+    </script>
+
+
+
+    <script type="text/javascript" src="https://assets.pinterest.com/js/pinit.js"></script>
+
+
+    <table width="100%" cellpadding="0" cellspacing="0" width="0">
+        <tr>
+            <td class="CenterPanel" valign="top" width="100%">
+
+                <div class="results-title-container">
+                    <div style="float: left; text-align: center">
+
+                        <!-- Cover Image -->
+
+                        <img class="thumbnail" src="https://secure.syndetics.com/index.aspx?isbn=9780060512804/MC.GIF&client=denvp&upc=&oclc=50989413" alt="Cryptonomicon" title="Cryptonomicon" />
+
+                        <!-- ChiliFresh Ratings -->
+
+
+
+                        <!-- LibraryThing Ratings -->
+
+
+
+                        <!-- Google Preview -->
+
+
+                        <div class="gbs-preview-div" id="gbs_ISBN:9780060512804_1">
+                            <a class="gbs-preview-link" href="http://catalog.denverlibrary.org/search/components/ajaxGooglePreview.aspx?isbn=ISBN:9780060512804">
+                                <img src="http://catalog.denverlibrary.org/themes/shared/gbs_preview_button.gif" alt="Google Books Preview" title="Google Books Preview" border="0" />
+                            </a>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                    <div id="plres_1" class="results-title-full">
+                        <table class="nsm-full-record" cellspacing="5">
+                            <tr class="nsm-full-standard-group">
+                                <td class="nsm-full-label">Title:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e35">
+                                <a class="nsm-browse-link" href="../search/browse.aspx?ctx=1.1033.0.0.6&amp;type=Browse&amp;by=TI&amp;term=Cryptonomicon+%2f&amp;page=0"><span class="nsm-browse-text">Cryptonomicon /</span> Neal Stephenson.</a>
+                            </div></td>
+                            </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Author:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e18">
+                            <a class="nsm-browse-link" href="../search/browse.aspx?ctx=1.1033.0.0.6&amp;type=Browse&amp;by=AU&amp;term=Stephenson%2c+Neal.&amp;page=0"><span class="nsm-browse-text">Stephenson, Neal.</span></a>
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Format:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e17">
+                            Book
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Call Number:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e13">
+                            STEPHENSON
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Publisher, Date:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e2">
+                            New York : Avon Books, 2002, c1999.
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Description:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e3">
+                            1152 p. ; 18 cm.
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Summary:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e9">
+                            An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold. The gold was stolen by the Japanese during the war. By the author of The Diamond Age.
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Subjects:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e20">
+                            <a class="nsm-browse-link" href="../search/browse.aspx?ctx=1.1033.0.0.6&amp;type=Browse&amp;by=SU&amp;term=World+War%2c+1939-1945+--+Cryptography+--+Fiction.&amp;page=0"><span class="nsm-browse-text">World War, 1939-1945 -- Cryptography -- Fiction.</span></a>
+                        </div><div class="nsm-long-item nsm-e20">
+                            <a class="nsm-browse-link" href="../search/browse.aspx?ctx=1.1033.0.0.6&amp;type=Browse&amp;by=SU&amp;term=Data+encryption+(Computer+science)+--+Fiction.&amp;page=0"><span class="nsm-browse-text">Data encryption (Computer science) -- Fiction.</span></a>
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Genre:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e27">
+                            <a class="nsm-browse-link" href="../search/browse.aspx?ctx=1.1033.0.0.6&amp;type=Browse&amp;by=SU&amp;term=Adventure+fiction.&amp;page=0"><span class="nsm-browse-text">Adventure fiction.</span></a>
+                        </div><div class="nsm-long-item nsm-e27">
+                            <a class="nsm-browse-link" href="../search/browse.aspx?ctx=1.1033.0.0.6&amp;type=Browse&amp;by=SU&amp;term=Suspense+fiction.&amp;page=0"><span class="nsm-browse-text">Suspense fiction.</span></a>
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Other Title:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e22">
+                            <a class="nsm-browse-link" href="../search/browse.aspx?ctx=1.1033.0.0.6&amp;type=Browse&amp;by=TI&amp;term=Crypto-nomicon&amp;page=0"><span class="nsm-browse-text">Crypto-nomicon</span></a>
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">Notes:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e28">
+                            Editions vary.
+                        </div></td>
+                        </tr><tr class="nsm-full-standard-group">
+                            <td class="nsm-full-label">ISBN:</td><td class="nsm-full-content"><div class="nsm-long-item nsm-e6">
+                            9780060512804 (pbk.)
+                        </div><div class="nsm-long-item nsm-e6">
+                            0060512806
+                        </div><div class="nsm-long-item nsm-e6">
+                            <span class="nsm-hit-text">0380973464</span> (hardcover)
+                        </div><div class="nsm-long-item nsm-e6">
+                            9780380973460 (hardcover)
+                        </div></td>
+                        </tr>
+                        </table>
+
+                    </div>
+
+
+
+                    <div style="clear: both; padding-top: 20px; padding-bottom: 200px;">
+                        <div style="text-align: right"><a href="javascript:openAllDrawers()">Expand All</a> | <a href="javascript:closeAllDrawers()">Collapse All</a></div>
+
+
+
+
+                        <div id="id-drawer-head-availability" class="drawer-head drawer-head-open" tabindex="0">Find It</div>
+                        <div id="id-drawer-body-availability" class="drawer-body">
+                        </div>
+                        <script language="javascript">
+                            setDrawerHandler('availability', '');
+                            $('#id-drawer-body-availability').load('http://catalog.denverlibrary.org/search/components/ajaxavailability.aspx?fp=0&level=local&morelink=0&pos=1&bibid=346802');
+                        </script>
+
+                        <div id="id-drawer-head-syndeticssummary" class="drawer-head" tabindex="0">Summary</div>
+                        <div id="id-drawer-body-syndeticssummary" class="drawer-body" style="display: none">
+                        </div>
+
+                        <script language="javascript">
+                            setDrawerHandler('syndeticssummary', 'http://catalog.denverlibrary.org/search/components/ajaxSyndetics.aspx?type=29&file=SUMMARY.XML&ids=9780060512804||50989413');
+                        </script>
+
+                        <div id="id-drawer-head-syndeticsreviews" class="drawer-head" tabindex="0">Reviews</div>
+                        <div id="id-drawer-body-syndeticsreviews" class="drawer-body" style="display: none">
+                        </div>
+
+                        <script language="javascript">
+                            setDrawerHandler('syndeticsreviews', 'http://catalog.denverlibrary.org/search/components/ajaxSyndetics.aspx?type=23&file=&ids=9780060512804||50989413');
+                        </script>
+
+                        <div id="id-drawer-head-syndeticsexcerpt" class="drawer-head" tabindex="0">First Chapter or Excerpt</div>
+                        <div id="id-drawer-body-syndeticsexcerpt" class="drawer-body" style="display: none">
+                        </div>
+
+                        <script language="javascript">
+                            setDrawerHandler('syndeticsexcerpt', 'http://catalog.denverlibrary.org/search/components/ajaxSyndetics.aspx?type=20&file=DBCHAPTER.XML&ids=9780060512804||50989413');
+                        </script>
+
+                        <div id="id-drawer-head-syndeticsfiction" class="drawer-head" tabindex="0">Fiction/Biography Profile</div>
+                        <div id="id-drawer-body-syndeticsfiction" class="drawer-body" style="display: none">
+                        </div>
+
+                        <script language="javascript">
+                            setDrawerHandler('syndeticsfiction', 'http://catalog.denverlibrary.org/search/components/ajaxSyndetics.aspx?type=21&file=FICTION.XML&ids=9780060512804||50989413');
+                        </script>
+
+                        <div id="id-drawer-head-syndeticslc" class="drawer-head" tabindex="0">Large Cover Image</div>
+                        <div id="id-drawer-body-syndeticslc" class="drawer-body" style="display: none">
+                        </div>
+
+                        <script language="javascript">
+                            setDrawerHandler('syndeticslc', 'http://catalog.denverlibrary.org/search/components/ajaxSyndetics.aspx?type=22&file=LC.JPG&ids=9780060512804||50989413');
+                        </script>
+
+                        <div id="id-drawer-head-marc" class="drawer-head" tabindex="0">Librarian's View</div>
+                        <div id="id-drawer-body-marc" class="drawer-body" style="display: none">
+                        </div>
+
+                        <script language="javascript">
+                            setDrawerHandler('marc', 'http://catalog.denverlibrary.org/search/components/ajaxMARC.aspx?fp=0&pos=1');
+                        </script>
+
+
+                    </div>
+
+            </td>
+            <td valign="top" width="1%" class="RightPanel">
+                <div id="body-dashboard-right" style="padding: 15px 0px 15px 0px;">
+
+
+                    <div>
+                        <!-- Hold Request -->
+
+                        <div class="results-title-action-button">
+                            <a href="https://catalog.denverlibrary.org/Search/request.aspx?pos=1&new=1" class="results-title-link">
+                                Place Hold
+                            </a>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <script language="javascript">                            function showSpecialHold() { $('#divSpecialHold').slideToggle(); } </script>
+
+                    <div id="divSpecialHold" style="display: none; border: 1px solid #ccc; background-color: #ffffdd; padding: 5px; margin: 5px; text-align: left">
+                        Please select and request a specific volume by clicking one of the <img src="http://catalog.denverlibrary.org/themes/shared/request.gif"> icons in the 'Find It' section below.
+                    </div>
+
+
+
+
+
+
+                    <!-- 3M Cloud Library logo -->
+
+
+
+
+
+                    <a class="marcview" href="http://catalog.denverlibrary.org/search/components/ajaxMARC.aspx?fp=1&pos=1">
+                        <img src="https://catalog.denverlibrary.org/custom/themes/denver/formats/formatid01.gif" alt="Book" title="Book" border="0"/>
+                    </a>
+
+
+                    <div class="ResultsDate">2002</div>
+                    <br />
+
+                    <span style="white-space: nowrap"><span id=addtolist_1><a class=AddToList href="javascript:AddToList(43, 1, '346802', '', '', '')">Add to My List</a>&nbsp;&nbsp;</span></span>
+
+                    <br />
+
+
+                    <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=DenverPolaris"></script>
+                    <div class="addthis_toolbox addthis_default_style" style="padding: 25px 0px 0px 8px;">
+                        <a addthis:url="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&cn=346802" addthis:title="Cryptonomicon" addthis:description="An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold The gold was stolen by the Japanese during the war By the author of The Diamond Age " href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=DenverPolaris" class="addthis_button_more">Share</a>
+                        <a addthis:url="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&cn=346802" addthis:title="Cryptonomicon" addthis:description="An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold The gold was stolen by the Japanese during the war By the author of The Diamond Age " href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=DenverPolaris" class="addthis_button_email"></a>
+                        <a addthis:url="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&cn=346802" addthis:title="Cryptonomicon" addthis:description="An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold The gold was stolen by the Japanese during the war By the author of The Diamond Age " href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=DenverPolaris" class="addthis_button_twitter"></a>
+                        <a addthis:url="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&cn=346802" href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=DenverPolaris" class="addthis_button_facebook"></a>
+                        <a addthis:url="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&cn=346802" addthis:title="Cryptonomicon" addthis:description="An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold The gold was stolen by the Japanese during the war By the author of The Diamond Age " href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=DenverPolaris" class="addthis_button_google"></a>
+                        <a addthis:url="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&cn=346802" addthis:title="Cryptonomicon" addthis:description="An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold The gold was stolen by the Japanese during the war By the author of The Diamond Age " href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=DenverPolaris" class="addthis_button_blogger"></a>
+                        <a addthis:url="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&cn=346802" addthis:title="Cryptonomicon" addthis:description="An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold The gold was stolen by the Japanese during the war By the author of The Diamond Age " href="https://www.addthis.com/bookmark.php?v=250&amp;pubid=DenverPolaris" class="addthis_button_live"></a>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fcatalog.denverlibrary.org%2fsearch%2ftitle.aspx%3fctx%3d1.1033.0.0.6%26cn%3d346802&media=https%3a%2f%2fsecure.syndetics.com%2findex.aspx%3fisbn%3d9780060512804%2fSC.GIF%26client%3ddenvp%26upc%3d%26oclc%3d50989413&description=Cryptonomicon" data-pin-do="buttonPin" data-pin-config="none"><img style="width:15px; height:16px;" border="0" src="http://catalog.denverlibrary.org/themes/shared/pintrest32.jpg" title="Pin It" /></a>
+                    </div>
+
+                </div>
+                <div style="clear: both"></div>
+
+
+
+                <script language="javascript">
+
+                    function setDashboardHeader(idHead, idBody) {
+                        if (document.getElementById(idHead) && document.getElementById(idBody)) {
+                            $('#' + idHead).mouseover(function () { $('#' + idHead).addClass('dash-head-hover') });
+                            $('#' + idHead).mouseout(function () { $('#' + idHead).removeClass('dash-head-hover') });
+                            $('#' + idHead).click(function () { $('#' + idBody).slideToggle(400); $('#' + idHead).toggleClass('dash-head-open') });
+                            $('#' + idHead).keypress(function (e) { if (e.keyCode == 13) { $('#' + idBody).slideToggle(400); $('#' + idHead).toggleClass('dash-head-open'); return false; } });
+                        }
+                    }
+
+                    function RemoveFromTitleList(strPos)
+                    {
+                        strURL = "http://catalog.denverlibrary.org/Search/titlelist.aspx?delete=" + strPos + "&src=";
+                        strURL += "http%3a%2f%2fcatalog.denverlibrary.org%2fsearch%2ftitle.aspx%3fctx%3d1.1033.0.0.6%26pos%3d1";
+                        window.location = strURL;
+                    }
+
+                </script>
+
+                <div id="dashboards">
+
+
+
+
+
+
+
+
+
+                    <div id='dashTitleList'>
+
+                    </div>
+
+
+
+                    <img alt='' title='' src="http://catalog.denverlibrary.org/themes/shared/1x1.gif" width="200" height="1">
+
+                </div>
+
+
+            </td>
+        </tr>
+    </table>
+
+
+
+
+    <script src="//books.google.com/books?jscmd=viewapi&amp;bibkeys=ISBN:9780060512804&amp;callback=processDynamicLinksResponse"></script>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            GetRestrictedWrapper();
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <?xml version="1.0" encoding="utf-16"?></div></div><div id="footer-container"><div id="footer-content"><a name="mainmenu" style="display: none">menu</a><div class="footer-menu-section"><span class="footer-menu-heading">Language</span><br /><a class="footer-link-secondary" href="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.1033.0.0.6&amp;pos=1">English</a><br /><a class="footer-link-secondary" href="http://catalog.denverlibrary.org/search/title.aspx?ctx=1.3082.0.0.6&amp;pos=1">Español</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="http://denverlibrary.org/?ctx=1.1033.0.0.6">DPL Home</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="http://catalog.denverlibrary.org/default.aspx?ctx=1.1033.0.0.6&amp;Header=1">Catalog</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="http://catalog.denverlibrary.org/search/default.aspx?ctx=1.1033.0.0.6&amp;type=Default">Search</a><br /><a class="footer-link-secondary" href="http://catalog.denverlibrary.org/search/default.aspx?ctx=1.1033.0.0.6&amp;type=Keyword">Keyword</a><br /><a class="footer-link-secondary" href="http://catalog.denverlibrary.org/search/default.aspx?ctx=1.1033.0.0.6&amp;type=Browse">Browse</a><br /><a class="footer-link-secondary" href="http://catalog.denverlibrary.org/search/default.aspx?ctx=1.1033.0.0.6&amp;type=Advanced">Advanced</a><br /><a class="footer-link-secondary" href="http://catalog.denverlibrary.org/search/titlelist.aspx?ctx=1.1033.0.0.6">My Lists</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="https://catalog.denverlibrary.org/patronaccount/default.aspx?ctx=1.1033.0.0.6&amp;Header=1">My Account</a><br /><a class="footer-link-secondary" href="https://catalog.denverlibrary.org/patronaccount/default.aspx?ctx=1.1033.0.0.6">My Account</a><br /><a class="footer-link-secondary" href="https://catalog.denverlibrary.org/patronaccount/itemsout.aspx?ctx=1.1033.0.0.6">Items Out</a><br /><a class="footer-link-secondary" href="https://catalog.denverlibrary.org/patronaccount/requests.aspx?ctx=1.1033.0.0.6">Holds</a><br /><a class="footer-link-secondary" href="https://catalog.denverlibrary.org/patronaccount/finesfees.aspx?ctx=1.1033.0.0.6">Fines &amp; Fees</a><br /><a class="footer-link-secondary" href="https://catalog.denverlibrary.org/patronaccount/searchagent.aspx?ctx=1.1033.0.0.6">Saved Searches</a><br /><a class="footer-link-secondary" href="https://catalog.denverlibrary.org/logon.aspx?ctx=1.1033.0.0.6&amp;Header=1">Sign In</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="http://downloadmedia.denverlibrary.org/?ctx=1.1033.0.0.6">eBooks</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="http://www.denverlibrary.org/content/didnt-find-it?ctx=1.1033.0.0.6">Didn't Find It?</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="http://catalog.denverlibrary.org/help/default.aspx?ctx=1.1033.0.0.6&amp;Header=1">Help</a></div><div class="footer-menu-section"><a class="footer-link-primary" href="http://catalog.denverlibrary.org/Mobile/?ctx=1.1033.0.0.6">Mobile</a></div><div class="footer-copyright"><img border="0" src="http://catalog.denverlibrary.org/themes/shared/polaris_logo_small.png" alt="Polaris" /><br />
+    Version: 5.0R0 Build 191<br /></div></div></div><script type="text/javascript">
+
+    var bCookieEnabled = (navigator.cookieEnabled) ? true : false;
+    var navappnm = navigator.appName;
+
+    if (typeof navigator.cookieEnabled == "undefined")
+        if (!bCookieEnabled)
+        {
+            document.cookie = "TestCookie";
+            bCookieEnabled = (document.cookie.indexOf("TestCookie") != -1) ? true : false;
+        }
+
+    if (!bCookieEnabled) {
+        if (navappnm == "Netscape")
+        {
+            document.cookie = "TestCookie";
+            bCookieEnabled = (document.cookie.indexOf("TestCookie") != -1) ? true : false;
+        }
+    }
+
+
+    if (bCookieEnabled == false)
+        window.location = 'http://catalog.denverlibrary.org/nocookies.htm';
+
+
+
+
+    $(function() {
+
+        function parse_cookies() {
+            var dough = document.cookie ? document.cookie.split('; ') : [];
+            var cookies = {};
+            for (var i = 0, l = dough.length; i != l; i++) {
+                var parts = dough[i].split('=');
+                var name = parts.shift();
+                var value = parts.shift();
+                cookies[name] = value ? value : name;
+            }
+            return cookies;
+        }
+
+        if ($("#lstCountries").length) {
+            // Hide the country dropdown
+            $("#lstCountries").hide();
+
+            var cookies = parse_cookies();
+        }
+
+        if ($("#btnSubmitMainForm").length) {
+            // Get info about location from the user's IP
+            var ipinfo = {
+                region_name : 'n/a',
+                country_code : 'n/a',
+                zip_code : 'n/a'
+            };
+
+            $.get("https://freegeoip.net/json/", function( data ) {
+                ipinfo = data;
+            }, "jsonp");
+
+            var cookies = parse_cookies();
+        }
+
+        $("#formMain").submit(function(e) {
+            var capFields = new Array("txtNameFirst", "txtNameMiddle", "txtNameLast", "txtStreet1", "txtStreet2");
+            if (document.getElementsByName(capFields[0])[0]) {
+                var thisField = document.getElementsByName(capFields[0])[0];
+                thisField.value = thisField.value.toUpperCase();
+            }
+            if (document.getElementsByName(capFields[1])[0]) {
+                var thisField = document.getElementsByName(capFields[1])[0];
+                thisField.value = thisField.value.toUpperCase();
+            }
+            if (document.getElementsByName(capFields[2])[0]) {
+                var thisField = document.getElementsByName(capFields[2])[0];
+                thisField.value = thisField.value.toUpperCase();
+            }
+            if (document.getElementsByName(capFields[3])[0]) {
+                var thisField = document.getElementsByName(capFields[3])[0];
+                thisField.value = thisField.value.toUpperCase();
+            }
+            if (document.getElementsByName(capFields[4])[0]) {
+                var thisField = document.getElementsByName(capFields[4])[0];
+                thisField.value = thisField.value.toUpperCase();
+            }
+
+            if ($("#txtZipCode").length) {
+                var reportedPostal = $("#txtZipCode").val();
+                var re = /^8[01]\d{3}(?:-\d{4})?$/;
+                if (re.test(reportedPostal)) {
+                    document.cookie = 'reportedPostal=' + reportedPostal;
+                    document.cookie = 'pickupBranch=' + $( "#lstBranches option:selected" ).text();
+                    var referrer = document.referrer ? document.referrer : 'none';
+                    if (typeof cookies !== 'undefined') {
+                        referrer = cookies.mainReferrer ? cookies.mainReferrer : referrer;
+                    }
+                    if (referrer == 'none') {
+                        document.cookie = 'referrer=' + referrer;
+                    }
+                    else {
+                        // Get hostname only from referrer
+                        var anchor = document.createElement("a");
+                        anchor.href = referrer;
+                        document.cookie = 'referrer=' + anchor.hostname;
+                    }
+                }
+                else {
+                    // Stop submit and give a warning about not using a CO zip
+                    alert("You must live in a Colorado zip code to sign up for a card online");
+                    $("#txtZipCode").focus();
+                    e.preventDefault();
+                }
+            }
+
+            if ($('#btnSubmitMainForm').length) {
+                var year = $('input[name="txtBirthdateyyyy"]').val();
+                var month = $('input[name="txtBirthdatemm"]').val();
+                var day = $('input[name="txtBirthdatedd"]').val();
+                var birthdate = year + '-' + month + '-' + day;
+
+                // Send location info to spreadsheet
+                $.getJSON('https://docs.google.com/a/denverlibrary.org/forms/d/1dRLT2SydJ9Ke000TbA0NBzj5bm09T14DLi6N869Sf84/formResponse', {
+                    // Last Name
+                    'entry.899629424': $('input[name="txtNameLast"]').val() ? $('input[name="txtNameLast"]').val() : '',
+                    // First Name
+                    'entry.945164850': $('input[name="txtNameFirst"]').val() ? $('input[name="txtNameFirst"]').val() : '',
+                    // Email Address
+                    'entry.1927514281': $('input[name="txtEmail"]').val() ? $('input[name="txtEmail"]').val() : '',
+                    // Birthdate
+                    'entry.1534600304': birthdate,
+                    // Pickup Branch
+                    'entry.1302829634': cookies.pickupBranch ? cookies.pickupBranch : '',
+                    // User Entered Postal
+                    'entry.1448143478': cookies.reportedPostal ? cookies.reportedPostal : '',
+                    // Postal Code From IP Address
+                    'entry.628967890': ipinfo.zip_code ? ipinfo.zip_code : '',
+                    // Region From IP Address
+                    'entry.1950875513': ipinfo.region_name ? ipinfo.region_name : '',
+                    // Country From IP Address
+                    'entry.1206231769': ipinfo.country_code ? ipinfo.country_code : '',
+                    // Referring Page
+                    'entry.1354431288': cookies.referrer ? cookies.referrer : ''
+                });
+            }
+        });
+        if (document.getElementById('ctrlSearchBars_searchbarKeyword_dropdownSearchBy')) {
+            var sel = $("#ctrlSearchBars_searchbarKeyword_dropdownSearchBy");
+            if (sel.val() != "KW") {
+                sel.css("backgroundColor", "#FFFFAA");
+            }
+            var sel2 = $("#ctrlSearchBars_searchbarKeyword_dropdownLimitFilter");
+            if (sel2.val() == "TOM=*" || sel2.val() == "") {}
+            else{
+                sel2.css("backgroundColor", "#FFFFAA");
+            }
+        }
+    })
+
+</script>
+
+
+
+
+    <!-- Google Analytics BEGIN -->
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-131076-7");
+            pageTracker._trackPageview();
+        } catch (err) {}
+    </script>
+    <!-- Google Analytics END -->
+
+
+
+
+
+</form>
+
+</body>
+</html>

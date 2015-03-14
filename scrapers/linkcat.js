@@ -1,4 +1,6 @@
 var cheerio = require('cheerio');
+var stringUtils = require('./string_utils');
+
 
 var extractSearchResultUrls = function(searchPageHtml) {
     var $ = cheerio.load(searchPageHtml);
@@ -27,7 +29,7 @@ var extractBookProperties = function(bookPageHtml) {
     var reversedAuthorNames = [];
     $(authorNames).each(function(i, authorNameLink) {
         var authorNameText = $(authorNameLink).text();
-        var reversedNames = reverseNames(authorNameText);
+        var reversedNames = stringUtils.reverseNames(authorNameText);
         reversedAuthorNames.push(reversedNames);
     }); // 'Neal Stephenson'
     properties.authors = reversedAuthorNames;
@@ -78,8 +80,9 @@ var extractBookProperties = function(bookPageHtml) {
     var relatedIsbnsStrings = isbnText.match(/; [\d\w]+/g);
     var relatedIsbns = [];
     if (relatedIsbnsStrings) {
-        relatedIsbns = relatedIsbns.map(function(isbnText) {
-            return isbnText.replace('; ', '');
+        relatedIsbnsStrings.forEach(function(isbnText) {
+            var cleanedIsbn = isbnText.replace('; ', '');
+            relatedIsbns.push(cleanedIsbn);
         });
     }
     if (relatedIsbns.length > 0) {
@@ -103,15 +106,6 @@ var extractBookProperties = function(bookPageHtml) {
     }
     return properties;
 };
-
-var reverseNames = function(name) {
-    var commaIndex = name.indexOf(', ');
-    if (commaIndex === -1) {
-        return name;
-    }
-    return name.substring(commaIndex + 2).trim() + ' ' + name.substring(0, commaIndex).trim();
-};
-
 
 
 module.exports = {
