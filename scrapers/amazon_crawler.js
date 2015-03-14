@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 var SLEEP_TIME_MILLIS = 3000;
 var BASE_URL = 'http://amazon.com';
-var MONGO_URL = 'mongodb://localhost:27017/isbncollector';
+var config = require('../config');
 
 var Agent = require('socks5-http-client/lib/Agent');
 
@@ -116,7 +116,7 @@ var scrapeCategory = function(resultPageUrl) {
 
 
 var saveBookToMongo = function(bookProperties) {
-    MongoClient.connect(MONGO_URL, function(err, db) {
+    MongoClient.connect(config.MONGO_URL, function(err, db) {
         var collection = db.collection('books');
         collection.insert(bookProperties, {w: 1}, function(err, records) {
             if (!err) {

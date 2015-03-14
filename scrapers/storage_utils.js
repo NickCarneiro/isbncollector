@@ -1,11 +1,12 @@
 var MongoClient = require('mongodb').MongoClient;
-var MONGO_URL = 'mongodb://localhost:27017/isbncollector';
+var config = require('../config');
 var db;
+
 var saveBookToMongo = function(bookProperties) {
     if (db) {
         insertBook(bookProperties, db);
     } else {
-        MongoClient.connect(MONGO_URL, function (err, connection) {
+        MongoClient.connect(config.MONGO_URL, function (err, connection) {
             db = connection;
             insertBook(bookProperties, db);
         });
@@ -21,6 +22,7 @@ var insertBook = function(bookProperties, db) {
         }
     });
 };
+
 
 
 module.exports = {
