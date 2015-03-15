@@ -17,7 +17,7 @@ var getBook = function(bookId) {
         'Referer': 'http://catalog.denverlibrary.org/search/searchresults.aspx?ctx=1.1033.0.0.6&type=Keyword&term=*&by=KW&sort=RELEVANCE&limit=TOM=bks%20AND%20call%3C%3Eebook&query=&page=0&searchid=2',
         'Connection': 'keep-alive',
         'Cache-Control': 'max-age=0',
-        'Cookie': 'ASP.NET_SessionId=kozd2hrwem2wu1xpp1yzlfl5; OrgID=1; __utma=125080728.1239865699.1426358656.1426358656.1426358656.1; __utmc=125080728; __utmz=125080728.1426358656.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __atuvc=1%7C10'
+        'Cookie': 'ASP.NET_SessionId=kozd2hrwem2wu1xpp1yzlfl5; OrgID=1; __atuvc=11%7C10; __utmt=1; __utma=125080728.1239865699.1426358656.1426369179.1426378455.4; __utmb=125080728.4.10.1426378455; __utmc=125080728; __utmz=125080728.1426358656.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)'
     };
 
     var options = {
@@ -31,21 +31,21 @@ var getBook = function(bookId) {
     };
 
     function callback(error, response, body) {
-        console.log('bookId: ' + bookId);
         if (!error && response.statusCode == 200) {
             var properties = denver.extractBookProperties(body);
-            console.log(properties.title);
+            console.log(bookId + ' --- ' + properties.title);
             if ((properties.isbn10 || properties.isbn13) && properties.title) {
                 //save to mongo
                 storageUtils.saveBookToMongo(properties);
+                console.log(properties.isbn10 ? properties.isbn10 : properties.isbn13);
             } else {
                 console.log('no title or isbn');
             }
         }
-        setTimeout(getBook(bookId + 1), SLEEP_TIME_MILLIS);
+        setTimeout(getBook(parseInt(bookId) + 1), SLEEP_TIME_MILLIS);
     }
 
     request(options, callback);
 };
 
-getBook();
+getBook(process.argv[2]);

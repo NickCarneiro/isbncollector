@@ -89,13 +89,14 @@ var extractBookProperties = function(bookPageHtml) {
     if (publisherText) {
         // This combined publisher/date field is too difficult to parse
         properties.publisher = publisherText;
-    }
 
-    var publicationYearMatches = publisherText.match(/(\d{4})/);
-    if (publicationYearMatches) {
-        var publicationYear = publicationYearMatches[0];
+
+        var publicationYearMatches = publisherText.match(/(\d{4})/);
+        if (publicationYearMatches) {
+            var publicationYear = publicationYearMatches[0];
+        }
+        properties.publicationDate = parseInt(publicationYear);
     }
-    properties.publicationDate = parseInt(publicationYear);
 
     var isbnText = rawBookProperties['ISBN'];
     var isbns = extractIsbns(isbnText);
@@ -128,10 +129,12 @@ var extractBookProperties = function(bookPageHtml) {
     }
 
     var pagesText = rawBookProperties['Description'];
-    var pagesMatches = pagesText.match(/(\d+) p/);
-    if (pagesMatches) {
-        var pageCount = parseInt(pagesMatches[1]);
-        properties.pages = pageCount;
+    if (pagesText) {
+        var pagesMatches = pagesText.match(/(\d+) p/);
+        if (pagesMatches) {
+            var pageCount = parseInt(pagesMatches[1]);
+            properties.pages = pageCount;
+        }
     }
     if (rawBookProperties['Summary']) {
         properties.description = rawBookProperties['Summary'].trim();
