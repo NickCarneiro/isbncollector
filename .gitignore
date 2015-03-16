@@ -9,7 +9,7 @@ lib-cov
 *.iml
 .idea/
 pids
-logs
+logs/
 results
 
 npm-debug.log

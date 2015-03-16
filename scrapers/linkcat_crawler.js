@@ -6,7 +6,8 @@ var SLEEP_TIME_MILLIS = 1500;
 
 var RESULTS_PER_PAGE = 20;
 var LINKCAT_SEARCH_URL = 'http://www.linkcat.info/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&offset=$OFFSET';
-
+var Monitor = require('../monitor');
+var monitor = new Monitor.monitor('linkcat');
 
 var Agent = require('socks5-http-client/lib/Agent');
 
@@ -26,7 +27,7 @@ var scrapeLinkcat = function(offset) {
             socksPort: 9050
         }
     };
-    console.log('requesting page with offset ' + offset);
+    monitor.log('requesting page with offset ' + offset);
     request(requestOptions, function (error, response, body) {
         var booksCrawledForThisPage = 0;
         if (!error && response.statusCode == 200) {
@@ -35,18 +36,18 @@ var scrapeLinkcat = function(offset) {
             var totalBooksOnPage = searchResultUrls.length;
 
             if (!searchResultUrls || searchResultUrls.length == 0) {
-                console.log('No results found.');
+                monitor.error('No results found.');
             } else {
                 var delay_millis = SLEEP_TIME_MILLIS;
                 searchResultUrls.forEach(function(searchResultUrl) {
                     //pause for 2 seconds between book requests
                     setTimeout(function() {
                         getBook(searchResultUrl, function(bookProperties, error) {
-                            console.log('saving ' + bookProperties.title);
                             if (bookProperties.isbn10 || bookProperties.isbn13) {
-                                storageUtils.saveBookToMongo(bookProperties);
+                                storageUtils.saveBookToMongo(bookProperties, monitor);
+                                monitor.success('saving ' + bookProperties.title);
                             } else {
-                                console.log('no isbn found.');
+                                monitor.log('no isbn found.');
                             }
                             booksCrawledForThisPage++;
                             if (booksCrawledForThisPage === totalBooksOnPage) {
@@ -60,7 +61,7 @@ var scrapeLinkcat = function(offset) {
                 });
             }
         } else {
-            console.log(error);
+            monitor.error(error);
         }
     });
 };
