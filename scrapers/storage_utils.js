@@ -70,8 +70,31 @@ var getHealthcheck_ = function(db, callback) {
 };
 
 
+var updateAuthorNames = function(query, names) {
+    if (db) {
+        updateAuthorNames_(query, names, db)
+    } else {
+        MongoClient.connect(config.MONGO_URL, function (err, connection) {
+            db = connection;
+            updateAuthorNames_(query, names, db);
+        });
+    }
+};
+
+
+var updateAuthorNames_ = function(query, names, db) {
+    var collection = db.collection('books');
+    collection.update(query, names, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+};
+
+
 module.exports = {
     saveBookToMongo: saveBookToMongo,
     updateHealthcheck: updateHealthcheck,
-    getHealthcheck: getHealthcheck
+    getHealthcheck: getHealthcheck,
+    updateAuthorNames: updateAuthorNames
 };
