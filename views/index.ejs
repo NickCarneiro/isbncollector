@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>isbncollector</title>
+    <title>Free ISBN project</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  <a href="/list">Book list</a>
-  <a href="/healthcheck">Scraper healthcheck</a>
-    <p>Total books: <%= totalBookCount %></p>
-
-  <h2>ISBN lookup</h2>
-  <form method="get" action="/book">
-    <label for="isbn-input">ISBN or keyword:</label>
-    <input id="isbn-input" name="isbn" />
-    <input type="submit" value="Submit" />
-  </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+      <h2>ISBN lookup</h2>
+      <form method="get" action="/book">
+        <label for="isbn-input">ISBN or keyword:</label>
+        <input id="isbn-input" class="form-control" name="isbn" />
+        <input class="btn btn-primary" type="submit" value="Submit" />
+      </form>
+      </div>
+    </div>
+    <div class="row">
+      <ul>
+        <li><a href="/list">Book list</a></li>
+        <li><a href="/healthcheck">Scraper healthcheck</a></li>
+      </ul>
+      <p>Total books: <%= totalBookCount %></p>
+    </div>
+  </div>
   </body>
 </html>
