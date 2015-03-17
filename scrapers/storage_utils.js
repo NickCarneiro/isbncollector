@@ -28,7 +28,50 @@ var insertBook = function(bookProperties, db, monitor) {
 };
 
 
+var updateHealthcheck = function(monitor) {
+    if (db) {
+        updateHealthcheck_(monitor, db);
+    } else {
+        MongoClient.connect(config.MONGO_URL, function (err, connection) {
+            db = connection;
+            updateHealthcheck_(monitor, db);
+        });
+    }
+};
+
+
+var updateHealthcheck_ = function(monitor, db) {
+    var collection = db.collection('healthcheck');
+    collection.update({scraperName: monitor.scraperName}, monitor, {upsert: true}, function(err, docs) {
+        if (err) {
+            console.log(err);
+        }
+    });
+};
+
+
+var getHealthcheck = function(callback) {
+    if (db) {
+        getHealthcheck_(db, callback);
+    } else {
+        MongoClient.connect(config.MONGO_URL, function (err, connection) {
+            db = connection;
+            getHealthcheck_(db, callback);
+        });
+    }
+};
+
+
+var getHealthcheck_ = function(db, callback) {
+    var collection = db.collection('healthcheck');
+    collection.find({}).toArray(function(err, docs) {
+        callback(docs);
+    });
+};
+
 
 module.exports = {
-    saveBookToMongo: saveBookToMongo
+    saveBookToMongo: saveBookToMongo,
+    updateHealthcheck: updateHealthcheck,
+    getHealthcheck: getHealthcheck
 };
