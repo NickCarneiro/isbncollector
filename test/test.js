@@ -89,6 +89,14 @@ test('amazon book page html extraction, no author, one editor - rsmeans', functi
     t.end();
 });
 
+test('amazon book page html extraction, 4 authors - pencil drawing', function (t) {
+    var amazonHtml = fs.readFileSync(__dirname + '/fixtures/pencil_drawing_amazon.html');
+    var bookProperties = amazonScraper.extractBookProperties(amazonHtml);
+    t.deepEquals(bookProperties.authors, ['Michael Butkus', 'Eugene Metcalf',
+        'William Powell', 'Mia Tavonatti']);
+    t.end();
+});
+
 
 test('denver book page html extraction - cryptonomicon', function (t) {
     var denverHtml = fs.readFileSync(__dirname + '/fixtures/cryptonomicon_denver.html');
