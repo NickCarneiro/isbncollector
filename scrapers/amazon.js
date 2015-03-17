@@ -24,32 +24,44 @@ var extractBookProperties = function(html) {
     }
 
     var byline = $('#byline').text();
-    byline = byline.replace(/\s+/gi, ' ');
-    byline = byline.replace(/{"isAjax.+Author Central/, '');
-    byline = byline.replace(' by ', '');
     byline = byline.trim();
-    var contributors = byline.split(',');
+    var bylineFragments = byline.split(/\n\s+/);
+    var filteredBylineFragments = [];
+    bylineFragments.forEach(function(fragment) {
+        fragment = fragment.trim();
+        if (fragment === 'by' ||
+            fragment === '&' ||
+            fragment === '&' ||
+            fragment.match(/^\d$/) ||
+            fragment === 'more' ||
+            fragment.indexOf('isAjaxInProgress') !== -1 ||
+            fragment.indexOf('isAjaxComplete') !== -1 ||
+            fragment.indexOf('Visit Amazon\'s') !== -1 ||
+            fragment.indexOf('Find all the books') !== -1 ||
+            fragment.indexOf('See search results') !== -1 ||
+            fragment.indexOf('Are you an author?') !== -1 ||
+            fragment.indexOf('Learn about Author Central') !== -1
+            ) {
+            return;
+        }
+        filteredBylineFragments.push(fragment);
+    });
     var authors = [];
     var translators = [];
     var editors = [];
-    contributors.forEach(function(contributor) {
-        if (contributor.indexOf('(Author)') !== -1) {
-            var author = contributor.replace('(Author)', '').trim();
-            if (author) {
-                authors.push(author);
-            }
-        } else if (contributor.indexOf('(Translator)') !== -1) {
-            var translator = contributor.replace('(Translator)', '').trim();
-            if (translator) {
-                translators.push(translator);
-            }
-        } else if (contributor.indexOf('(Editor)' !== -1)) {
-            var editor = contributor.replace('(Editor)', '').trim();
-            if (editor) {
-                editors.push(editor);
-            }
+    for (var i = 0; i < filteredBylineFragments.length - 1; i += 2) {
+        if (filteredBylineFragments[i+1] === '(Author)' && authors.indexOf(filteredBylineFragments[i]) === -1) {
+            authors.push(filteredBylineFragments[i]);
+        } else if (filteredBylineFragments[i+1] === '(Translator)' &&
+              translators.indexOf((filteredBylineFragments[i]) === -1)) {
+            translators.push(filteredBylineFragments[i]);
+        } else if (filteredBylineFragments[i+1] === '(Editor)' && editors.indexOf(filteredBylineFragments[i]) === -1) {
+            editors.push(filteredBylineFragments[i]);
+        } else if (authors.indexOf(filteredBylineFragments[i]) === -1) {
+            authors.push(filteredBylineFragments[i]);
         }
-    });
+    }
+
     if (authors.length === 0) {
         var author = $('.contributorNameID').text();
         if (author) {

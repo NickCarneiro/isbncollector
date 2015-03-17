@@ -99,7 +99,7 @@ test('denver book page html extraction - cryptonomicon', function (t) {
         pages: 1152,
         authors: ['Neal Stephenson'],
         binding: 'Paperback',
-        publisher: 'Avon Books',
+        publisher: 'New York : Avon Books, 2002, c1999.',
         description: 'An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold. The gold was stolen by the Japanese during the war. By the author of The Diamond Age.',
         publicationDate: 2002
     };

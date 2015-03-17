@@ -96,7 +96,8 @@ var scrapeCategory = function(resultPageUrl) {
                         amazon.getBook(searchResultUrl, function(bookProperties, error) {
 
                             console.log('saving ' + bookProperties.title);
-                            saveBookToMongo(bookProperties);
+                            console.log(bookProperties);
+                            //saveBookToMongo(bookProperties);
                             booksCrawledForThisPage++;
                             if (booksCrawledForThisPage === totalBooksOnPage) {
                                 // go to the next page
@@ -114,20 +115,6 @@ var scrapeCategory = function(resultPageUrl) {
     });
 };
 
-
-var saveBookToMongo = function(bookProperties) {
-    MongoClient.connect(config.MONGO_URL, function(err, db) {
-        var collection = db.collection('books');
-        collection.insert(bookProperties, {w: 1}, function(err, records) {
-            if (!err) {
-                console.log('saved to mongo.')
-            } else {
-                console.log(err);
-            }
-            db.close();
-        });
-    });
-};
 
 scrapeCategory();
 
