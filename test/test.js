@@ -98,6 +98,14 @@ test('amazon book page html extraction, 4 authors - pencil drawing', function (t
 });
 
 
+test('amazon book page html extraction, 3 editors - architecture', function (t) {
+    var amazonHtml = fs.readFileSync(__dirname + '/fixtures/architecture_amazon.html');
+    var bookProperties = amazonScraper.extractBookProperties(amazonHtml);
+    t.deepEquals(bookProperties.editors, ['Sofia Borges', 'Sven Ehmann', 'Robert Klanten']);
+    t.end();
+});
+
+
 test('denver book page html extraction - cryptonomicon', function (t) {
     var denverHtml = fs.readFileSync(__dirname + '/fixtures/cryptonomicon_denver.html');
     var expectedProperties = {
