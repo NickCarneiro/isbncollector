@@ -5,12 +5,14 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-<h1><%= properties.title %></h1>
 <form method="get" action="/book">
     <label for="isbn-input">ISBN or keyword:</label>
     <input id="isbn-input" class="form-control" name="isbn" value="<%= keyword %>" />
     <input class="btn btn-primary" type="submit" value="Submit" />
 </form>
+
+<h1><%= properties.title %></h1>
+
 <table class="table">
 <% for (var propertyName in properties) { %>
     <tr><td><%= propertyName %></td><td><%= properties[propertyName] %></td></tr>
