@@ -46,42 +46,44 @@ var connectAndHandleRequest = function(query, res) {
 
 var handleRequest = function(query, db, res) {
     var collection = db.collection('books');
-    console.log(query);
     if (query['$text']) {
         var options = {score: {$meta: "textScore"}};
-        collection.find(query, options).sort({score: {$meta: 'textScore'}}).toArray(handleResults.bind(this, query, res));
+        collection.find(query, options).sort({score: {$meta: 'textScore'}}).toArray(handleResults.bind(this, db, query, res));
     } else {
-        collection.find(query).toArray(handleResults.bind(this, query, res));
+        collection.find(query).toArray(handleResults.bind(this, db, query, res));
     }
 
 };
 
-var handleResults = function(query, res, err, docs) {
-        if (err === null && docs && docs.length > 0) {
-            console.log('found book in the mongo');
-            res.render('book', {properties: docs[0]});
-        } else {
-            var amazonKeyword = query.isbn13 || query.isbn10 || query.title;
-            // if the book isn't in the mongo, fetch it from another source.
-            amazon.searchForBook(amazonKeyword, function(bookProperties, requestFailed) {
-                if (bookProperties && !requestFailed) {
-                    // save this new book to the mongo
-                    console.log('found book externally.');
-                    collection.insert(bookProperties, {w: 1}, function(err, records) {
-                        if (!err) {
-                            console.log('saving to mongo.')
-                        } else {
-                            console.log(err);
-                        }
-                    });
-                    res.render('book', {properties: bookProperties});
-                } else {
-                    res.status(404);
-                    var errorMessage = bookProperties || 'No book found';
-                    res.render('bookError', {errorMessage: errorMessage});
-                }
-            });
-        }
-
+var handleResults = function(db, query, res, err, docs) {
+    var keyword = query.isbn13 || query.isbn10 || query['$text']['$search'];
+    if (err === null && docs && docs.length > 0) {
+        console.log('found book in the mongo');
+            res.render('book', {properties: docs[0], keyword: keyword});
+    } else {
+        // if the book isn't in the mongo, fetch it from another source.
+        amazon.searchForBook(keyword, function(bookProperties, requestFailed) {
+            if (bookProperties && !requestFailed) {
+                // save this new book to the mongo
+                console.log('found book externally.');
+                var collection = db.collection('books');
+                collection.insert(bookProperties, {w: 1}, function(err, records) {
+                    if (!err) {
+                        console.log('saving to mongo.')
+                    } else {
+                        console.log(err);
+                    }
+                });
+                res.render('book', {properties: bookProperties, keyword: keyword});
+            } else {
+                res.status(404);
+                var errorMessage = bookProperties || 'No book found';
+                res.render('bookError', {errorMessage: errorMessage});
+            }
+        });
     }
+
+};
+
+
 module.exports = router;
