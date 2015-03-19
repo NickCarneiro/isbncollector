@@ -16,3 +16,7 @@ Run your own version of this.
 required system packages:
 * mongo
 * tor
+
+Create mongo indexes on isbn10, isbn13 and text:
+
+    db.books.createIndex({title: "text"})
