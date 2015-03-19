@@ -58,8 +58,8 @@ var extractBookProperties = function(bookPageHtml) {
     var publicationYearMatches = publisherText.match(/(\d{4})/);
     if (publicationYearMatches) {
         var publicationYear = publicationYearMatches[0];
+        properties.publicationDate = parseInt(publicationYear);
     }
-    properties.publicationDate = parseInt(publicationYear);
     var isbnText = $('.displayISBN').text();
     var isbn = '';
     var isbnGroups = isbnText.match(/^([^\(^\s^:]+) \(/);

@@ -86,7 +86,7 @@ var scrapeCategory = function(resultPageUrl) {
             }
 
             var nextPageUrl = BASE_URL + nextPagePath;
-            if (!searchResultUrls || searchResultUrls.length == 0) {
+            if (!searchResultUrls || searchResultUrls.length === 0) {
                 console.log('No results found.');
             } else {
                 var delay_millis = SLEEP_TIME_MILLIS;

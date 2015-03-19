@@ -61,15 +61,15 @@ var extractBookProperties = function(html) {
             authors.push(filteredBylineFragments[i]);
         }
     }
-
+    var author;
     if (authors.length === 0) {
-        var author = $('.contributorNameID').text();
+        author = $('.contributorNameID').text();
         if (author) {
             authors.push(author);
         }
     }
     if (authors.length === 0) {
-        var author = $('span:contains("(Author)") > a').text();
+        author = $('span:contains("(Author)") > a').text();
         if (author) {
             authors.push(author);
         }
@@ -208,7 +208,7 @@ var searchForBook = function(isbn, callback) {
         if (!error && response.statusCode == 200) {
             // got the search results, extract the first link
             var searchResultUrls = extractSearchResultUrls(body);
-            if (!searchResultUrls || searchResultUrls.length == 0) {
+            if (!searchResultUrls || searchResultUrls.length === 0) {
                 callback('No results found.', true);
             } else {
                 getBook(searchResultUrls[0], callback);

@@ -24,13 +24,13 @@ router.get('/', function(req, res) {
             query['isbn10'] = isbn;
         }
     } else {
-        query = {$text: {$search: isbn}}
+        query = {$text: {$search: isbn}};
     }
 
     if (db) {
         handleRequest(query, db, res);
     } else {
-        connectAndHandleRequest(query, res)
+        connectAndHandleRequest(query, res);
     }
 
 });
@@ -69,7 +69,7 @@ var handleResults = function(db, query, res, err, docs) {
                 var collection = db.collection('books');
                 collection.insert(bookProperties, {w: 1}, function(err, records) {
                     if (!err) {
-                        console.log('saving to mongo.')
+                        console.log('saving to mongo.');
                     } else {
                         console.log(err);
                     }

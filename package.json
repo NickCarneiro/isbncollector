@@ -20,5 +20,9 @@
     "serve-favicon": "~2.2.0",
     "socks5-http-client": "^1.0.1",
     "tape": "^3.5.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.4"
   }
 }

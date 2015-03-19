@@ -15,7 +15,7 @@ var reverseNames = function(name) {
     if (firstName.match(/^\d{4}/)) { // solves 'STENDHAL, 1783-1842 CN.'
         return lastName;
     }
-    return  firstName + ' ' + lastName
+    return  firstName + ' ' + lastName;
 };
 
 module.exports = {

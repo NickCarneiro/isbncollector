@@ -35,7 +35,7 @@ var scrapeLinkcat = function(offset) {
             var searchResultUrls = linkcat.extractSearchResultUrls(body);
             var totalBooksOnPage = searchResultUrls.length;
 
-            if (!searchResultUrls || searchResultUrls.length == 0) {
+            if (!searchResultUrls || searchResultUrls.length === 0) {
                 monitor.error('No results found.');
             } else {
                 var delay_millis = SLEEP_TIME_MILLIS;

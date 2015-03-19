@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
             var now = Date.now();
             if (now - doc.lastEvent > 1000*60) {
                 doc.healthy = false;
-                doc.message = 'No activity for 60 seconds.'
+                doc.message = 'No activity for 60 seconds.';
             }
         });
         res.end(JSON.stringify(docs));

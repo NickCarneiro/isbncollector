@@ -21,10 +21,10 @@ var fixBook = function(bookIndex) {
     var query = {};
     var isbn;
     if (book.isbn10) {
-        query['isbn10'] = book.isbn10;
+        query.isbn10 = book.isbn10;
         isbn = book.isbn10;
     } else {
-        query['isbn13'] = book.isbn13;
+        query.isbn13 = book.isbn13;
         isbn = book.isbn13;
     }
 
@@ -32,7 +32,7 @@ var fixBook = function(bookIndex) {
         var update = {};
         for (var property in bookProperties) {
             if (property === 'authors' || property === 'editors' || property === 'translators') {
-                update[property] = bookProperties[property]
+                update[property] = bookProperties[property];
             }
         }
         console.log(query);

@@ -72,7 +72,7 @@ var getHealthcheck_ = function(db, callback) {
 
 var updateAuthorNames = function(query, names) {
     if (db) {
-        updateAuthorNames_(query, names, db)
+        updateAuthorNames_(query, names, db);
     } else {
         MongoClient.connect(config.MONGO_URL, function (err, connection) {
             db = connection;
