@@ -16,10 +16,15 @@ router.get('/', function(req, res) {
         return res.render('bookError', {errorMessage: 'No isbn given'});
     }
     var query = {};
-    if (isbn.length > 10) {
-        query['isbn13'] = isbn;
+    isbn = isbn.replace('-', '');
+    if (isbn.match(/^[\d\w]+$/)) {
+        if (isbn.length > 10) {
+            query['isbn13'] = isbn;
+        } else {
+            query['isbn10'] = isbn;
+        }
     } else {
-        query['isbn10'] = isbn;
+        query = {$text: {$search: isbn}}
     }
 
     if (db) {
@@ -41,9 +46,19 @@ var connectAndHandleRequest = function(query, res) {
 
 var handleRequest = function(query, db, res) {
     var collection = db.collection('books');
-    collection.find(query).toArray(function(err, docs) {
+    console.log(query);
+    if (query['$text']) {
+        var options = {score: {$meta: "textScore"}};
+        collection.find(query, options).sort({score: {$meta: 'textScore'}}).toArray(handleResults.bind(this, query, res));
+    } else {
+        collection.find(query).toArray(handleResults.bind(this, query, res));
+    }
+
+};
+
+var handleResults = function(query, res, err, docs) {
         if (err === null && docs && docs.length > 0) {
-            console.log('found book in the mongo')
+            console.log('found book in the mongo');
             res.render('book', {properties: docs[0]});
         } else {
             var amazonKeyword = query.isbn13 || query.isbn10 || query.title;
@@ -68,7 +83,5 @@ var handleRequest = function(query, db, res) {
             });
         }
 
-    });
-
-};
+    }
 module.exports = router;
