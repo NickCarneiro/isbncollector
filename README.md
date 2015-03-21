@@ -2,7 +2,7 @@
 A free database of book metadata
 
 ## Live demo
-http://isbn.trillworks.com (live soon)
+http://isbn.trillworks.com
 
 ## Motivation
 Commercial library catalog systems phone home with patron data. Any workable free software solution will require a large isbn database.
