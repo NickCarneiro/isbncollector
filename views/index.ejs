@@ -9,7 +9,9 @@
   <div class="container-fluid">
     <div class="header">
       <ul class="nav nav-pills pull-right">
-        <li><a href="http://isbn.trillworks.com">Home</a></li>
+        <li class="active"><a href="http://isbn.trillworks.com">Home</a></li>
+        <li><a href="/healthcheck">Scraper healthcheck</a></li>
+        <li><a href="/list">Browse books</a></li>
         <li><a href="https://github.com/NickCarneiro/isbncollector">GitHub</a></li>
       </ul>
       <h3 class="text-muted">Free ISBN Project</h3>
@@ -24,13 +26,9 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-4 col-md-offset-4 center-text">
         <p>Searching <%= totalBookCount %> books</p>
-        <ul>
-        <li><a href="/list">Book list</a></li>
-        <li><a href="/healthcheck">Scraper healthcheck</a></li>
-      </ul>
-        </div>
+      </div>
     </div>
   </div>
   </body>

@@ -26,4 +26,9 @@ td {
 
 .search-box-container {
   margin-bottom: 50px;
+  margin-top: 10%;
+}
+
+.center-text {
+  text-align: center;
 }
