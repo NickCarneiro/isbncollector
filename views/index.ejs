@@ -6,23 +6,31 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-      <h2>ISBN lookup</h2>
-      <form method="get" action="/book">
-        <label for="isbn-input">ISBN or keyword:</label>
+  <div class="container-fluid">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="http://isbn.trillworks.com">Home</a></li>
+        <li><a href="https://github.com/NickCarneiro/isbncollector">GitHub</a></li>
+      </ul>
+      <h3 class="text-muted">Free ISBN Project</h3>
+    </div>
+    <div class="row search-box-container">
+      <div class="col-md-4 col-md-offset-4">
+      <form class="form-inline isbn-lookup" method="get" action="/book">
+        <label for="isbn-input">ISBN or title:</label>
         <input id="isbn-input" class="form-control" name="isbn" />
         <input class="btn btn-primary" type="submit" value="Submit" />
       </form>
       </div>
     </div>
     <div class="row">
-      <ul>
+      <div class="col-md-4 col-md-offset-4">
+        <p>Searching <%= totalBookCount %> books</p>
+        <ul>
         <li><a href="/list">Book list</a></li>
         <li><a href="/healthcheck">Scraper healthcheck</a></li>
       </ul>
-      <p>Total books: <%= totalBookCount %></p>
+        </div>
     </div>
   </div>
   </body>

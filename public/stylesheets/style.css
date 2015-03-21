@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -14,4 +13,17 @@ td {
 .book {
   margin-bottom: 15px;
   list-style: none;
+}
+
+
+.isbn-lookup label{
+  display: block;
+}
+
+#isbn-input {
+  width: 80%;
+}
+
+.search-box-container {
+  margin-bottom: 50px;
 }
