@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>isbncollector</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css ' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
+<%= include header.ejs %>
 <p>page: <%= page %></p>
 <% if (previousPage) { %>
 <a href="/list?page=<%= previousPage %>">Previous</a>
