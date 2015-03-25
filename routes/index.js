@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
       if (err) {
         res.render('error', {message: 'Error connecting to mongo'});
       } else {
-        res.render('index', {totalBookCount: count});
+        res.render('index', {totalBookCount: count, path: req.baseUrl, keyword: ''});
       }
       db.close();
     });

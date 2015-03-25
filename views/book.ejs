@@ -2,21 +2,21 @@
 <html>
 <head>
     <title><%= properties.title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-<form method="get" action="/book">
-    <label for="isbn-input">ISBN or keyword:</label>
-    <input id="isbn-input" class="form-control" name="isbn" value="<%= keyword %>" />
-    <input class="btn btn-primary" type="submit" value="Submit" />
-</form>
+<div class="container-fluid">
+<%= include header.ejs %>
 
-<h1><%= properties.title %></h1>
 
-<table class="table">
-<% for (var propertyName in properties) { %>
-    <tr><td><%= propertyName %></td><td><%= properties[propertyName] %></td></tr>
-<% } %>
-</table>
+    <h1><%= properties.title %></h1>
+
+    <table class="table">
+    <% for (var propertyName in properties) { %>
+        <tr><td><%= propertyName %></td><td><%= properties[propertyName] %></td></tr>
+    <% } %>
+    </table>
+</div>
 </body>
 </html>

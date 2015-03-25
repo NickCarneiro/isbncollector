@@ -11,7 +11,7 @@ td {
 }
 
 .book {
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   list-style: none;
 }
 
@@ -31,4 +31,34 @@ td {
 
 .center-text {
   text-align: center;
+}
+
+.page-controls {
+  margin: 10px 0 10px 0;
+}
+
+.header-search-input {
+  width: 200px;
+  display: inline-block;
+}
+
+.header-search-submit {
+  display: inline-block;
+}
+
+.home-link:hover {
+  text-decoration: none;
+}
+
+.header-search-form {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.header-pills {
+  margin-top: 20px;
+}
+
+.project-title {
 }

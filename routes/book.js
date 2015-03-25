@@ -28,38 +28,38 @@ router.get('/', function(req, res) {
     }
 
     if (db) {
-        handleRequest(query, db, res);
+        handleRequest(query, db, res, req);
     } else {
-        connectAndHandleRequest(query, res);
+        connectAndHandleRequest(query, res, req);
     }
 
 });
 
 
-var connectAndHandleRequest = function(query, res) {
+var connectAndHandleRequest = function(query, res, req) {
     MongoClient.connect(config.MONGO_URL, function (err, connection) {
         db = connection;
-        handleRequest(query, db, res);
+        handleRequest(query, db, res, req);
     });
 };
 
 
-var handleRequest = function(query, db, res) {
+var handleRequest = function(query, db, res, req) {
     var collection = db.collection('books');
     if (query['$text']) {
         var options = {score: {$meta: "textScore"}};
-        collection.find(query, options).sort({score: {$meta: 'textScore'}}).toArray(handleResults.bind(this, db, query, res));
+        collection.find(query, options).sort({score: {$meta: 'textScore'}}).toArray(handleResults.bind(this, db, query, res, req));
     } else {
-        collection.find(query).toArray(handleResults.bind(this, db, query, res));
+        collection.find(query).toArray(handleResults.bind(this, db, query, res, req));
     }
 
 };
 
-var handleResults = function(db, query, res, err, docs) {
+var handleResults = function(db, query, res, req, err, docs) {
     var keyword = query.isbn13 || query.isbn10 || query['$text']['$search'];
     if (err === null && docs && docs.length > 0) {
         console.log('found book in the mongo');
-            res.render('book', {properties: docs[0], keyword: keyword});
+            res.render('book', {properties: docs[0], keyword: keyword, path: req.baseUrl});
     } else {
         // if the book isn't in the mongo, fetch it from another source.
         amazon.searchForBook(keyword, function(bookProperties, requestFailed) {
@@ -74,7 +74,7 @@ var handleResults = function(db, query, res, err, docs) {
                         console.log(err);
                     }
                 });
-                res.render('book', {properties: bookProperties, keyword: keyword});
+                res.render('book', {properties: bookProperties, keyword: keyword, path: req.baseUrl});
             } else {
                 res.status(404);
                 var errorMessage = bookProperties || 'No book found';

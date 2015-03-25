@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>isbncollector</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css ' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="container-fluid">
+<%= include header.ejs %>
+    <%= include pagination.ejs %>
+    <div class="row">
+        <div class="col-md-12">
+            <% for (var i = 0; i < books.length; i++) { %>
+            <div class="book">
+                <% var isbn = books[i].isbn10 || books[i].isbn13 %>
+                <a href="/book?isbn=<%= isbn %>"><%= books[i].isbn10 || books[i].isbn13 %>: <%= books[i].title %></a>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <%= include pagination.ejs %>
+</div>
+</body>
+</html>

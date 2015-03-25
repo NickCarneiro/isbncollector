@@ -1,9 +1,24 @@
-<div class="header">
-    <ul class="nav nav-pills pull-right">
-        <li><a href="http://isbn.trillworks.com">Home</a></li>
-        <li><a href="/healthcheck">Scraper healthcheck</a></li>
-        <li><a href="/list">Browse books</a></li>
-        <li><a href="https://github.com/NickCarneiro/isbncollector">GitHub</a></li>
-    </ul>
-    <h3 class="text-muted">Free ISBN Project</h3>
+<div class="header row">
+    <div class="col-md-4">
+        <a class="home-link" href="/">
+            <h3 class="text-muted project-title">Free ISBN Project</h3>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <% if (path !== '') { %>
+        <form method="get" action="/book" class="header-search-form">
+            <input class="form-control header-search-input" name="isbn" placeholder="ISBN or title" value="<%= keyword %>" />
+            <input class="btn btn-primary header-search-submit" type="submit" value="Submit" />
+        </form>
+        <% } %>
+    </div>
+    <div class="col-md-4">
+        <ul class="nav nav-pills pull-right header-pills">
+            <li><a href="/">Home</a></li>
+            <li><a href="/browse">Browse books</a></li>
+            <li><a href="/healthcheck">Healthcheck</a></li>
+            <li><a href="https://github.com/NickCarneiro/isbncollector">GitHub</a></li>
+        </ul>
+    </div>
+
 </div>
