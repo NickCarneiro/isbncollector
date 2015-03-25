@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
                 doc.message = 'No activity for 60 seconds.';
             }
         });
-        res.end(JSON.stringify(docs));
+        res.end(JSON.stringify(docs, null, 4));
     });
 
 });
