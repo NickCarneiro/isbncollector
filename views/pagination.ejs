@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-4 page-controls  ">
 
-        <a class="btn btn-default <% if (!previousPage) { %>disabled<% } %>" href="/list?page=<%= previousPage %>">Previous</a>
+        <a class="btn btn-default <% if (!previousPage) { %>disabled<% } %>" href="/browse?page=<%= previousPage %>">Previous</a>
 
         <%= page %> / <%= totalPages %>
-        <a class="btn btn-default" href="/list?page=<%= nextPage %>">Next</a>
+        <a class="btn btn-default" href="/browse?page=<%= nextPage %>">Next</a>
     </div>
 </div>
