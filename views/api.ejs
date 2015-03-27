@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>isbncollector</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css ' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="container-fluid">
+    <%= include header.ejs %>
+    <%= include pagination.ejs %>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>API Usage</h1>
+            The API is a thin layer on top of the mongo. It's read-read only so GET is the only supported method.
+            <h2>Endpoints</h2>
+            <p>
+                /api/v1/books/
+            </p>
+            <p>
+                /api/v1/search/
+            </p>
+            <h2>Example requests</h2>
+            <p><a href="/api/v1/search/?title=harry+potter">/api/v1/search/?title=harry+potter</a></p>
+            <p><a href="/api/v1/books/9780590353427">/api/v1/books/9780590353427</a></p>
+        </div>
+    </div>
+    <%= include pagination.ejs %>
+</div>
+</body>
+</html>
