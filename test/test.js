@@ -5,6 +5,7 @@ var linkcatScraper = require('../scrapers/linkcat');
 var denver = require('../scrapers/denver');
 var cheerio = require('cheerio');
 var stringUtils = require('../scrapers/string_utils');
+var boston = require('../scrapers/boston');
 
 
 test('amazon book page html extraction - tsukuru', function (t) {
@@ -238,3 +239,23 @@ test('reverse names', function (t) {
     t.end();
 });
 
+
+test('boston book page html extraction - cryptonomicon', function (t) {
+    var bostonHtml = fs.readFileSync(__dirname + '/fixtures/cryptonomicon_boston.html');
+    var expectedProperties = {
+        title: 'Cryptonomicon',
+        isbn13: '9780060512804',
+        isbn10: '0060512806',
+        relatedIsbns: [ '0060512806', '0380973464', '9780380973460' ],
+        pages: 1152,
+        authors: ['Neal Stephenson'],
+        binding: 'Paperback',
+        publisher: 'New York : Avon Press, 2002, ©1999',
+        description: 'An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold. The gold was stolen by the Japanese during the war. By the author of The Diamond Age.',
+        publicationDate: 2002
+    };
+    $ = cheerio.load(bostonHtml);
+    var bookProperties = boston.extractBookProperties(bostonHtml, $);
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
