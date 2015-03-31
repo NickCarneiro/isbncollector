@@ -89,15 +89,17 @@ var extractBookProperties = function(bookPageHtml) {
     var isbns = extractIsbns(isbnText);
     if (isbns) {
         isbns.forEach(function(isbn) {
-            if (isbn != properties.isbn13 && isbn != properties.isbn10) {
-                if (isbn.length > 10) {
-                    properties.isbn13 = isbn;
-                } else if (isbn.length > 0) {
-                    properties.isbn10 = isbn;
-                } else {
+            if (!properties.isbn13 && isbn.length > 10 ) {
+                properties.isbn13 = isbn;
+            } else if (!properties.isbn10 && isbn.length > 0) {
+                properties.isbn10 = isbn;
+            } else {
+                // Save this isbn in related_isbns if we haven't already saved in in isbn10 or 13
+                if (isbn != properties.isbn10 &&
+                    isbn != properties.isbn13) {
                     if (!properties.relatedIsbns) {
                         properties.relatedIsbns = [isbn]
-                    } else if (properties.relatedIsbns.indexOf(isbn) !== -1) {
+                    } else if (properties.relatedIsbns.indexOf(isbn) === -1) {
                         properties.relatedIsbns.push(isbn);
                     }
                 }

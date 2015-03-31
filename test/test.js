@@ -286,6 +286,7 @@ test('boston - daphnis - additional contributor with year in name', function (t)
         publisher: 'Munich : Prestel, 1994',
         publicationDate: 1994,
         isbn10: '3797313738',
+        relatedIsbns: [ '3797313738' ],
         pages: 150,
         description: 'Inspired by a journey through Greece, Marc Chagall, one of this century\'s most popular painters, created a wonderful series of lithographs that brought new life to this ancient Greek love story -- the first pastoral romance.' }
 
@@ -305,6 +306,24 @@ test('boston - odysseus - 3 contributors', function (t) {
         isbn10: '0531300005',
         description: 'Retells the adventures of the hero Odysseus as he encounters many monsters and other obstacles on his journey home from the Trojan War.' }
 
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+test('boston - odysseus - 4 isbns', function (t) {
+    var bostonHtml = fs.readFileSync(__dirname + '/fixtures/resisters_boston.html');
+    var bookProperties = boston.extractBookProperties(bostonHtml);
+    var expectedProperties = {
+        authors: [ 'Eric S. Nylund', 'Peter Berkrot' ],
+        description: 'When twelve-year-olds Madison and Felix kidnap him, Ethan learns that the Earth has been taken over by aliens and that all the adults in the world are under mind control.',
+        isbn10: '1611069564',
+        isbn13: '9781611069563',
+        publicationDate: 2011,
+        publisher: 'Grand Haven, MI : Brilliance Audio, p2011.',
+        title: 'The Resisters',
+        relatedIsbns: [ '9781611069587', '1611069580']
+    };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
 });
