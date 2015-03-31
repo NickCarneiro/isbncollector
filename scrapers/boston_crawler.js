@@ -23,7 +23,7 @@ var scrapeBoston = function(bookId) {
             if (!isHomepage(body)) {
                 var bookProperties = boston.extractBookProperties(body);
                 if (bookProperties.isbn10 || bookProperties.isbn13) {
-                    //storageUtils.saveBookToMongo(bookProperties, monitor);
+                    storageUtils.saveBookToMongo(bookProperties, monitor);
                     console.log(bookProperties);
                     monitor.success('saving ' + bookProperties.title);
                 } else {
