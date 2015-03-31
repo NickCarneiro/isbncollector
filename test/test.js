@@ -246,16 +246,65 @@ test('boston book page html extraction - cryptonomicon', function (t) {
         title: 'Cryptonomicon',
         isbn13: '9780060512804',
         isbn10: '0060512806',
-        relatedIsbns: [ '0060512806', '0380973464', '9780380973460' ],
         pages: 1152,
         authors: ['Neal Stephenson'],
-        binding: 'Paperback',
         publisher: 'New York : Avon Press, 2002, ©1999',
         description: 'An American computer hacker operating in Southeast Asia attempts to break a World War II cypher to find the location of a missing shipment of gold. The gold was stolen by the Japanese during the war. By the author of The Diamond Age.',
         publicationDate: 2002
     };
     $ = cheerio.load(bostonHtml);
     var bookProperties = boston.extractBookProperties(bostonHtml, $);
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+test('boston - zero to one', function (t) {
+    var bostonHtml = fs.readFileSync(__dirname + '/fixtures/zero_to_one_boston.html');
+    var bookProperties = boston.extractBookProperties(bostonHtml);
+    var expectedProperties = {
+        title: 'Zero to One Notes on Startups, or How to Build the Future',
+        isbn10: '0804139296',
+        isbn13: '9780804139298',
+        pages: 210,
+        authors: ['Peter A. Thiel', 'Blake G. Masters'],
+        description: 'Every moment in business happens only once. The next Bill Gates will not build an operating system. The next Larry Page or Sergey Brin won\'t make a search engine. And the next Mark Zuckerberg won\'t create a social network. If you are copying these guys, you aren\'t learning from them. It\'s easier to copy a model than to make something new: doing what we already know how to do takes the world from 1 to n, adding more of something familiar. But every time we create something new, we go from 0 to 1. The act of creation is singular, as is the moment of creation, and the result is something fresh and strange. Zero to One is about how to build companies that create new things. It draws on everything the author learned directly as a co-founder of PayPal and Palantir and then an investor in hundreds of startups, including Facebook and SpaceX. The single most powerful pattern he has noticed is that successful people find value in unexpected places, and they do this by thinking about business from first principles instead of formulas. Ask not, what would Mark do? Ask: what valuable company is no one building?',
+        publisher: 'New York :, Crown Business,, [2014]',
+        publicationDate: 2014
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+test('boston - daphnis - additional contributor with year in name', function (t) {
+    var bostonHtml = fs.readFileSync(__dirname + '/fixtures/daphnis_boston.html');
+    var bookProperties = boston.extractBookProperties(bostonHtml);
+    var expectedProperties = {
+        title: 'Daphnis and Chloe',
+        authors: [ 'Longus', 'Marc Chagall' ],
+        publisher: 'Munich : Prestel, 1994',
+        publicationDate: 1994,
+        isbn10: '3797313738',
+        pages: 150,
+        description: 'Inspired by a journey through Greece, Marc Chagall, one of this century\'s most popular painters, created a wonderful series of lithographs that brought new life to this ancient Greek love story -- the first pastoral romance.' }
+
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+
+test('boston - odysseus - 3 contributors', function (t) {
+    var bostonHtml = fs.readFileSync(__dirname + '/fixtures/odysseus_boston.html');
+    var bookProperties = boston.extractBookProperties(bostonHtml);
+    var expectedProperties = { title: 'The Adventures of Odysseus',
+        authors: [ 'Neil Philip', 'Homer', 'Peter Malone' ],
+        publisher: 'New York : Orchard Books, 1997',
+        publicationDate: 1997,
+        isbn10: '0531300005',
+        description: 'Retells the adventures of the hero Odysseus as he encounters many monsters and other obstacles on his journey home from the Trojan War.' }
+
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
 });

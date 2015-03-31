@@ -17,10 +17,10 @@ monitor.prototype.log = function(message, error) {
         this.lastEvent = Date.now();
         this.healthy = true;
         var prependedMessage = this.scraperName + ': ' + message;
-        console.log(message);
         fs.appendFile('logs/scrapers.log', prependedMessage + '\n');
     }
     storageUtils.updateHealthcheck(this);
+    console.log(message);
 };
 
 

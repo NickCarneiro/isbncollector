@@ -5,13 +5,19 @@ var stringUtils = require('./string_utils');
 
 /**
  *
- * @param {string} authors - a string containing newline separated author names
- * @param {string} otherAuthors - a string containing newline separated author names
+ * @param {string} mainAuthor - a string containing newline separated author names
+ * @param {Array} otherAuthors - a string containing newline separated author names
  */
-var extractAuthorNames = function(authors, otherAuthors) {
+var extractAuthorNames = function(mainAuthor, otherAuthors) {
     var authorList = [];
-    var mainAndSecondaryAuthors = [authors, otherAuthors];
-    mainAndSecondaryAuthors.forEach(function(authorString) {
+    var authors = [];
+    if (mainAuthor) {
+        authors.push(mainAuthor);
+    }
+    if (otherAuthors.length > 0) {
+        authors = authors.concat(otherAuthors);
+    }
+    authors.forEach(function(authorString) {
         if (authorString) {
             var authorNames = authorString.trim().split(/\n/);
             authorNames.forEach(function(name) {
@@ -49,13 +55,23 @@ var extractIsbns = function(isbnText) {
 var extractBookProperties = function(bookPageHtml) {
     var $ = cheerio.load(bookPageHtml);
     var properties = {};
-    properties.title = $('#item_bib_title').text().trim();
-    var author = $('#author_search').text().trim();
-    var otherAuthors = $('.value.author a').text().trim();
-    var authors = extractAuthorNames(author,
-        otherAuthors);
-
-    properties.authors = authors;
+    var title = $('#item_bib_title').text().trim();
+    var subtitle = $('.subTitle').text().trim();
+    if (subtitle) {
+        properties.title = title + ' ' + subtitle;
+    } else {
+        properties.title = title;
+    }
+    var author = $('a[testid=author_search]').text().trim();
+    var otherAuthorLinks = $('.value.author a');
+    var otherAuthors = [];
+    otherAuthorLinks.each(function(i, authorLink) {
+        otherAuthors.push($(authorLink).text().trim());
+    });
+    var authors = extractAuthorNames(author, otherAuthors);
+    if (authors.length > 0) {
+        properties.authors = authors;
+    }
     var publisherText = $('div[testid=publishers_main]').children('.value').text().trim();
     if (publisherText) {
         // This combined publisher/date field is too difficult to parse
