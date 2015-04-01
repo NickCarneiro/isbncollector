@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
             }
             doc.lastEventFomatted = moment(doc.lastEvent).fromNow();
         });
-        res.end(JSON.stringify(docs, null, 4));
+        res.json(docs);
     });
 
 });

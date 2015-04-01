@@ -6,6 +6,8 @@ var monitor = function(scraperName) {
     this.healthy = true;
     this.lastError = null;
     this.lastEvent = null;
+    this.lastErrorMessage = null;
+    this.lastEventMessage = null;
 };
 
 
