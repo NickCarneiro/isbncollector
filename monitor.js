@@ -13,12 +13,14 @@ monitor.prototype.log = function(message, error) {
     if (error) {
         this.lastError = Date.now();
         this.healthy = false;
+        this.lastErrorMessage = error;
     } else {
         this.lastEvent = Date.now();
         this.healthy = true;
         var prependedMessage = this.scraperName + ': ' + message;
         fs.appendFile('logs/scrapers.log', prependedMessage + '\n');
     }
+    this.lastEventMessage = message;
     storageUtils.updateHealthcheck(this);
     console.log(message);
 };
