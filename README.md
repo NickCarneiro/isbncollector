@@ -20,3 +20,5 @@ required system packages:
 Create mongo indexes on isbn10, isbn13 and text:
 
     db.books.createIndex({title: "text"})
+    db.books.createIndex({isbn10:1}, {unique: true, sparse: true})
+    db.books.createIndex({isbn13:1}, {unique: true, sparse: true})
