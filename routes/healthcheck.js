@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var storageUtils = require('../scrapers/storage_utils');
+var moment = require('moment');
 
 router.get('/', function(req, res) {
     storageUtils.getHealthcheck(function(docs) {
@@ -11,6 +12,10 @@ router.get('/', function(req, res) {
                 doc.healthy = false;
                 doc.message = 'No activity for 60 seconds.';
             }
+            if (doc.lastError) {
+                doc.lastErrorFormatted = moment(doc.lastError).fromNow();
+            }
+            doc.lastEventFomatted = moment(doc.lastEvent).fromNow();
         });
         res.end(JSON.stringify(docs, null, 4));
     });
