@@ -285,7 +285,7 @@ test('boston - daphnis - additional contributor with year in name', function (t)
         authors: [ 'Longus', 'Marc Chagall' ],
         publisher: 'Munich : Prestel, 1994',
         publicationDate: 1994,
-        isbn10: '3797313738',
+        isbn10: '3791313738',
         relatedIsbns: [ '3797313738' ],
         pages: 150,
         description: 'Inspired by a journey through Greece, Marc Chagall, one of this century\'s most popular painters, created a wonderful series of lithographs that brought new life to this ancient Greek love story -- the first pastoral romance.' }

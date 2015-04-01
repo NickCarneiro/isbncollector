@@ -98,7 +98,7 @@ var extractBookProperties = function(bookPageHtml) {
                 if (isbn != properties.isbn10 &&
                     isbn != properties.isbn13) {
                     if (!properties.relatedIsbns) {
-                        properties.relatedIsbns = [isbn]
+                        properties.relatedIsbns = [isbn];
                     } else if (properties.relatedIsbns.indexOf(isbn) === -1) {
                         properties.relatedIsbns.push(isbn);
                     }

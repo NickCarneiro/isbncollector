@@ -30,7 +30,7 @@ var scrapeBoston = function(bookId) {
                     monitor.log('no isbn found.');
                 }
             } else {
-                monitor.log('Got redirected to homepage.')
+                monitor.log('Got redirected to homepage.');
             }
 
         } else if (!error && response.statusCode == 302) {
@@ -42,7 +42,7 @@ var scrapeBoston = function(bookId) {
             var nextBookId = parseInt(bookId);
             nextBookId++;
             scrapeBoston(nextBookId);
-        }, SLEEP_TIME_MILLIS)
+        }, SLEEP_TIME_MILLIS);
     });
 };
 
