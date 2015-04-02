@@ -16,6 +16,7 @@
     "moment": "^2.9.0",
     "mongodb": "^1.4.33",
     "morgan": "~1.5.1",
+    "numeral": "^1.5.3",
     "request": "^2.53.0",
     "serve-favicon": "~2.2.0",
     "socks5-http-client": "^1.0.1",
