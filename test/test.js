@@ -6,6 +6,7 @@ var denver = require('../scrapers/denver');
 var cheerio = require('cheerio');
 var stringUtils = require('../scrapers/string_utils');
 var boston = require('../scrapers/boston');
+var uiuc = require('../scrapers/uiuc');
 
 
 test('amazon book page html extraction - tsukuru', function (t) {
@@ -323,6 +324,56 @@ test('boston - odysseus - 4 isbns', function (t) {
         publisher: 'Grand Haven, MI : Brilliance Audio, p2011.',
         title: 'The Resisters',
         relatedIsbns: [ '9781611069587', '1611069580']
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+test('uiuc - cryptonomicon', function (t) {
+    var uiucHtml = fs.readFileSync(__dirname + '/fixtures/cryptonomicon_uiuc.html');
+    var bookProperties = uiuc.extractBookProperties(uiucHtml);
+    var expectedProperties = { authors: [ 'Neal Stephenson' ],
+        isbn10: '0380973464',
+        pages: 918,
+        publicationDate: 1999,
+        publisher: 'New York : Avon Books, c1999.',
+        title: 'Cryptonomicon'
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+test('uiuc - zero to one', function (t) {
+    var uiucHtml = fs.readFileSync(__dirname + '/fixtures/zero_to_one_uiuc.html');
+    var bookProperties = uiuc.extractBookProperties(uiucHtml);
+    var expectedProperties = {
+        authors: [ 'Peter A. Thiel', 'Blake G. Masters' ],
+        isbn10: '0804139296',
+        isbn13: '9780804139298',
+        pages: 210,
+        publicationDate: 2014,
+        publisher: 'New York : Crown Business, [2014]',
+        relatedIsbns: ['9780553418286', '0553418289'],
+        title: 'Zero to one : notes on startups, or how to build the future'
+    };
+    t.deepEquals(bookProperties, expectedProperties);
+    t.end();
+});
+
+
+
+test('uiuc - odysseus', function (t) {
+    var uiucHtml = fs.readFileSync(__dirname + '/fixtures/odysseus_uiuc.html');
+    var bookProperties = uiuc.extractBookProperties(uiucHtml);
+    var expectedProperties = {
+        authors: [ 'Neil Philip', 'Homer. Odyssey', 'Peter Malone' ],
+        isbn10: '0531300005',
+        pages: 72,
+        publicationDate: 1997,
+        publisher: 'New York : Orchard Books, 1997.',
+        title: 'The adventures of Odysseus'
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();

@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" onload="qf();">
+<head>
+    <title>Library Resource Finder: More Details for: Zero to one : notes on startups, or how </title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/vf-uiu/css/uiu/styles.css">
+    <link rel="stylesheet" type="text/css" media="print" href="/vf-uiu/css/print.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script language="JavaScript" type="text/javascript">
+        path = '/vf-uiu';
+        fullpath = '/vf-uiu/Record/uiu_7611375/Description';
+    </script>
+
+    <script language="JavaScript" type="text/javascript">
+        function setSearchType (selVal) {
+            if (selVal == 0) {
+
+
+                newAction = '/all/vf-uiu/Search/Home';
+
+            } else {
+                newAction = path + '/Search/Home';
+            }
+            for (i=0; i<=document.forms.length; i++) {
+                var theForm = document.forms[i];
+                if (theForm != null) {
+                    var formName = theForm.name;
+                    if(formName == 'searchForm') {
+                        if (document.forms[i].action != newAction) {
+                            document.forms[i].action = newAction;
+                        }
+                        if (selVal == 2 || selVal == 0) {
+                            if (document.forms[i].hathi) document.forms[i].hathi.value = 1;
+                        } else {
+                            if (document.forms[i].hathi) document.forms[i].hathi.value = 0;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/sorttable.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/yui/yahoo-dom-event.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/yui/yahoo-min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/yui/event-min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/yui/connection-min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/yui/dragdrop-min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/scripts.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/ajax.yui.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/prototype.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/scriptaculous.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/js/SetAllCheckBoxes.js"></script>
+
+</head>
+<body onunload="hideLightbox()">
+<!-- LightBox -->
+<a onClick="hideLightbox(); return false;"><div id="lightbox"></div></a>
+<div id="popupbox" class="popupBox"></div>
+<!-- End LightBox -->
+
+<div id="doc2" class="yui-t5"> <!-- Change id for page width, class for menu layout. -->
+
+    <!-- Catalog Connection Display -->
+    <div class="popupBox" id="connectLocal">
+        <div class="header">
+            <a href="" onClick="hideLightbox(); return false;">close</a>
+        </div>
+        <div class="title" align="center">
+            <br><br>Contacting Local Catalog <img src="/vf-uiu/images/loading.gif" alt="please wait"><br><br><br>
+        </div>
+    </div>
+    <!-- End Catalog Connection Display -->
+
+    <div id="hd" role="banner">
+        <img border="0" src="/vf-uiu/images/vufind-uiu.gif" usemap="#Map" />
+        <map name="Map" id="Map">
+
+            <area shape="rect" coords="5,9,56,75" href="http://illinois.edu/" alt="University of Illinois I-Mark" />
+            <area shape="rect" coords="93,10,348,45" href="http://www.library.uiuc.edu/" alt="University Library - University of Illinois at Urbana-Champaign" />
+            <area shape="rect" coords="2,91,233,117" href="http://www.library.uiuc.edu/catalog/vufind/" alt="What happened to the Library Catalog?" />
+            <area shape="rect" coords="309,92,569,115" href="http://www.library.uiuc.edu/catalog/vufind/feedback.html" alt="Tell us what you think of the Library Catalog" />
+            <area shape="rect" coords="426,7,572,35" href="http://www.library.uiuc.edu/askus/" alt="Ask A Librarian for live assistance" />
+
+        </map>
+
+    </div> <!--end id='hd'-->
+    <div class="clear"></div>
+
+
+    <h1 class="hidden">More Details for: Zero to one : notes on startups, or how </h1>
+    <!-- Search box. This should really be coming from the include. -->
+    <div id="bd">
+        <div id="yui-main">
+            <div class="topcol1" role="search">
+                <div class="searchbox">
+                    <form method="GET" action="/vf-uiu/Search/Home" name="searchForm" class="search">
+                        <label for="lookfor"><span class="hidden">Enter Search Terms:</span></label><input type="text" name="lookfor" id="lookfor" size="45" value="">
+                        <label for="searchtype">
+                            <select name="type" id="searchtype" class='searchbtn'>
+                                <option value="all">Keyword</option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                                <option value="subject">Subject</option>
+                                <!--
+                                                  <option value="callnumber">Call Number</option>
+                                -->
+                                <option value="isn">ISBN/ISSN</option>
+                            </select>
+                        </label>
+
+                        <label for="catalog">
+                            <select name="start_over" id="catalog" onchange="setSearchType(options[selectedIndex].value)" class='searchbtn'>
+                                <option value="0">All I-Share Libraries</option>
+                                <option value="1" selected>Local Catalog Only</option>
+                            </select>
+                        </label>
+
+                        <input type="submit" name="submit" class='searchbtn' value="Find">
+
+                        <br><br>
+
+
+                    </form>
+
+                    <!-- The following navigation links should be presented in an unordered list rather than a paragraph, for better accessibility. -->
+                    <!--	<p class="navline">
+                            <a href="/vf-uiu/Search/Advanced">Advanced Search</a> |
+
+
+                                       <a href='https://i-share.carli.illinois.edu/uiu/cgi-bin/Pwebrecon.cgi?DB=local&PAGE=First'>Classic Search</a> |
+                                                                        <a href="http://vufind.carli.illinois.edu/vf-uiu/Search/Reserves">Course Reserves</a></li><li> | <a href="https://reserves.library.illinois.edu/">E-Reserves</a> |
+                                       <a href="/vf-uiu/Search/History">Search History</a>
+                            </p> -->
+                    <h2 class="hidden">Search Options</h2>
+                    <ul class="navline">
+                        <li><a href="/vf-uiu/Search/Advanced">Advanced Search</a></li>
+
+
+                        <li>|&nbsp;<a href='https://i-share.carli.illinois.edu/uiu/cgi-bin/Pwebrecon.cgi?DB=local&PAGE=First'>Classic Search</a></li>
+                        <li>|&nbsp;<a href="http://vufind.carli.illinois.edu/vf-uiu/Search/Reserves">Course Reserves</a></li><li> | <a href="https://reserves.library.illinois.edu/">E-Reserves</a></li>
+                        <li>|&nbsp;<a href="/vf-uiu/Search/History">Search History</a></li>
+                    </ul>
+
+
+                    <script language="JavaScript" type="text/javascript">
+                        var srchFrm=document.forms['searchForm'];
+                        if (srchFrm!=null) {
+                            if (srchFrm.elements!=null) {
+                                var txtBox=srchFrm.elements['lookfor'];
+                                if (txtBox!=null) txtBox.focus();
+                            }
+                        }
+
+
+                        if (document.searchForm !=null && document.searchForm.start_over != null && document.searchForm.start_over.options != null)
+                            setSearchType(document.searchForm.start_over.options[document.searchForm.start_over.options.selectedIndex].value);
+
+
+                    </script>
+
+
+
+                </div> <!-- close class=searchbox -->
+                <!-- end of hiding search box on Advanced Search page -->
+
+
+            </div> <!-- close class=topcol1 -->
+            <div class='topcol2' role="navigation" aria-label="Login, Contact">
+                <p class='loginline'>
+                    <a name="LoginLink" href="/vf-uiu/MyResearch/Home">Login</a>
+
+                </p>
+                <p class="navline">
+                    <a href="http://www.library.illinois.edu/catalog/vufind/feedback.html">Feedback</a>
+                </p>
+
+            </div>
+            <div class='clear'></div>
+        </div> <!-- close class=yui-main -->
+    </div> <!-- close class=bd -->
+
+    <script language="JavaScript" type="text/javascript" src="/vf-uiu/services/Record/ajax.js"></script>
+
+    <div id="bd">
+        <div id="yui-main" class="content">
+            <div class="yui-b first contentbox">
+                <div class="yui-ge">
+
+                    <!-- Login Warning -->
+                    <div class="popupBox" id="loginBox">
+                        <div class="header">
+                            <a href="" onClick="hideLightbox(); return false;">close</a>
+                            You must be logged in for this
+                        </div>
+                        <div class="content">
+                            <table class="citation">
+                                <form method="post" name="loginForm">
+                                    <input type="hidden" name="followup">
+                                    <tr>
+                                        <td>Username: </td>
+                                        <td><input type="text" name="username" value="" size="15"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password: </td>
+                                        <td><input type="password" name="password" size="15"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="submit" name="submit" value="Login">
+                                            <input type="submit" name="submit" value="Cancel" onClick="hideLightbox(); return false;">
+                                        </td>
+                                    </tr>
+                                </form>
+                            </table>
+                            <!--
+                                      <script type="text/javascript">document.loginForm.username.focus();</script>
+                            -->
+                            <a href="/vf-uiu/MyResearch/Account">Create New Account</a><br/><br/>
+                            <a href="/vf-uiu/Password/Reset">Forgot Your Password?</a><br/>
+                        </div>
+                    </div>
+                    <!-- End Login Warning -->
+
+                    <!-- Save Record Form -->
+                    <div class="popupBox" id="saveRecord">
+                        <div class="header">
+                            <a href="" onClick="hideLightbox(); return false;">close</a>
+                            Add to Favorites
+                        </div>
+                        <div class="content">
+                            <form name="listForm" onSubmit="saveRecord();">
+                                <input type="hidden" name="recordId" value="uiu_7611375">
+                                <table>
+                                    <tr><td colspan="2" id="recordTitle"></td></tr>
+                                    <tr><td><label for="yourTags">Public Tags: </label></td><td><textarea id="yourTags" name="tags" rows="1" cols="50"></textarea></td></tr>
+                                    <tr><td colspan="2"><br/>Spaces will separate tags.  Put multi-word tags in quotation marks. For example: "Pulitzer winner"</td></tr>
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td><label for="yourNotes">Note to Self: </label></td><td><textarea id="yourNotes" name="notes" rows="3" cols="50"></textarea><br/></td></tr>
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td></td><td><input type="button" value="Save" onClick="saveRecord();">&nbsp;&nbsp;Saving a title as a favorite is NOT a <a href="/vf-uiu/Record/uiu_7611375/Request" onClick="popupMenu('connectLocal'); return true;">request to borrow</a> it.</td></tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End Save Record Form -->
+
+
+                    <div class="record">
+                        <a href="/vf-uiu/Search/Home?lookfor=Thiel%20Peter%20A.&type=author&start_over=1" class="backtosearch">&laquo; Back to Search Results</a>
+
+                        <p class="tools">
+                            <label><a href="/vf-uiu/Record/uiu_7611375/Cite" class="cite" onClick="popupMenu('citationBox'); return false;">Cite this</a></label>
+
+                            <label><a href="/vf-uiu/Record/uiu_7611375/Email" class="mail" onClick="showEmailForm(); return false;">Email this</a></label>
+
+                            <label for='saveLink'><span id="saveLink"><a href="/vf-uiu/Record/uiu_7611375/Save" class="fav" onClick="showSaveForm(); return false;">Add to favorites</a></span></label>
+
+                            <a href="/vf-uiu/Record/uiu_7611375/Details"><img src="/vf-uiu/images/staffEyesOnly.jpg">&nbsp;Staff view</a>
+
+                            <label for='googlePreviewLink'><a id="googlePreviewLink" style="display:none" target="new"><img id="googlePreviewImage" src="/vf-uiu/images/1x1.gif" alt="Google Book Search Preview" align="top"></a></label>
+
+                            <script language="JavaScript" type="text/javascript">
+                                getGooglePreview('24.5.149.154', 'ISBN9780804139298', 'googlePreviewLink', 'googlePreviewImage');
+                            </script>
+
+                            <script language="JavaScript" type="text/javascript">
+                                getSaveStatus('uiu_7611375', 'saveLink');
+                            </script>
+                            <!--
+                                         -->
+                        </p>
+
+                        <div style="clear: right;"></div>
+
+                        <div class="popupBox" id="citationBox">
+                            <div class="header">
+                                <a href="" onClick="hideLightbox(); return false;">close</a>
+                                Cite This Record
+                            </div>
+                            <div class="content">
+                                <strong>APA Citation</strong>
+                                <p class="citation">Thiel, Peter A.,Masters, Blake G..
+
+                                    ()
+                                    <i>Zero to one :notes on startups, or how to build the future </i> </p>
+                                <strong>MLA Citation</strong>
+                                <p class="citation">Thiel, Peter A.,Masters, Blake G.,<i>Zero To One: Notes On Startups, Or How To Build The Future</i>. :  . Print.</p>
+                                <p class="warning">These citations may not conform precisely to your selected citation style. Please use this display as a guideline and modify as needed.</p>
+                            </div>
+                        </div>
+
+                        <div class="popupBox" id="emailBox">
+                            <div class="header">
+                                <a href="" onClick="hideLightbox(); return false;">close</a>
+                                Email This Record
+                            </div>
+                            <div class="content">
+                                <form name="myEmailForm">
+                                    <b>From:</b> <br><br>
+                                    <input type="hidden" name="from" valule="">
+                                    <b>To:</b><input type="text" name="to" size="40" value=""><br><br>
+                                    <b>Optional Message:</b><br>
+                                    <textarea name="message" rows="3" cols="40"></textarea><br>
+                                    <input type="button" value="Send" onClick="SendEmail('uiu_7611375', document.forms['myEmailForm'].elements, 'emailBox');">
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Login Warning -->
+                        <div class="loginWarning" id="loginWarningTag">
+                            <div class="warning">You must be logged in to Tag Records</div>
+                            <input type="button" value="Log In" id="loginWarningTag_Log_In" onClick="window.location.href='/MyResearch/Home';">
+                            <input type="button" value="Close" onClick="document.getElementById('loginWarningTag').style.display='none';">
+                        </div>
+                        <!-- End Login Warning -->
+
+                        <h1 xmlns:m="http://www.loc.gov/MARC21/slim" xmlns:php="http://php.net/xsl" xmlns:str="http://xsltsl.org/string">Zero to one : notes on startups, or how to build the future /</h1><h3>Peter Thiel with Blake Masters.</h3><div xmlns:m="http://www.loc.gov/MARC21/slim" xmlns:php="http://php.net/xsl" xmlns:str="http://xsltsl.org/string" class="alignleft"><a href="//secure.syndetics.com/index.aspx?type=xw12&amp;isbn=9780804139298/LC.JPG&amp;client=uillurch"><img alt="Book Cover" src="//secure.syndetics.com/index.aspx?type=xw12&amp;isbn=9780804139298/MC.GIF&amp;client=uillurch"></a></div><table xmlns:m="http://www.loc.gov/MARC21/slim" xmlns:php="http://php.net/xsl" xmlns:str="http://xsltsl.org/string" cellpadding="2" cellspacing="0" border="0" class="citation">
+                        <tr valign="top">
+                            <th>Author: </th>
+                            <td><a href="/vf-uiu/Search/Home?lookfor=Thiel%20Peter%20A.&amp;type=author&amp;start_over=1">Thiel, Peter A.</a></td>
+                        </tr>
+                        <tr valign="top">
+                            <th>Other Names: </th>
+                            <td><a href="/vf-uiu/Search/Home?lookfor=Masters,%20Blake%20G.,&amp;type=author&amp;start_over=1">Masters, Blake G.,</a></td>
+                        </tr>
+                        <tr valign="top">
+                            <th>Published: </th>
+                            <td>New York : Crown Business, [2014] </td>
+                        </tr>
+                        <tr valign="top">
+                            <th>Edition: </th>
+                            <td>First edition.</td>
+                        </tr>
+                        <tr valign="top">
+                            <th>Topics: </th>
+                            <td>
+                                <a href="/vf-uiu/Search/Home?lookfor=New%20business%20enterprises.%20&amp;type=subject&amp;start_over=1" title='New search for "New business enterprises. "'>New business enterprises.</a> | <a href="/vf-uiu/Search/Home?lookfor=New%20products.%20&amp;type=subject&amp;start_over=1" title='New search for "New products. "'>New products.</a> | <a href="/vf-uiu/Search/Home?lookfor=Entrepreneurship.%20&amp;type=subject&amp;start_over=1" title='New search for "Entrepreneurship. "'>Entrepreneurship.</a> | <a href="/vf-uiu/Search/Home?lookfor=Diffusion%20of%20innovations.%20&amp;type=subject&amp;start_over=1" title='New search for "Diffusion of innovations. "'>Diffusion of innovations.</a> | <a href="/vf-uiu/Search/Home?lookfor=BUSINESS%20&amp;%20ECONOMICS%20/%20Entrepreneurship.%20&amp;type=subject&amp;start_over=1" title='New search for "BUSINESS &amp; ECONOMICS / Entrepreneurship. "'>BUSINESS &amp; ECONOMICS / Entrepreneurship.</a> | <a href="/vf-uiu/Search/Home?lookfor=BUSINESS%20&amp;%20ECONOMICS%20/%20Small%20Business.%20&amp;type=subject&amp;start_over=1" title='New search for "BUSINESS &amp; ECONOMICS / Small Business. "'>BUSINESS &amp; ECONOMICS / Small Business.</a> | <a href="/vf-uiu/Search/Home?lookfor=POLITICAL%20SCIENCE%20/%20Public%20Policy%20/%20Economic%20Policy.%20&amp;type=subject&amp;start_over=1" title='New search for "POLITICAL SCIENCE / Public Policy / Economic Policy. "'>POLITICAL SCIENCE / Public Policy / Economic Policy.</a> | <a href="/vf-uiu/Search/Home?lookfor=Unternehmensgr%C3%BCndung.%20&amp;type=subject&amp;start_over=1" title='New search for "Unternehmensgründung. "'>Unternehmensgründung.</a> | <a href="/vf-uiu/Search/Home?lookfor=Gesch%C3%A4ftsidee.%20&amp;type=subject&amp;start_over=1" title='New search for "Geschäftsidee. "'>Geschäftsidee.</a> | <a href="/vf-uiu/Search/Home?lookfor=Produktinnovation.%20&amp;type=subject&amp;start_over=1" title='New search for "Produktinnovation. "'>Produktinnovation.</a> | <a href="/vf-uiu/Search/Home?lookfor=Pionierunternehmen.%20&amp;type=subject&amp;start_over=1" title='New search for "Pionierunternehmen. "'>Pionierunternehmen.</a>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th width="15%">Related Information:</th>
+                            <td>
+                                <a href="9780804139298.jpg" target="_blank">Cover image<span class="hidden"> (Opens in a new window)</span></a><br>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th>Tags: </th>
+                            <td>
+                                <span style="float:right;"><a href="" class="addtag" onClick="showTagsForm(); return false;">Add</a></span><div id="tagList"><script language="JavaScript" type="text/javascript">
+                                GetTags('uiu_7611375', 'tagList');
+                            </script></div>
+                                <form name="tagForm" id="tagForm" onSubmit="SaveTag('uiu_7611375', ''); return false;">
+                                    <input type="text" name="tag" style="float: right;"><br><br><div style="text-align: right;">Spaces will separate tags.<br>Use quotes for multi-word tags.</div>
+                                </form>
+                            </td>
+                        </tr>
+                    </table><br><div xmlns:m="http://www.loc.gov/MARC21/slim" xmlns:php="http://php.net/xsl" xmlns:str="http://xsltsl.org/string" id="rectabnav" style="clear: left; text-align: center;"><ul>
+                        <li class="active"><a href="/vf-uiu/Record/uiu_7611375/Description" class="first"><span></span>More<br>Details</a></li>
+                        <li><a href="/vf-uiu/Record/uiu_7611375/Holdings"><span></span>Location &amp;<br>Availability</a></li>
+                        <li>
+                            <span></span><a href="/vf-uiu/Record/uiu_7611375/TOC"><span></span>Table of<br>Contents</a>
+                        </li>
+                        <li><a href="/vf-uiu/Record/uiu_7611375/UserComments"><span></span>User<br>Reviews</a></li>
+                        <li><a href="/vf-uiu/Record/uiu_7611375/Reviews"><span></span>Published<br>Reviews</a></li>
+                        <li><a href="/vf-uiu/MyResearch/Home?message=You+must+be+logged+in+for+this+action&amp;followup=/vf-uiu/Record/uiu_7611375/Request"><span></span>Request<br>Item</a></li>
+                    </ul></div><br xmlns:m="http://www.loc.gov/MARC21/slim" xmlns:php="http://php.net/xsl" xmlns:str="http://xsltsl.org/string" clear="left"><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator&amp;rft.genre=book&amp;rft.btitle=Zero+to+one+%3A notes+on+startups%2C+or+how+to+build+the+future+%2F&amp;rft.title=Zero+to+one+%3A notes+on+startups%2C+or+how+to+build+the+future+%2F&amp;rft.au=Thiel%2C+Peter+A.%2C&amp;rft.date=&amp;rft.place=&amp;rft.pub=&amp;rft.edition=First edition.&amp;rft.isbn=978080413"></span>
+
+
+                        <div class="details">
+
+                            <h4></h4>
+
+                            <table xmlns:m="http://www.loc.gov/MARC21/slim" xmlns:php="http://php.net/xsl" xmlns:str="http://xsltsl.org/string" cellpadding="2" cellspacing="0" border="0" class="citation">
+                                <tr valign="top">
+                                    <th width="150">Physical Description:</th>
+                                    <td>210 pages : illustrations ; 22 cm <br>
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <th width="150">ISBN: </th>
+                                    <td>9780804139298 (hardback) <br>0804139296 (hardback) <br>9780553418286 (paperback) <br>0553418289 (paperback) <br> <br>
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <th width="150">Summary: </th>
+                                    <td>Every moment in business happens only once. The next Bill Gates will not build an operating system. The next Larry Page or Sergey Brin won't make a search engine. And the next Mark Zuckerberg won't create a social network. If you are copying these guys, you aren't learning from them. It's easier to copy a model than to make something new: doing what we already know how to do takes the world from 1 to n, adding more of something familiar. But every time we create something new, we go from 0 to 1. The act of creation is singular, as is the moment of creation, and the result is something fresh and strange. Zero to One is about how to build companies that create new things. It draws on everything the author learned directly as a co-founder of PayPal and Palantir and then an investor in hundreds of startups, including Facebook and SpaceX. The single most powerful pattern he has noticed is that successful people find value in unexpected places, and they do this by thinking about business from first principles instead of formulas. Ask not, what would Mark do? Ask: what valuable company is no one building? <br>
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <th width="150">Notes:</th>
+                                    <td>Includes index. <br>
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <th width="150">Other Names: </th>
+                                    <td>
+                                        <a href="../../Search/Home?lookfor=Masters,%20Blake%20G.,%20&amp;type=author&amp;start_over=1">Masters, Blake G., author. </a><br>
+                                    </td>
+                                </tr>
+                            </table>
+                            <script src="http://syndetics.com/widget.php?id=uillurch" type="text/javascript"></script><div id="syn_summary">Loading Summary<img src="/vf-uiu/images/loading.gif" alt="Loading"></div><br/>
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!--
+                    <div class="yui-u">
+                      <dl class="navmenu">
+                        <dt>Current Status:</dt>
+                                    <dd><span class="unknown">Unknown</span></dd>
+
+
+                        <dt>Call Number: </dt>
+                        <dd><a href="/vf-uiu/Search/Home?lookfor=*&type=callnumber"></a></dd>
+
+                        <dt>Located: </dt>
+                        <dd>
+
+                                    </dd>
+
+                        <dt>Reserve Item</dt>
+                        <dd><a href="/vf-uiu/Record/uiu_7611375/Hold" title="Place a hold to reserve this item">Hold This For Me</a></dd>
+                        <dd><a href="/vf-uiu/Record/uiu_7611375/Recall" title="Recall the item will speed availability time">Recall This For Me</a></dd>
+                      </dl>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+
+        </div>
+
+        <!--
+          <div class="yui-b">
+            <div class="box submenu">
+              <h2>Similar Items</h2>
+                    Cannot find similar records
+
+            </div>
+          </div>
+        -->
+
+
+        <script language="javascript">
+            var followupJS = '';
+
+            if (followupJS.length > 0) { eval(followupJS); }
+
+        </script>
+
+    </div>    <div id="ft" role="contentinfo">
+    </div>
+
+
+    <h1 class="hidden">More Details for: Zero to one : notes on startups, or how </h1>
+    <!-- Search box. This should really be coming from the include. -->
+    <div id="bd">
+        <div id="yui-main">
+            <div class="topcol1" role="search">
+                <div class="searchbox">
+                    <form method="GET" action="/vf-uiu/Search/Home" name="searchForm" class="search">
+                        <label for="lookfor2"><span class="hidden">Enter Search Terms:</span></label><input type="text" name="lookfor" id="lookfor2" size="45" value="">
+                        <label for="searchtype2">
+                            <select name="type" id="searchtype2" class='searchbtn'>
+                                <option value="all">Keyword</option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                                <option value="subject">Subject</option>
+                                <!--
+                                                  <option value="callnumber">Call Number</option>
+                                -->
+                                <option value="isn">ISBN/ISSN</option>
+                            </select>
+                        </label>
+
+                        <label for="catalog2">
+                            <select name="start_over" id="catalog2" onchange="setSearchType(options[selectedIndex].value)" class='searchbtn'>
+                                <option value="0">All I-Share Libraries</option>
+                                <option value="1" selected>Local Catalog Only</option>
+                            </select>
+                        </label>
+
+                        <input type="submit" name="submit" class='searchbtn' value="Find">
+
+                        <br><br>
+
+
+                    </form>
+
+                    <!-- The following navigation links should be presented in an unordered list rather than a paragraph, for better accessibility. -->
+                    <!--	<p class="navline">
+                            <a href="/vf-uiu/Search/Advanced">Advanced Search</a> |
+
+
+                                       <a href='https://i-share.carli.illinois.edu/uiu/cgi-bin/Pwebrecon.cgi?DB=local&PAGE=First'>Classic Search</a> |
+                                                                        <a href="http://vufind.carli.illinois.edu/vf-uiu/Search/Reserves">Course Reserves</a></li><li> | <a href="https://reserves.library.illinois.edu/">E-Reserves</a> |
+                                       <a href="/vf-uiu/Search/History">Search History</a>
+                            </p> -->
+                    <h2 class="hidden">Search Options</h2>
+                    <ul class="navline">
+                        <li><a href="/vf-uiu/Search/Advanced">Advanced Search</a></li>
+
+
+                        <li>|&nbsp;<a href='https://i-share.carli.illinois.edu/uiu/cgi-bin/Pwebrecon.cgi?DB=local&PAGE=First'>Classic Search</a></li>
+                        <li>|&nbsp;<a href="http://vufind.carli.illinois.edu/vf-uiu/Search/Reserves">Course Reserves</a></li><li> | <a href="https://reserves.library.illinois.edu/">E-Reserves</a></li>
+                        <li>|&nbsp;<a href="/vf-uiu/Search/History">Search History</a></li>
+                    </ul>
+
+
+                    <script language="JavaScript" type="text/javascript">
+                        var srchFrm=document.forms['searchForm'];
+                        if (srchFrm!=null) {
+                            if (srchFrm.elements!=null) {
+                                var txtBox=srchFrm.elements['lookfor'];
+                                if (txtBox!=null) txtBox.focus();
+                            }
+                        }
+
+
+                        if (document.searchForm !=null && document.searchForm.start_over != null && document.searchForm.start_over.options != null)
+                            setSearchType(document.searchForm.start_over.options[document.searchForm.start_over.options.selectedIndex].value);
+
+
+                    </script>
+
+
+
+                </div> <!-- close class=searchbox -->
+                <!-- end of hiding search box on Advanced Search page -->
+
+
+
+                <br clear="all">
+            </div>
+        </div>
+
+
+</body>
+<head> <!--duplicate still required for IE8 as of 20131115: otherwise, VuFind doesn't display item status changes without manual page refresh-->
+
+</head>
+
+</html>
