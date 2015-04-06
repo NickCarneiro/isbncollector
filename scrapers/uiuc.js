@@ -18,23 +18,25 @@ var extractAuthorNames = function(mainAuthor, otherAuthors) {
         authors = authors.concat(otherAuthors);
     }
     authors.forEach(function(authorString) {
-        if (authorString) {
-            var authorNames = authorString.trim().split(/\n/);
-            authorNames.forEach(function(name) {
-                var trimmedName = name.trim();
-                if (trimmedName === '') {
-                    return;
-                }
-                // remove trailing period unless the author's first name is initials like J. K. Rowling
-                if (trimmedName.match(/[a-z]\.$/)) {
-                    trimmedName = trimmedName.replace(/\.$/, '');
-                }
-                var reversedName = stringUtils.reverseNames(trimmedName);
-                if (authorList.indexOf(trimmedName) === -1) {
-                    authorList.push(reversedName);
-                }
-            });
+        if (!authorString) {
+            return;
         }
+        var authorNames = authorString.trim().split(/\n/);
+        authorNames.forEach(function(name) {
+            var trimmedName = name.trim();
+            if (trimmedName === '') {
+                return;
+            }
+            // remove trailing period unless the author's first name is initials like J. K. Rowling
+            if (trimmedName.match(/[a-z]\.$/)) {
+                trimmedName = trimmedName.replace(/\.$/, '');
+            }
+            var reversedName = stringUtils.reverseNames(trimmedName);
+            if (authorList.indexOf(reversedName) === -1) {
+                authorList.push(reversedName);
+            }
+        });
+
     });
     return authorList;
 };
@@ -55,12 +57,19 @@ var extractBookProperties = function(bookPageHtml) {
     properties.title = $('div.record > h1').text().trim();
     //remove trailing slash
     properties.title = properties.title.replace(/\/$/, '').trim();
-    var author = $('tr:contains("Author:") a').text();
+    var author = $('tr:contains("Author:") a').first().text();
     var otherNamesContainer = $('th[width=150]:contains("Other Names:")').next();
     var otherAuthorLinks = $(otherNamesContainer).children('a');
     var otherAuthors = [];
     otherAuthorLinks.each(function(i, authorLink) {
         var authorName = $(authorLink).text().trim().replace(/,$/, '');
+        otherAuthors.push(authorName);
+    });
+    // sometimes there's no author row, just "Names" for something like a meeting transcript
+    // http://vufind.carli.illinois.edu/vf-uiu/Record/uiu_4000/Description
+    var nameLinks = $('tr:contains("Names:") a');
+    nameLinks.each(function(i, nameLink) {
+        var authorName = $(nameLink).text().trim().replace(/,$/, '');
         otherAuthors.push(authorName);
     });
     var authors = extractAuthorNames(author, otherAuthors);

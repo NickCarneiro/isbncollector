@@ -30,7 +30,7 @@ var extractAuthorNames = function(mainAuthor, otherAuthors) {
                     trimmedName = trimmedName.replace(/\.$/, '');
                 }
                 var reversedName = stringUtils.reverseNames(trimmedName);
-                if (authorList.indexOf(trimmedName) === -1) {
+                if (authorList.indexOf(reversedName) === -1) {
                     authorList.push(reversedName);
                 }
             });
