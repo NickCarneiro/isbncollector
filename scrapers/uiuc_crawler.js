@@ -23,7 +23,7 @@ var scrapeUiuc = function(bookId) {
             if (!isBookNotFound(body)) {
                 var bookProperties = uiuc.extractBookProperties(body);
                 if (bookProperties.isbn10 || bookProperties.isbn13) {
-                    //storageUtils.saveBookToMongo(bookProperties, monitor);
+                    storageUtils.saveBookToMongo(bookProperties, monitor);
                     console.log(bookProperties);
                     monitor.success('saving ' + bookProperties.title);
                 } else {
