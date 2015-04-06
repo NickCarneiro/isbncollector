@@ -356,7 +356,8 @@ test('uiuc - zero to one', function (t) {
         publicationDate: 2014,
         publisher: 'New York : Crown Business, [2014]',
         relatedIsbns: ['9780553418286', '0553418289'],
-        title: 'Zero to one : notes on startups, or how to build the future'
+        title: 'Zero to one : notes on startups, or how to build the future',
+        description: 'Every moment in business happens only once. The next Bill Gates will not build an operating system. The next Larry Page or Sergey Brin won\'t make a search engine. And the next Mark Zuckerberg won\'t create a social network. If you are copying these guys, you aren\'t learning from them. It\'s easier to copy a model than to make something new: doing what we already know how to do takes the world from 1 to n, adding more of something familiar. But every time we create something new, we go from 0 to 1. The act of creation is singular, as is the moment of creation, and the result is something fresh and strange. Zero to One is about how to build companies that create new things. It draws on everything the author learned directly as a co-founder of PayPal and Palantir and then an investor in hundreds of startups, including Facebook and SpaceX. The single most powerful pattern he has noticed is that successful people find value in unexpected places, and they do this by thinking about business from first principles instead of formulas. Ask not, what would Mark do? Ask: what valuable company is no one building?'
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();
@@ -373,7 +374,8 @@ test('uiuc - odysseus', function (t) {
         pages: 72,
         publicationDate: 1997,
         publisher: 'New York : Orchard Books, 1997.',
-        title: 'The adventures of Odysseus'
+        title: 'The adventures of Odysseus',
+        description: 'Retells the adventures of the hero Odysseus as he encounters many monsters and other obstacles on his journey home from the Trojan War.'
     };
     t.deepEquals(bookProperties, expectedProperties);
     t.end();

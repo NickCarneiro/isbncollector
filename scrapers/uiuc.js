@@ -111,10 +111,17 @@ var extractBookProperties = function(bookPageHtml) {
             properties.pages = pageCount;
         }
     }
-    var description = $('#syn_summary > div.syn_body.syn_truncate > p').text().trim();
-    if (description) {
-        properties.description = description;
+
+    // UIUC includes descriptions for some books directly in the html,
+    // others send a request to syndetics. We're going to ignore the latter.
+    var summaryElement = $('th[width=150]:contains("Summary:")').next();
+    if (summaryElement) {
+        var description = $(summaryElement).text().trim();
+        if (description) {
+            properties.description = description;
+        }
     }
+
     return properties;
 };
 
