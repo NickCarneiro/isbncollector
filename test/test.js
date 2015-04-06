@@ -369,7 +369,9 @@ test('uiuc - odysseus', function (t) {
     var uiucHtml = fs.readFileSync(__dirname + '/fixtures/odysseus_uiuc.html');
     var bookProperties = uiuc.extractBookProperties(uiucHtml);
     var expectedProperties = {
-        authors: [ 'Neil Philip', 'Homer. Odyssey', 'Peter Malone' ],
+        // Homer shouldn't appear twice here, but he is listed twice on the page, once with Odyssey in his name.
+        // Talk about being pigeonholed.
+        authors: [ 'Neil Philip', 'Homer. Odyssey', 'Peter Malone', 'Homer' ],
         isbn10: '0531300005',
         pages: 72,
         publicationDate: 1997,
