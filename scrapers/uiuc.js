@@ -47,7 +47,7 @@ var extractAuthorNames = function(mainAuthor, otherAuthors) {
  * @param isbnText
  */
 var extractIsbns = function(isbnText) {
-    return isbnText.match(/[\d][\w\d]+/gi)
+    return isbnText.match(/[\d][\w\d]+/gi);
 };
 
 
