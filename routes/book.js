@@ -67,7 +67,14 @@ var handleResults = function(db, query, res, req, err, docs) {
     var keyword = query.isbn13 || query.isbn10;
     if (err === null && docs && docs.length > 0) {
         console.log('found book in the mongo');
-            res.render('book', {properties: docs[0], keyword: keyword, path: req.baseUrl});
+            var bookProperties = docs[0];
+            var apiBaseUrl = '/api/v1/books/';
+            if (bookProperties.isbn10) {
+                apiBaseUrl += bookProperties.isbn10;
+            } else {
+                apiBaseUrl += bookProperties.isbn13;
+            }
+            res.render('book', {properties: bookProperties, keyword: keyword, path: req.baseUrl, apiUrl: apiBaseUrl});
     } else {
         res.status(404);
         var errorMessage = 'No book found';
