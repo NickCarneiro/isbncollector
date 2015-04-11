@@ -4,7 +4,7 @@ var cheerio = require('cheerio');
 var fs = require('fs');
 
 var Agent = require('socks5-http-client/lib/Agent');
-var SLEEP_TIME_MILLIS = 1500;
+var SLEEP_TIME_MILLIS = 500;
 var BASE_URL = 'http://bpl.bibliocommons.com/search?commit=Search&page=$PAGE_NUMBER&q=$SEARCH_KEYWORD&search_category=keyword&t=keyword&utf8=✓&view=small&display_quantity=100';
 
 

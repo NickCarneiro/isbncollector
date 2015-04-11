@@ -35,14 +35,21 @@ var scrapeUiuc = function(bookId) {
 
         } else if (!error && response.statusCode == 302) {
             monitor.log('No book found for this id.');
-        } else {
-            monitor.error(error);
         }
-        setTimeout(function() {
-            var nextBookId = parseInt(bookId);
-            nextBookId++;
-            scrapeUiuc(nextBookId);
-        }, SLEEP_TIME_MILLIS);
+        if (error) {
+            monitor.error(error);
+            console.log('retrying');
+            //wait an extra half second on retries
+            setTimeout(function() {
+                scrapeUiuc(bookId);
+            }, SLEEP_TIME_MILLIS + 500);
+        } else {
+            setTimeout(function() {
+                var nextBookId = parseInt(bookId);
+                nextBookId++;
+                scrapeUiuc(nextBookId);
+            }, SLEEP_TIME_MILLIS);
+        }
     });
 };
 
