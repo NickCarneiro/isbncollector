@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var storageUtils = require('../scrapers/storage_utils');
+var storageUtils = require('../utils/storage_utils');
 var moment = require('moment');
 
 router.get('/', function(req, res) {

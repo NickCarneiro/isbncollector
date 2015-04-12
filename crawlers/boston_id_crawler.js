@@ -1,5 +1,5 @@
 var request = require('request');
-var boston = require('./boston');
+var boston = require('./../parsers/boston');
 var cheerio = require('cheerio');
 var fs = require('fs');
 

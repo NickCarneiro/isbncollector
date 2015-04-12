@@ -1,10 +1,10 @@
 var request = require('request');
-var storageUtils = require('./storage_utils');
-var denver = require('./denver');
+var storageUtils = require('./../utils/storage_utils');
+var denver = require('./../parsers/denver');
 var Agent = require('socks5-http-client/lib/Agent');
 var SLEEP_TIME_MILLIS = 1500;
 
-var Monitor = require('../monitor');
+var Monitor = require('../utils/monitor');
 var monitor = new Monitor.monitor('denver');
 
 var failures = 0;

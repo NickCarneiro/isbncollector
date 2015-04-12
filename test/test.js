@@ -1,12 +1,12 @@
 var test = require('tape');
 var fs = require('fs');
-var amazonScraper = require('../scrapers/amazon');
-var linkcatScraper = require('../scrapers/linkcat');
-var denver = require('../scrapers/denver');
+var amazonScraper = require('../parsers/amazon');
+var linkcatScraper = require('../parsers/linkcat');
+var denver = require('../parsers/denver');
 var cheerio = require('cheerio');
-var stringUtils = require('../scrapers/string_utils');
-var boston = require('../scrapers/boston');
-var uiuc = require('../scrapers/uiuc');
+var stringUtils = require('../utils/string_utils');
+var boston = require('../parsers/boston');
+var uiuc = require('../parsers/uiuc');
 
 
 test('amazon book page html extraction - tsukuru', function (t) {

@@ -1,5 +1,5 @@
 var cheerio = require('cheerio');
-var stringUtils = require('./string_utils');
+var stringUtils = require('./../utils/string_utils');
 
 
 var extractSearchResultUrls = function(searchPageHtml) {

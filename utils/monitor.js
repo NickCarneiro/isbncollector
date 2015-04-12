@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var storageUtils = require('./scrapers/storage_utils');
+var storageUtils = require('./storage_utils');
 var monitor = function(scraperName) {
     this.scraperName = scraperName;
     this.healthy = true;

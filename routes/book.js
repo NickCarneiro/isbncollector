@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var MongoClient = require('mongodb').MongoClient;
-var amazon = require('../scrapers/amazon');
+var amazon = require('../parsers/amazon');
 var config = require('../config');
 
 // Connection URL

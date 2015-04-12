@@ -1,8 +1,8 @@
 var MongoClient = require('mongodb').MongoClient;
-var config = require('./config');
-var amazon = require('./scrapers/amazon.js');
+var config = require('./../config');
+var amazon = require('./../parsers/amazon.js');
 var SLEEP_TIME_MILLIS = 1500;
-var storageUtils = require('./scrapers/storage_utils');
+var storageUtils = require('./storage_utils');
 
 var bookList = [];
 var bookIndex = 0;

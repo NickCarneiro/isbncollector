@@ -1,9 +1,19 @@
+var Parser = function() {
+
+};
+
+
+Parser.prototype.extractBookProperties = function() {
+
+};
+
+
 /**
  * Reverses first and last names separated by a comma
  * @param {string} name - 'Stephenson, Neal'
  * @returns {string} 'Neal Stephenson'
  */
-var reverseNames = function(name) {
+Parser.prototype.reverseNames = function(name) {
     var commaIndex = name.indexOf(', ');
     if (commaIndex === -1) {
         return name;
@@ -24,6 +34,4 @@ var reverseNames = function(name) {
     return  firstName.trim() + ' ' + lastName.trim();
 };
 
-module.exports = {
-    reverseNames: reverseNames
-};
+module.exports = Parser;

@@ -1,14 +1,13 @@
 var cheerio = require('cheerio');
-var stringUtils = require('./string_utils');
-
-
+var parser = require('./parser.js');
+var BostonParser = Object.create(parser);
 
 /**
  *
  * @param {string} mainAuthor - a string containing newline separated author names
  * @param {Array} otherAuthors - a string containing newline separated author names
  */
-var extractAuthorNames = function(mainAuthor, otherAuthors) {
+BostonParser.prototype.extractAuthorNames = function(mainAuthor, otherAuthors) {
     var authorList = [];
     var authors = [];
     if (mainAuthor) {
@@ -29,7 +28,7 @@ var extractAuthorNames = function(mainAuthor, otherAuthors) {
                 if (trimmedName.match(/[a-z]\.$/)) {
                     trimmedName = trimmedName.replace(/\.$/, '');
                 }
-                var reversedName = stringUtils.reverseNames(trimmedName);
+                var reversedName = this.reverseNames(trimmedName);
                 if (authorList.indexOf(reversedName) === -1) {
                     authorList.push(reversedName);
                 }
@@ -44,7 +43,7 @@ var extractAuthorNames = function(mainAuthor, otherAuthors) {
  * 9780804139298,0804139296
  * @param isbnText
  */
-var extractIsbns = function(isbnText) {
+BostonParser.prototype.extractIsbns = function(isbnText) {
     if (!isbnText) {
         return null;
     }
@@ -52,7 +51,7 @@ var extractIsbns = function(isbnText) {
 };
 
 
-var extractBookProperties = function(bookPageHtml) {
+BostonParser.prototype.extractBookProperties = function(bookPageHtml) {
     var $ = cheerio.load(bookPageHtml);
     var properties = {};
     var title = $('#item_bib_title').text().trim();
@@ -123,6 +122,4 @@ var extractBookProperties = function(bookPageHtml) {
 };
 
 
-module.exports = {
-    extractBookProperties: extractBookProperties
-};
+module.exports = BostonParser;

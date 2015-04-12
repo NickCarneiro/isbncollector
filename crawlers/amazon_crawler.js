@@ -1,6 +1,6 @@
 var cheerio = require('cheerio');
 var request = require('request');
-var amazon = require('./amazon');
+var amazon = require('./../parsers/amazon');
 
 var MongoClient = require('mongodb').MongoClient;
 

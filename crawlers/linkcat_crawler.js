@@ -1,12 +1,12 @@
 var request = require('request');
-var linkcat = require('./linkcat');
-var storageUtils = require('./storage_utils');
+var linkcat = require('./../parsers/linkcat');
+var storageUtils = require('./../utils/storage_utils');
 
 var SLEEP_TIME_MILLIS = 1500;
 
 var RESULTS_PER_PAGE = 20;
 var LINKCAT_SEARCH_URL = 'http://www.linkcat.info/cgi-bin/koha/opac-search.pl?idx=;limit=format%3A%22Book%22;q=&offset=$OFFSET';
-var Monitor = require('../monitor');
+var Monitor = require('../utils/monitor');
 var monitor = new Monitor.monitor('linkcat');
 
 var Agent = require('socks5-http-client/lib/Agent');

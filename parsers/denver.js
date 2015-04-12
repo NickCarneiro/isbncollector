@@ -1,5 +1,5 @@
 var cheerio = require('cheerio');
-var stringUtils = require('./string_utils');
+var stringUtils = require('./../utils/string_utils');
 
 // each book page contains a table with property names in the left col
 // and values in the right. turn it into a map we can inspect for the values

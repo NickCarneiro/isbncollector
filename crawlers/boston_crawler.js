@@ -1,8 +1,8 @@
 var request = require('request');
-var Monitor = require('../monitor');
+var Monitor = require('../utils/monitor');
 var monitor = new Monitor.monitor('boston');
-var boston = require('./boston');
-var storageUtils = require('./storage_utils');
+var boston = require('./../parsers/boston');
+var storageUtils = require('./../utils/storage_utils');
 
 var Agent = require('socks5-http-client/lib/Agent');
 var SLEEP_TIME_MILLIS = 1500;
@@ -18,7 +18,7 @@ var scrapeBoston = function(bookId) {
             socksPort: 9050
         }
     };
-    request(requestOptions, function (error, response, body) {
+    request(requestOptions, function (error, response, body) {  d
         if (!error && response.statusCode == 200) {
             if (!isHomepage(body)) {
                 var bookProperties = boston.extractBookProperties(body);

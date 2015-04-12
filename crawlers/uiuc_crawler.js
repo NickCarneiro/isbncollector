@@ -1,8 +1,8 @@
 var request = require('request');
-var Monitor = require('../monitor');
+var Monitor = require('../utils/monitor');
 var monitor = new Monitor.monitor('uiuc');
-var uiuc = require('./uiuc');
-var storageUtils = require('./storage_utils');
+var uiuc = require('./../parsers/uiuc');
+var storageUtils = require('./../utils/storage_utils');
 
 var Agent = require('socks5-http-client/lib/Agent');
 var SLEEP_TIME_MILLIS = 1500;
@@ -16,7 +16,8 @@ var scrapeUiuc = function(bookId) {
         agentOptions: {
             socksHost: 'localhost',
             socksPort: 9050
-        }
+        },
+        timeout: 30000 //30 second timeout
     };
     request(requestOptions, function (error, response, body) {
         if (!error && response.statusCode == 200) {
