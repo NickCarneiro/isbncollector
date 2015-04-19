@@ -25,8 +25,16 @@ router.get('/', function(req, res, next) {
                 if (err) {
                     res.render('error', {message: 'Error connecting to mongo'});
                 } else {
-                    res.render('browse', {books: results, page: page, nextPage: nextPage, previousPage: previousPage,
-                        totalPages: pageCount, keyword: '', path: req.baseUrl});
+                    res.render('browse', {
+                        books: results,
+                        page: page,
+                        nextPage: nextPage,
+                        previousPage: previousPage,
+                        totalPages: pageCount,
+                        keyword: '',
+                        path: req.baseUrl,
+                        pageTitle: 'Free ISBN Project - Browse books'
+                    });
                 }
                 db.close();
             });

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Free ISBN project</title>
-    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= include header.ejs %>
   </head>
   <body>
   <div class="container-fluid">
-    <%= include header.ejs %>
+    <%= include navigation.ejs %>
     <div class="row search-box-container">
       <div class="col-md-4 col-md-offset-4">
       <form class="form-inline isbn-lookup" method="get" action="/book">

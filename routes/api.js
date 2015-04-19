@@ -6,7 +6,7 @@ var db;
 
 router.get('/', function(req, res) {
 
-    res.render('api', {path: req.baseUrl, keyword: ''});
+    res.render('api', {path: req.baseUrl, keyword: '', pageTitle: 'Free ISBN Project - API'});
 });
 
 router.get('/v1/books/:isbn', function(req, res) {

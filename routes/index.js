@@ -16,7 +16,8 @@ router.get('/', function(req, res, next) {
       if (err) {
         res.render('error', {message: 'Error querying mongo', error: err});
       } else {
-        res.render('index', {totalBookCount: formattedCount, path: req.baseUrl, keyword: ''});
+        res.render('index', {totalBookCount: formattedCount, path: req.baseUrl, keyword: '',
+          pageTitle: 'Free ISBN Project'});
       }
       db.close();
     });

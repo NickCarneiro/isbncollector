@@ -59,7 +59,13 @@ var handleRequest = function(query, db, res, req) {
 var handleSearchResults = function(db, query, res, req, err, docs) {
     var keyword = query['$text']['$search'];
 
-    res.render('browse', {books: docs, keyword: keyword, path: req.baseUrl});
+    res.render('browse',
+        {
+            books: docs,
+            keyword: keyword,
+            path: req.baseUrl,
+            pageTitle: 'Free ISBN Project - ' + keyword + ' books'
+        });
 };
 
 
@@ -74,7 +80,14 @@ var handleResults = function(db, query, res, req, err, docs) {
             } else {
                 apiBaseUrl += bookProperties.isbn13;
             }
-            res.render('book', {properties: bookProperties, keyword: keyword, path: req.baseUrl, apiUrl: apiBaseUrl});
+            res.render('book',
+                {
+                    properties: bookProperties,
+                    keyword: keyword,
+                    path: req.baseUrl,
+                    apiUrl: apiBaseUrl,
+                    pageTitle: bookProperties.title
+                });
     } else {
         res.status(404);
         var errorMessage = 'No book found';
