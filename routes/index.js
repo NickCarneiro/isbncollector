@@ -7,11 +7,14 @@ var url = 'mongodb://localhost:27017/isbncollector';
 /* GET home page. */
 router.get('/', function(req, res, next) {
   MongoClient.connect(url, function(err, db) {
+    if (err) {
+      return res.render('error', {message: 'Error connecting to mongo', error: err});
+    }
     var collection = db.collection('books');
     collection.find({}).count(function(err, count) {
       var formattedCount = numeral(count).format('0,0');
       if (err) {
-        res.render('error', {message: 'Error connecting to mongo'});
+        res.render('error', {message: 'Error querying mongo', error: err});
       } else {
         res.render('index', {totalBookCount: formattedCount, path: req.baseUrl, keyword: ''});
       }
