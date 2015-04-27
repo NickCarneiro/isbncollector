@@ -16,14 +16,6 @@ td {
 }
 
 
-.isbn-lookup label{
-  display: block;
-}
-
-#isbn-input {
-  width: 80%;
-}
-
 .search-box-container {
   margin-bottom: 50px;
   margin-top: 10%;
@@ -53,7 +45,7 @@ td {
 .header-search-form {
   display: inline-block;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .header-pills {

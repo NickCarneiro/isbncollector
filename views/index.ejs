@@ -8,10 +8,14 @@
     <%= include navigation.ejs %>
     <div class="row search-box-container">
       <div class="col-md-4 col-md-offset-4">
-      <form class="form-inline isbn-lookup" method="get" action="/book">
+      <form class="form isbn-lookup" method="get" action="/book">
         <label for="isbn-input">ISBN or title:</label>
-        <input id="isbn-input" class="form-control" name="isbn" />
-        <input class="btn btn-primary" type="submit" value="Submit" />
+        <div class="input-group">
+          <input id="isbn-input" class="form-control" name="isbn" />
+          <span class="input-group-btn">
+            <input class="btn btn-primary" type="submit" value="Submit" />
+          </span>
+        </div>
       </form>
       </div>
     </div>
@@ -20,6 +24,7 @@
         <p>Searching <%= totalBookCount %> books</p>
       </div>
     </div>
+    <%= include footer.ejs %>
   </div>
   </body>
 </html>

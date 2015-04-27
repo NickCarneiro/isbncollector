@@ -1,25 +1,30 @@
-<div class="header row">
-    <div class="col-md-4">
-        <a class="home-link" href="/">
-            <h3 class="text-muted project-title">Free ISBN Project</h3>
-        </a>
-    </div>
-    <div class="col-md-4">
-        <% if (path !== '') { %>
-        <form method="get" action="/book" class="header-search-form">
-            <input class="form-control header-search-input" name="isbn" placeholder="ISBN or title" value="<%= keyword %>" />
-            <input class="btn btn-primary header-search-submit" type="submit" value="Submit" />
-        </form>
-        <% } %>
-    </div>
-    <div class="col-md-4">
-        <ul class="nav nav-pills pull-right header-pills">
-            <li><a href="/">Home</a></li>
-            <li><a href="/browse">Browse books</a></li>
-            <li><a href="/api">API</a></li>
-            <li><a href="/healthcheck">Healthcheck</a></li>
-            <li><a href="https://github.com/NickCarneiro/isbncollector">GitHub</a></li>
-        </ul>
-    </div>
-
+<nav class="navbar navbar-default">
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Free ISBN Project</a>
 </div>
+<div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li <% if (path == '') { %>class="active"<% } %>><a href="/">Home</a></li>
+        <li <% if (path == '/browse') { %>class="active"<% } %>><a href="/browse">Browse books</a></li>
+        <li <% if (path == '/api') { %>class="active"<% } %>><a href="/api">API</a></li>
+        <li><a href="/healthcheck">Healthcheck</a></li>
+        <li><a href="https://github.com/NickCarneiro/isbncollector">GitHub</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <% if (path !== '') { %>
+            <form method="get" action="/book" class="header-search-form">
+                <input class="form-control header-search-input" name="isbn" placeholder="ISBN or title" value="<%= keyword %>" />
+                <input class="btn btn-primary header-search-submit" type="submit" value="Submit" />
+            </form>
+        <% } %></li>
+    </ul>
+</div><!--/.nav-collapse -->
+
+</nav>
