@@ -76,7 +76,7 @@ var handleResults = function(db, query, res, req, err, docs) {
         console.log('found book in the mongo');
             var bookProperties = docs[0];
             if (bookProperties.publicationDate) {
-                bookProperties.publicationDate = moment(bookProperties.publicationDate).format('YYYY-M-D')
+                bookProperties.publicationDate = moment(bookProperties.publicationDate).format('YYYY-MM-DD')
             }
             var apiBaseUrl = '/api/v1/books/';
             if (bookProperties.isbn10) {
