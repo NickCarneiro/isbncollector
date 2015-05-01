@@ -4,6 +4,7 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var amazon = require('../parsers/amazon');
 var config = require('../config');
+var moment = require('moment');
 
 // Connection URL
 var url = 'mongodb://localhost:27017/isbncollector';
@@ -74,6 +75,9 @@ var handleResults = function(db, query, res, req, err, docs) {
     if (err === null && docs && docs.length > 0) {
         console.log('found book in the mongo');
             var bookProperties = docs[0];
+            if (bookProperties.publicationDate) {
+                bookProperties.publicationDate = moment(bookProperties.publicationDate).format('YYYY-M-D')
+            }
             var apiBaseUrl = '/api/v1/books/';
             if (bookProperties.isbn10) {
                 apiBaseUrl += bookProperties.isbn10;

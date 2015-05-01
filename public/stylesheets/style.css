@@ -36,6 +36,7 @@ td {
 
 .header-search-submit {
   display: inline-block;
+  margin-top: -2px;
 }
 
 .home-link:hover {
@@ -52,5 +53,10 @@ td {
   margin-top: 20px;
 }
 
-.project-title {
+.btn-next {
+  margin-left: 10px;
+}
+
+.btn-previous {
+  margin-right: 10px;
 }

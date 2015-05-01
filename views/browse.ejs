@@ -12,7 +12,7 @@
             <% for (var i = 0; i < books.length; i++) { %>
             <div class="book">
                 <% var isbn = books[i].isbn10 || books[i].isbn13 %>
-                <a href="/book?isbn=<%= isbn %>"><%= books[i].isbn10 || books[i].isbn13 %>: <%= books[i].title %></a>
+                <a href="/book?isbn=<%= isbn %>"><%= books[i].title %></a>
             </div>
             <% } %>
         </div>

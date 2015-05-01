@@ -10,9 +10,14 @@
 
     <h1><%= properties.title %></h1>
 
-    <table class="table">
-    <% for (var propertyName in properties) { %>
+    <table class="table table-bordered">
+    <% for (var propertyName in properties) {
+        if (propertyName != '_id') {
+        %>
         <tr><td><%= propertyName %></td><td><%= properties[propertyName] %></td></tr>
+        <%
+        }
+        %>
     <% } %>
     </table>
     <a href="<%= apiUrl %>">
