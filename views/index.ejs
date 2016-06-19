@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= include header.ejs %>
+    <%- include header.ejs %>
   </head>
   <body>
   <div class="container-fluid">
-    <%= include navigation.ejs %>
+    <%- include navigation.ejs %>
     <div class="row search-box-container">
       <div class="col-md-4 col-md-offset-4">
       <form class="form isbn-lookup" method="get" action="/book">
@@ -24,7 +24,7 @@
         <p>Searching <%= totalBookCount %> books</p>
       </div>
     </div>
-    <%= include footer.ejs %>
+    <%- include footer.ejs %>
   </div>
   </body>
 </html>

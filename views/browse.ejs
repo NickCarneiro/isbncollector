@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%= include header.ejs %>
+    <%- include header.ejs %>
 </head>
 <body>
 <div class="container-fluid">
-<%= include navigation.ejs %>
-    <%= include pagination.ejs %>
+<%- include navigation.ejs %>
+    <%- include pagination.ejs %>
     <div class="row">
         <div class="col-md-12">
             <% for (var i = 0; i < books.length; i++) { %>
@@ -17,8 +17,8 @@
             <% } %>
         </div>
     </div>
-    <%= include pagination.ejs %>
-    <%= include footer.ejs %>
+    <%- include pagination.ejs %>
+    <%- include footer.ejs %>
 </div>
 </body>
 </html>

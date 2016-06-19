@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%= include header.ejs %>
+    <%- include header.ejs %>
 </head>
 <body>
 <div class="container-fluid">
-<%= include navigation.ejs %>
+<%- include navigation.ejs %>
 
 
     <h1><%= properties.title %></h1>
@@ -23,7 +23,7 @@
     <a href="<%= apiUrl %>">
         JSON
     </a>
-    <%= include footer.ejs %>
+    <%- include footer.ejs %>
 </div>
 </body>
 </html>
